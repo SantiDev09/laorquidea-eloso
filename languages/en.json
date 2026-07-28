@@ -1,0 +1,96 @@
+{
+  "meta": {
+    "title": "La Orquídea y el Oso | Specialty Organic Coffee from Tierradentro, Cauca — South Africa Mission 2026",
+    "description": "Specialty organic coffee grown by smallholder families in Inzá, Tierradentro (Cauca, Colombia). Export-ready product, traceability and the O&O Certified Origin Program for buyers in South Africa and West Africa."
+  },
+  "nav": {
+    "producto": "Product",
+    "origen": "Origin",
+    "programa": "O&O Program",
+    "trazabilidad": "Traceability",
+    "contacto": "Contact",
+    "cta": "Request information"
+  },
+  "hero": {
+    "badge": "South Africa Trade Mission 2026",
+    "eyebrow": "Specialty coffee · Cauca, Colombia origin",
+    "title": "Coffee that regenerates the forest, ready for the African market",
+    "subtitle": "From the mountains of Inzá, Tierradentro, we export specialty organic coffee grown by smallholder families committed to protecting the forest. We are presenting our origin to buyers across South Africa and West Africa.",
+    "cta_primary": "See export-ready product",
+    "cta_secondary": "Talk to us",
+    "scroll": "Discover the origin"
+  },
+  "stats": {
+    "eyebrow": "Measurable impact",
+    "families": "Partner families",
+    "farms": "Forest-protecting farms",
+    "farms_suffix": "hectares",
+    "foods": "Diverse crops breaking the monoculture cycle",
+    "organic": "Certified organic production",
+    "organic_suffix": "hectares"
+  },
+  "product": {
+    "eyebrow": "Export-ready product",
+    "title": "Specialty green coffee, traceable and export-ready",
+    "text": "Our coffee is shade-grown across mountain microclimates between 1,700 and 2,100 masl, with careful post-harvest processing that highlights unique cup profiles. We are preparing the technical and commercial information your team needs to evaluate the product.",
+    "bullet1": "Cup profiles documented by lot",
+    "bullet2": "Harvest availability and volumes",
+    "bullet3": "Organic certification and regenerative practices",
+    "downloads_label": "Download commercial brochure",
+    "download_en": "Brochure (English)",
+    "download_fr": "Brochure (French)"
+  },
+  "origin": {
+    "eyebrow": "Origin",
+    "title": "Tierradentro: forest, culture and coffee in balance",
+    "text": "In Inzá, Cauca, coffee grows alongside native forest, agroforestry systems and a farming tradition passed down through generations. Every partner farm protects mountain ecosystems while producing coffee with a distinct identity, rooted in the ancestral territory of Tierradentro.",
+    "bullet1": "Partner smallholder families from Inzá, Tierradentro",
+    "bullet2": "Agroforestry systems that conserve biodiversity",
+    "bullet3": "Coffee-growing tradition with a regenerative focus"
+  },
+  "program": {
+    "eyebrow": "Certified Origin Program",
+    "title": "O&O Certified Origin Program",
+    "text": "The O&O Index certifies the origin, traceability and social-environmental impact of every lot. It is our way of guaranteeing international buyers that behind every cup lies a verifiable, fair and regenerative process.",
+    "video_note": "Video presentation available soon.",
+    "downloads_label": "Download O&O Index",
+    "download_en": "O&O Index (English)",
+    "download_fr": "O&O Index (French)"
+  },
+  "traceability": {
+    "eyebrow": "Traceability",
+    "badge": "Coming soon",
+    "title": "From forest to cup: traceability in progress",
+    "text": "We are building a traceability module that will let every buyer look up the exact origin of their coffee: the farm, the producing family, the altitude, the post-harvest process and the conservation practices tied to that lot. This section will go live in a following phase of the project.",
+    "note": "Space reserved for the lot-level traceability module."
+  },
+  "contact": {
+    "eyebrow": "Contact",
+    "title": "Let's talk about your next import",
+    "text": "Fill out the form and our commercial team will reach out to share samples, technical sheets and commercial terms adapted to your market.",
+    "form": {
+      "name": "Full name",
+      "email": "Email address",
+      "company": "Company",
+      "country": "Country",
+      "volume": "Estimated volume of interest",
+      "volume_placeholder": "E.g. 1 container / quarter",
+      "message": "Message",
+      "message_placeholder": "Tell us about your interest in our coffee...",
+      "consent": "I agree to be contacted by La Orquídea y el Oso about this message.",
+      "submit": "Send message",
+      "sending": "Sending...",
+      "success": "Thank you! We've received your message and will respond soon.",
+      "error": "Something went wrong while sending. Please try again or email us directly.",
+      "error_required": "Please complete this field.",
+      "error_email": "Please enter a valid email address."
+    }
+  },
+  "footer": {
+    "tagline": "Coffee that regenerates the forest and values its origin.",
+    "links_title": "Links",
+    "contact_title": "Direct contact",
+    "redirect_note": "This site is the landing page for the fincaslaorquideayeloso.com South Africa Trade Mission 2026",
+    "rights": "All rights reserved."
+  }
+}
