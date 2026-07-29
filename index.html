@@ -10,7 +10,7 @@
     </title>
     <meta
       name="description"
-      content="Specialty, organic coffee grown by farming families in Inzá, Tierradentro (Cauca, Colombia). Export-ready product, traceability, and the O&amp;O Certified Origin Program for buyers in South Africa and West Africa."
+      content="Specialty coffee grown by 300+ farming families in Inzá, Tierradentro (Cauca, Colombia). Export-ready product, lot-level traceability, and the &amp;O&O Certified Origin Program for buyers in South Africa and West Africa."
     />
     <meta name="robots" content="index, follow" />
     <link
@@ -27,7 +27,7 @@
     />
     <meta
       property="og:description"
-      content="Specialty organic coffee from Inzá, Tierradentro (Cauca, Colombia) for buyers in South Africa and West Africa. South Africa Trade Mission 2026."
+      content="Specialty coffee from Inzá, Tierradentro (Cauca, Colombia) for buyers in South Africa and West Africa. South Africa Trade Mission 2026."
     />
     <meta
       property="og:image"
@@ -133,6 +133,7 @@
         --shadow-card: 0 14px 34px -18px rgba(12, 46, 32, 0.28);
         --ease: cubic-bezier(0.22, 1, 0.36, 1);
         --container: 1180px;
+        --header-h: 96px;
       }
 
       * {
@@ -273,6 +274,18 @@
       }
 
       /* ==========================================================================
+   SCROLL OFFSET (secciones no deben quedar tapadas por el menú fijo)
+   ========================================================================== */
+      #inicio,
+      #producto,
+      #origen,
+      #programa,
+      #trazabilidad,
+      #contacto {
+        scroll-margin-top: var(--header-h);
+      }
+
+      /* ==========================================================================
    HEADER
    ========================================================================== */
       .site-header {
@@ -286,12 +299,21 @@
         box-shadow: 0 2px 14px -8px rgba(12, 46, 32, 0.18);
         transition:
           padding 0.4s var(--ease),
-          box-shadow 0.4s var(--ease);
+          box-shadow 0.4s var(--ease),
+          transform 0.45s var(--ease),
+          opacity 0.45s var(--ease);
       }
 
       .site-header.is-scrolled {
         padding: 12px 0;
         box-shadow: 0 8px 24px -18px rgba(12, 46, 32, 0.4);
+      }
+
+      /* Ocultamiento automático del menú tras inactividad (5s) */
+      .site-header.is-idle-hidden {
+        transform: translateY(-110%);
+        opacity: 0;
+        pointer-events: none;
       }
 
       .nav-inner {
@@ -364,7 +386,7 @@
         color: var(--color-gold);
       }
 
-      /* Colombia -> South Africa / West Africa trade-route badge */
+      /* Colombia -> South Africa / West Africa trade-route badge ("CO-ZA") */
       .route-badge {
         display: inline-flex;
         align-items: center;
@@ -966,15 +988,15 @@
         background:
           linear-gradient(
             100deg,
-            rgba(12, 46, 32, 0.92) 0%,
-            rgba(12, 46, 32, 0.78) 32%,
-            rgba(12, 46, 32, 0.4) 58%,
-            rgba(12, 46, 32, 0.08) 78%
+            rgba(17, 60, 43, 0.92) 0%,
+            rgba(17, 60, 43, 0.78) 32%,
+            rgba(17, 60, 43, 0.4) 58%,
+            rgba(17, 60, 43, 0.08) 78%
           ),
           linear-gradient(
             0deg,
-            rgba(12, 46, 32, 0.55) 0%,
-            rgba(12, 46, 32, 0) 32%
+            rgba(17, 60, 43, 0.55) 0%,
+            rgba(17, 60, 43, 0) 32%
           );
       }
 
@@ -1022,11 +1044,12 @@
       }
 
       .hero-eyebrow {
-        color: var(--color-gold-light);
-        font-weight: 600;
+        color: #e0b048;
+        font-family: var(--font-body);
+        font-weight: 500;
         letter-spacing: 0.16em;
         text-transform: uppercase;
-        font-size: 0.78rem;
+        font-size: 12px;
         margin-bottom: 16px;
         display: block;
       }
@@ -1441,43 +1464,84 @@
       }
 
       .stat-icon {
-        width: 52px;
-        height: 52px;
-        border-radius: 50%;
-        background: var(--color-card);
-        box-shadow: var(--shadow-card);
         display: flex;
         align-items: center;
         justify-content: center;
-        margin: 0 auto 16px;
-        color: var(--color-cherry);
-        font-size: 1.3rem;
+
+        width: 44px;
+        height: 44px;
+
+        margin: 0 auto 18px;
+
+        background: transparent;
+        border: none;
+        box-shadow: none;
+
+        color: rgba(17, 60, 43, 0.18);
+
+        font-size: 22px;
       }
 
       .stat-card .stat-number {
-        font-family: var(--font-display);
-        font-size: clamp(2rem, 4vw, 2.7rem);
-        font-weight: 600;
-        color: var(--color-cherry);
         display: flex;
         justify-content: center;
         align-items: baseline;
-        gap: 4px;
+        gap: 2px;
+
+        font-family: var(--font-display);
+
+        font-size: clamp(40px, 4vw, 48px);
+
+        font-weight: 500;
+
+        line-height: 1;
+
+        color: #e0b048;
+
+        margin-bottom: 14px;
       }
 
       .stat-card .stat-suffix {
-        font-size: 1.1rem;
-        font-weight: 500;
-        color: var(--color-ink-soft);
+        font-family: var(--font-display);
+
+        font-size: 24px;
+
+        font-weight: 400;
+
+        color: rgba(224, 176, 72, 0.8);
+
+        margin-left: 2px;
       }
 
+      .stat-card {
+        padding: 40px 26px;
+
+        border-radius: 18px;
+
+        background: transparent;
+
+        box-shadow: none;
+      }
       .stat-card .stat-label {
-        margin-top: 8px;
-        font-size: 0.88rem;
-        color: var(--color-ink-soft);
-        max-width: 190px;
-        margin-left: auto;
-        margin-right: auto;
+        margin-top: 14px;
+
+        max-width: 210px;
+
+        margin-inline: auto;
+
+        font-family: var(--font-body);
+
+        font-size: 12px;
+
+        font-weight: 500;
+
+        text-transform: uppercase;
+
+        letter-spacing: 0.18em;
+
+        line-height: 1.8;
+
+        color: rgba(17, 60, 43, 0.7);
       }
 
       /* ==========================================================================
@@ -1753,6 +1817,101 @@
       }
 
       /* ==========================================================================
+   PRODUCTO EXPORTABLE - ESTILOS ESPECÍFICOS
+   ========================================================================== */
+
+      /* Eyebrow */
+      #producto .eyebrow {
+        font-family: var(--font-body);
+        font-size: 12px;
+        font-weight: 500;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: #c14232;
+      }
+
+      /* Título */
+      #producto .split-content h2 {
+        font-family: var(--font-display);
+        font-size: clamp(2rem, 3.4vw, 2.25rem);
+        font-weight: 500;
+        line-height: 1.2;
+        color: #113c2b;
+        margin-bottom: 20px;
+      }
+
+      /* Texto */
+      #producto .split-content p {
+        font-family: var(--font-body);
+        font-size: 15px;
+        font-weight: 400;
+        line-height: 1.7;
+        color: rgba(17, 60, 43, 0.85);
+      }
+
+      /* Lista */
+      #producto .feature-list li {
+        font-family: var(--font-body);
+        font-size: 14px;
+        font-weight: 500;
+        color: #113c2b;
+      }
+
+      /* Icono */
+      #producto .feature-list .leaf-icon {
+        background: #fef8ea;
+        color: #e0b048;
+      }
+
+      /* Etiqueta sobre la imagen */
+      #producto .media-frame-tag {
+        background: rgba(254, 253, 247, 0.95);
+        color: #113c2b;
+        font-family: var(--font-body);
+        font-size: 12px;
+        font-weight: 500;
+      }
+
+      /* Tarjeta flotante */
+      #producto .float-card {
+        background: #fefdf7;
+      }
+
+      #producto .fc-title {
+        font-family: var(--font-display);
+        color: #e0b048;
+        font-size: 1.8rem;
+        font-weight: 500;
+      }
+
+      #producto .fc-text {
+        font-family: var(--font-body);
+        color: rgba(17, 60, 43, 0.85);
+      }
+
+      /* Información técnica */
+      #producto p[style] {
+        font-family: var(--font-body) !important;
+        font-size: 14px !important;
+        line-height: 1.7 !important;
+        color: rgba(17, 60, 43, 0.85) !important;
+      }
+
+      #producto p[style] strong {
+        color: #113c2b !important;
+      }
+
+      /* Descargas */
+      #producto .downloads-label {
+        font-family: var(--font-body);
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: #113c2b;
+      }
+
+      /* ==========================================================================
    ORIGEN (custom layout: video full width, then text | image)
    ========================================================================== */
       .origin-section {
@@ -1812,6 +1971,156 @@
 
         .origin-layout {
           gap: 36px;
+        }
+      }
+
+      /* =====================================================
+   CERTIFIED ORIGIN PROGRAM
+===================================================== */
+
+      .program-eyebrow {
+        font-family: var(--font-body);
+
+        font-size: 12px;
+
+        font-weight: 600;
+
+        letter-spacing: 0.16em;
+
+        text-transform: uppercase;
+
+        color: #c14232;
+
+        display: block;
+
+        margin-bottom: 16px;
+      }
+
+      .split-content h2 {
+        font-family: var(--font-display);
+
+        font-size: clamp(2rem, 3.5vw, 2.3rem);
+
+        font-weight: 500;
+
+        line-height: 1.2;
+
+        color: #16734a;
+
+        margin-bottom: 20px;
+      }
+
+      .split-content p {
+        font-family: var(--font-body);
+
+        font-size: 15px;
+
+        line-height: 1.7;
+
+        color: rgba(22, 115, 74, 0.85);
+      }
+
+      /* =====================
+   MINI CARDS
+===================== */
+
+      .origin-cards {
+        display: grid;
+
+        grid-template-columns: repeat(3, 1fr);
+
+        gap: 18px;
+
+        margin: 32px 0;
+      }
+
+      .origin-card {
+        background: #fefdf7;
+
+        padding: 20px;
+
+        border-radius: 18px;
+
+        box-shadow: var(--shadow-soft);
+      }
+
+      .origin-card h3 {
+        font-family: var(--font-display);
+
+        font-size: 26px;
+
+        font-weight: 500;
+
+        color: #e0b048;
+
+        margin: 0 0 8px;
+      }
+
+      .origin-card h4 {
+        font-family: var(--font-display);
+
+        font-size: 18px;
+
+        font-weight: 500;
+
+        color: #e0b048;
+
+        margin-bottom: 8px;
+      }
+
+      .origin-card p {
+        font-family: var(--font-body);
+
+        font-size: 13px;
+
+        line-height: 1.5;
+
+        color: #16734a;
+      }
+
+      /* =====================
+   CTA
+===================== */
+
+      .program-btn {
+        display: inline-flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        background: #e0b048;
+
+        color: #16734a;
+
+        padding: 14px 28px;
+
+        border-radius: 999px;
+
+        font-family: var(--font-body);
+
+        font-size: 14px;
+
+        font-weight: 600;
+
+        letter-spacing: 0.08em;
+
+        text-transform: uppercase;
+
+        transition: 0.3s ease;
+      }
+
+      .program-btn:hover {
+        transform: translateY(-3px);
+
+        opacity: 0.9;
+      }
+
+      /* RESPONSIVE */
+
+      @media (max-width: 900px) {
+        .origin-cards {
+          grid-template-columns: 1fr;
         }
       }
 
@@ -1888,23 +2197,36 @@
       }
 
       .trace-intro .eyebrow {
-        justify-content: center;
+        font-family: var(--font-body);
+        font-size: 12px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.16em;
+        color: #d6b46a;
       }
 
       .trace-intro h2 {
-        font-size: clamp(1.9rem, 3.6vw, 2.5rem);
-        margin-bottom: 16px;
+        font-family: var(--font-display);
+        font-size: clamp(2rem, 3vw, 2.3rem);
+        font-weight: 500;
+        line-height: 1.2;
+        color: #113c2b;
+        margin-bottom: 22px;
       }
 
       .trace-intro p {
-        color: var(--color-ink-soft);
-        font-size: 1.02rem;
+        font-family: var(--font-body);
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 1.8;
+        color: rgba(17, 60, 43, 0.85);
+        max-width: 760px;
       }
 
       .trace-grid {
         display: grid;
-        grid-template-columns: repeat(5, 1fr);
-        gap: 20px;
+        grid-template-columns: repeat(6, 1fr);
+        gap: 16px;
       }
 
       .trace-col {
@@ -1955,25 +2277,34 @@
 
       .trace-col-media .trace-col-index {
         position: absolute;
-        top: 12px;
-        left: 12px;
-        font-family: var(--font-display);
-        font-size: 0.78rem;
-        font-weight: 600;
-        color: var(--color-cherry);
-        background: var(--color-bg);
-        border-radius: 999px;
-        width: 24px;
-        height: 24px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        top: 18px;
+        left: 18px;
+
+        font-family: var(--font-display); /* Fraunces */
+        font-size: 28px;
+        font-weight: 500;
+        line-height: 1;
+
+        color: #c14232;
+
+        background: transparent;
+        border: none;
+        border-radius: 0;
+
+        width: auto;
+        height: auto;
+        padding: 0;
+
+        display: block;
+        z-index: 5;
+
+        text-shadow: 0 2px 8px rgba(255, 255, 255, 0.45);
       }
 
       .trace-col:hover .trace-col-media img,
       .trace-col:focus-within .trace-col-media img {
         opacity: 1;
-        transform: scale(1.06);
+        transform: scale(1.03);
       }
 
       .trace-col:hover .trace-col-media .trace-col-icon,
@@ -1983,15 +2314,26 @@
 
       .trace-col-title {
         font-family: var(--font-display);
-        font-size: 1.05rem;
-        font-weight: 600;
-        color: var(--color-forest-dark);
+
+        font-size: 20px;
+
+        font-weight: 500;
+
+        color: #113c2b;
+
+        margin-top: 8px;
       }
 
       .trace-col-text {
-        font-size: 0.86rem;
-        color: var(--color-ink-soft);
-        line-height: 1.55;
+        font-family: var(--font-body);
+
+        font-size: 14px;
+
+        font-weight: 400;
+
+        line-height: 1.75;
+
+        color: rgba(17, 60, 43, 0.75);
       }
 
       .trace-bottom {
@@ -2014,24 +2356,52 @@
       }
 
       .trace-note {
-        display: inline-flex;
+        display: flex;
+
         align-items: flex-start;
+
         gap: 10px;
-        font-size: 0.86rem;
-        color: var(--color-ink-soft);
+
+        margin-top: 40px;
+
+        padding: 0;
+
+        background: none;
+
+        border: none;
+
+        box-shadow: none;
+
+        font-family: var(--font-body);
+
+        font-size: 13px;
+
+        font-style: italic;
+
+        font-weight: 400;
+
+        color: rgba(17, 60, 43, 0.6);
       }
 
       .trace-note svg {
+        width: 16px;
+
+        height: 16px;
+
+        color: rgba(17, 60, 43, 0.6);
+
         flex-shrink: 0;
-        margin-top: 3px;
-        color: var(--color-cherry);
+
+        margin-top: 2px;
       }
 
       /* ==========================================================================
    CONTACT
    ========================================================================== */
       .contact-section {
-        padding: 110px 0;
+        padding: 120px 0;
+        background: #113c2b;
+        color: #f8f4ee;
       }
 
       .contact-grid {
@@ -2042,15 +2412,18 @@
       }
 
       .contact-intro h2 {
-        font-size: clamp(1.9rem, 3.4vw, 2.4rem);
+        font-family: var(--font-display);
+        font-size: clamp(2.2rem, 3.5vw, 2.8rem);
+        font-weight: 500;
+        color: #f8f4ee;
         margin-bottom: 18px;
       }
 
       .contact-intro p {
-        color: var(--color-ink-soft);
-        margin-bottom: 32px;
+        color: rgba(248, 244, 238, 0.82);
+        line-height: 1.8;
+        margin-bottom: 36px;
       }
-
       .contact-info {
         display: flex;
         flex-direction: column;
@@ -2060,9 +2433,13 @@
       .contact-info .ci-item {
         display: flex;
         align-items: center;
-        gap: 14px;
-        font-size: 0.94rem;
-        transition: transform 0.35s var(--ease);
+        gap: 16px;
+
+        color: #d6b46a;
+
+        font-size: 14px;
+
+        transition: 0.35s;
       }
 
       .contact-info .ci-item:hover {
@@ -2070,23 +2447,20 @@
       }
 
       .contact-info .ci-icon {
-        width: 42px;
-        height: 42px;
-        border-radius: 50%;
-        background: var(--color-card);
-        box-shadow: var(--shadow-card);
         display: flex;
         align-items: center;
         justify-content: center;
-        color: var(--color-forest);
+
+        width: 18px;
+        height: 18px;
+
+        color: #d6b46a;
+
         flex-shrink: 0;
-        transition: all 0.35s var(--ease);
       }
 
       .contact-info .ci-item:hover .ci-icon {
-        transform: scale(1.08) rotate(8deg);
-        background: var(--color-forest);
-        color: #fff;
+        color: #e4c989;
       }
 
       .contact-info .ci-icon svg {
@@ -2095,12 +2469,17 @@
       }
 
       .map-card {
-        margin-top: 26px;
-        border-radius: var(--radius-md);
+        margin-top: 40px;
+
+        border-radius: 18px;
+
         overflow: hidden;
-        box-shadow: var(--shadow-card);
-        border: 1px solid var(--color-line);
-        height: 200px;
+
+        border: 1px solid rgba(255, 255, 255, 0.15);
+
+        box-shadow: none;
+
+        height: 220px;
       }
 
       .map-card iframe {
@@ -2111,13 +2490,15 @@
       }
 
       .contact-form {
-        background: var(--color-card);
-        border-radius: var(--radius-lg);
-        padding: 44px;
-        box-shadow: var(--shadow-soft);
-        border: 1px solid var(--color-line);
-        position: relative;
-        overflow: hidden;
+        background: #f8f4ee;
+
+        border-radius: 24px;
+
+        padding: 48px;
+
+        border: none;
+
+        box-shadow: 0 35px 80px rgba(0, 0, 0, 0.2);
       }
 
       .contact-form::before {
@@ -2143,28 +2524,33 @@
       }
 
       .field label {
-        display: block;
-        font-size: 0.82rem;
+        font-size: 11px;
+
+        text-transform: uppercase;
+
+        letter-spacing: 0.14em;
+
+        color: rgba(17, 60, 43, 0.72);
+
         font-weight: 600;
-        margin-bottom: 8px;
-        color: var(--color-ink);
       }
 
       .field input,
       .field textarea,
       .field select {
-        width: 100%;
-        padding: 13px 15px;
-        border-radius: var(--radius-sm);
-        border: 1.5px solid var(--color-line);
-        background: #fff;
-        font-family: inherit;
-        font-size: 0.94rem;
-        color: var(--color-ink);
-        transition:
-          border-color 0.3s var(--ease),
-          box-shadow 0.3s var(--ease),
-          transform 0.25s ease;
+        background: white;
+
+        border: 1px solid #d7ddd8;
+
+        border-radius: 14px;
+
+        padding: 15px 18px;
+
+        color: #113c2b;
+
+        font-size: 14px;
+
+        transition: 0.3s;
       }
 
       .field input:hover,
@@ -2176,10 +2562,11 @@
       .field input:focus,
       .field textarea:focus,
       .field select:focus {
-        outline: none;
-        border-color: var(--color-forest);
-        box-shadow: 0 0 0 4px rgba(17, 60, 43, 0.12);
-        transform: translateY(-2px);
+        border-color: #d6b46a;
+
+        box-shadow: 0 0 0 4px rgba(214, 180, 106, 0.22);
+
+        transform: none;
       }
 
       .field textarea {
@@ -2260,6 +2647,26 @@ SELECT
       /* ===============================
    BOTONES DEL FORMULARIO
 =================================*/
+
+      .contact-buttons .btn-primary {
+        background: #d6b46a;
+
+        color: #113c2b;
+
+        font-weight: 700;
+
+        text-transform: uppercase;
+
+        letter-spacing: 0.08em;
+      }
+
+      .contact-buttons .btn-secondary {
+        background: transparent;
+
+        color: #25d366;
+
+        border: 2px solid #25d366;
+      }
 
       .contact-form .btn {
         transition:
@@ -2507,6 +2914,10 @@ SELECT
    RESPONSIVE
    ========================================================================== */
       @media (max-width: 980px) {
+        :root {
+          --header-h: 78px;
+        }
+
         .main-nav-row {
           display: none !important;
         }
@@ -2531,7 +2942,13 @@ SELECT
         }
 
         .route-badge {
-          display: none;
+          padding: 5px 9px;
+          font-size: 0.68rem;
+          gap: 4px;
+        }
+
+        .route-badge .flag {
+          font-size: 0.86rem;
         }
 
         .section-split .container,
@@ -2564,9 +2981,11 @@ SELECT
         }
 
         .trace-grid {
-          grid-template-columns: repeat(3, 1fr);
-          row-gap: 32px;
-          gap: 16px;
+          display: grid;
+
+          grid-template-columns: repeat(6, 1fr);
+
+          gap: 28px;
         }
 
         .trace-bottom {
@@ -2622,6 +3041,10 @@ SELECT
 
         .site-header.is-scrolled {
           padding: 10px 0;
+        }
+
+        :root {
+          --header-h: 70px;
         }
 
         .header-actions {
@@ -2770,7 +3193,7 @@ SELECT
           padding: 7px 9px;
         }
 
-        .route-badge {
+        .route-badge .flag:nth-child(3) {
           display: none;
         }
 
@@ -2792,6 +3215,16 @@ SELECT
     <!-- =========================== HEADER =========================== -->
     <header class="site-header" id="siteHeader">
       <div class="container nav-inner">
+        <span
+          class="route-badge"
+          title="Colombia → South Africa & West Africa"
+          aria-hidden="true"
+        >
+          <span class="flag">🇨🇴</span>
+          <span class="route-arrow">→</span>
+          <span class="flag">🇿🇦</span>
+        </span>
+
         <a
           href="#inicio"
           class="brand"
@@ -2805,16 +3238,6 @@ SELECT
           />
           <span class="brand-name">La Orquídea & el Oso</span>
         </a>
-
-        <span
-          class="route-badge"
-          title="Colombia → South Africa & West Africa"
-          aria-hidden="true"
-        >
-          <span class="flag">🇨🇴</span>
-          <span class="route-arrow">→</span>
-          <span class="flag">🇿🇦</span>
-        </span>
 
         <div class="header-actions">
           <div class="lang-select" id="langSelect">
@@ -2948,18 +3371,6 @@ SELECT
     <main id="main">
       <!-- =========================== HERO =========================== -->
       <section class="hero" id="inicio">
-        <!-- <video
-          class="hero-bg-video"
-          id="heroBgVideo"
-          autoplay
-          muted
-          loop
-          playsinline
-        >
-          <source src="assets/videos/Loop%20Intro.mp4" type="video/mp4" />
-        </video> -->
-        <!-- 📌 IMAGEN PRINCIPAL DEL INICIO -->
-
         <img
           class="hero-bg-photo"
           id="heroBgPhoto"
@@ -2981,27 +3392,25 @@ SELECT
 
         <div class="hero-inner container">
           <div class="hero-content reveal is-visible">
-            <span class="hero-script" data-i18n="hero.eyebrow"
-              >Specialty &amp; Organic</span
-            >
+            <span class="hero-script" data-i18n="hero.eyebrow">
+              Specialty Coffee — South Africa Trade Mission 2026
+            </span>
 
             <h1 data-i18n="hero.title">
-              Specialty Colombian Coffee for the African Market
+              Coffee You Can Trace to the Farmer. Not Just the Country.
             </h1>
             <p class="hero-subtitle" data-i18n="hero.subtitle">
-              From the mountains of Inzá, Tierradentro, we grow specialty and
-              organic coffee alongside farming families who protect the forest
-              and preserve a unique coffee-growing tradition. We present our
-              exportable offer during the South Africa Trade Mission 2026,
-              connecting our origin with buyers, distributors and roasters in
-              South Africa and West Africa.
+              We grow, process and export specialty coffee directly from Inzá,
+              Tierradentro — no reseller, no unverified "Colombian" label. Every
+              lot is tied to the family that grew it, by name and lot. We're
+              bringing that directly to South Africa and West Africa.
             </p>
             <div class="hero-actions">
               <a
                 href="#producto"
                 class="btn btn-gold"
                 data-i18n="hero.cta_primary"
-                >View Exportable Coffee</a
+                >See the Traceable Lots</a
               >
               <button
                 type="button"
@@ -3022,7 +3431,7 @@ SELECT
                   </svg>
                 </span>
                 <span data-i18n="hero.cta_secondary"
-                  >South Africa Trade Mission 2026</span
+                  >Why We're Skipping the Middlemen</span
                 >
               </button>
             </div>
@@ -3039,10 +3448,10 @@ SELECT
                 ><i class="bi bi-house-heart-fill"></i
               ></span>
               <div class="stat-number">
-                <span class="count-up" data-target="46">0</span>
+                <span class="count-up" data-target="300+">0</span>
               </div>
               <p class="stat-label" data-i18n="stats.families">
-                Partner families
+                Partner farming families
               </p>
             </div>
             <div class="stat-card reveal reveal-delay-1">
@@ -3050,13 +3459,13 @@ SELECT
                 ><i class="bi bi-tree-fill"></i
               ></span>
               <div class="stat-number">
-                <span class="count-up" data-target="1200">0</span
+                <span class="count-up" data-target="1200">x</span
                 ><span class="stat-suffix" data-i18n="stats.farms_suffix"
                   >ha</span
                 >
               </div>
               <p class="stat-label" data-i18n="stats.farms">
-                Forest-protecting farms
+                Under agroforestry / shade-grown coffee
               </p>
             </div>
             <div class="stat-card reveal reveal-delay-2">
@@ -3100,33 +3509,78 @@ SELECT
         <div class="container">
           <div class="split-media reveal">
             <div class="media-frame">
-              <!-- Carrusel automático de 4 imágenes (fade, infinito) + control manual con flechas.
-                   Placeholders con assets ya existentes en el sitio — reemplazar
-                   por 4 fotos dedicadas del producto cuando estén disponibles. -->
-              <div class="product-carousel" id="productCarousel">
+              <!-- Carrusel automático (fade, infinito) + control manual con flechas.
+                   Cada slide trae su propio set de datos en data-* y el script
+                   sincroniza imagen + nombre + eyebrow + puntaje SCA + altitud +
+                   familias + producción + características + info técnica. -->
+              <div
+                class="product-carousel"
+                id="productCarousel"
+                data-eyebrow-default="Exportable Product"
+              >
                 <img
                   class="carousel-slide is-active"
                   src="assets/img/O%26O%20premium.png"
                   alt="Organic coffee by La Orquídea y el Oso"
                   loading="lazy"
+                  data-name="La Orquídea y el Oso — Premium Lot"
+                  data-eyebrow="Exportable Product"
+                  data-sca="86.5"
+                  data-altitude="1,700–2,100 masl"
+                  data-families="46"
+                  data-production="480 ha certified organic"
+                  data-bullet1="Cup profiles documented by lot"
+                  data-bullet2="Harvest availability and volumes"
+                  data-bullet3="Organic certification and regenerative practices"
+                  data-description="Our coffee is shade-grown in mountain microclimates, with careful post-harvest processes that bring out unique cup profiles."
                 />
                 <img
                   class="carousel-slide"
                   src="assets/img/noah2.jpg"
                   alt="Coffee cupping at La Orquídea y el Oso"
                   loading="lazy"
+                  data-name="La Orquídea y el Oso — Cupping Selection"
+                  data-eyebrow="Exportable Product"
+                  data-sca="85.0"
+                  data-altitude="1,700–2,100 masl"
+                  data-families="46"
+                  data-production="480 ha certified organic"
+                  data-bullet1="Scored and profiled at our own cupping lab"
+                  data-bullet2="Consistent quality lot after lot"
+                  data-bullet3="Full traceability from farm to cup"
+                  data-description="Every lot is cupped and scored before approval, so buyers know exactly what they are importing."
                 />
                 <img
                   class="carousel-slide"
                   src="assets/img/fondoIni1.png"
                   alt="Specialty organic coffee by La Orquídea y el Oso"
                   loading="lazy"
+                  data-name="La Orquídea y el Oso — Specialty Organic"
+                  data-eyebrow="Exportable Product"
+                  data-sca="86.0"
+                  data-altitude="1,700–2,100 masl"
+                  data-families="46"
+                  data-production="480 ha certified organic"
+                  data-bullet1="Grown under native forest canopy"
+                  data-bullet2="Certified organic since origin"
+                  data-bullet3="Regenerative agroforestry practices"
+                  data-description="Specialty and organic coffee grown alongside farming families who protect the forest that surrounds every crop."
                 />
                 <img
                   class="carousel-slide"
                   src="assets/img/img-paralax.png"
                   alt="Coffee-growing forest in Tierradentro"
                   loading="lazy"
+                  data-name="La Orquídea y el Oso — Forest Reserve Lot"
+                  data-eyebrow="Exportable Product"
+                  data-sca="85.5"
+                  data-altitude="1,700–2,100 masl"
+                  data-families="46"
+                  data-production="480 ha certified organic"
+                  data-bullet1="Sourced from the highest micro-lots"
+                  data-bullet2="35 companion crops break the monoculture"
+                  data-bullet3="Export-ready volumes documented by harvest"
+                  data-description="A coffee that regenerates the forest it grows in — from Inzá, Tierradentro, ready for export."
                 />
               </div>
               <button
@@ -3163,28 +3617,31 @@ SELECT
               </button>
               <span class="media-frame-tag"
                 >☕
-                <span data-i18n="product.eyebrow"
+                <span data-i18n="product.eyebrow" id="carouselEyebrowTag"
                   >Exportable Product</span
                 ></span
               >
             </div>
             <div class="float-card">
-              <div class="fc-title">1,700–2,100</div>
+              <div class="fc-title" id="carouselAltitude">1,700–2,100</div>
               <div class="fc-text">masl · mountain microclimates</div>
             </div>
           </div>
           <div class="split-content reveal reveal-delay-1">
-            <span class="eyebrow" data-i18n="product.eyebrow"
+            <span
+              class="eyebrow"
+              data-i18n="product.eyebrow"
+              id="carouselEyebrowLabel"
               >Exportable Product</span
             >
-            <h2 data-i18n="product.title">
+            <h2 data-i18n="product.title" id="carouselProductName">
               Specialty green coffee, traceable and export-ready
             </h2>
-            <p data-i18n="product.text">
+            <p data-i18n="product.text" id="carouselDescription">
               Our coffee is shade-grown in mountain microclimates, with careful
               post-harvest processes that bring out unique cup profiles.
             </p>
-            <ul class="feature-list">
+            <ul class="feature-list" id="carouselFeatureList">
               <li>
                 <span class="leaf-icon"
                   ><svg viewBox="0 0 24 24" fill="none">
@@ -3195,7 +3652,7 @@ SELECT
                       stroke-linecap="round"
                       stroke-linejoin="round"
                     /></svg></span
-                ><span data-i18n="product.bullet1"
+                ><span data-i18n="product.bullet1" id="carouselBullet1"
                   >Cup profiles documented by lot</span
                 >
               </li>
@@ -3209,7 +3666,7 @@ SELECT
                       stroke-linecap="round"
                       stroke-linejoin="round"
                     /></svg></span
-                ><span data-i18n="product.bullet2"
+                ><span data-i18n="product.bullet2" id="carouselBullet2"
                   >Harvest availability and volumes</span
                 >
               </li>
@@ -3223,18 +3680,53 @@ SELECT
                       stroke-linecap="round"
                       stroke-linejoin="round"
                     /></svg></span
-                ><span data-i18n="product.bullet3"
+                ><span data-i18n="product.bullet3" id="carouselBullet3"
                   >Organic certification and regenerative practices</span
                 >
               </li>
             </ul>
+            <p
+              style="
+                display: flex;
+                gap: 18px;
+                flex-wrap: wrap;
+                margin: -10px 0 22px;
+                font-size: 0.86rem;
+                color: var(--color-ink-soft);
+              "
+            >
+              <span
+                ><strong style="color: var(--color-forest-dark)">SCA:</strong>
+                <span id="carouselSca">86.5</span></span
+              >
+              <span
+                ><strong style="color: var(--color-forest-dark)"
+                  >Altitude:</strong
+                >
+                <span id="carouselAltitudeInline">1,700–2,100 masl</span></span
+              >
+              <span
+                ><strong style="color: var(--color-forest-dark)"
+                  >Families:</strong
+                >
+                <span id="carouselFamilies">46</span></span
+              >
+              <span
+                ><strong style="color: var(--color-forest-dark)"
+                  >Production:</strong
+                >
+                <span id="carouselProduction"
+                  >480 ha certified organic</span
+                ></span
+              >
+            </p>
             <div class="downloads-row">
               <span class="downloads-label" data-i18n="product.downloads_label"
                 >Download commercial brochure</span
               >
               <a
                 class="btn-download"
-                href="assets/documents/brochureeng.pdf"
+                href="assets/documents/Brochure-English-Colors.pdf"
                 download
               >
                 <span class="dl-icon"
@@ -3255,7 +3747,7 @@ SELECT
               </a>
               <a
                 class="btn-download"
-                href="assets/documents/brochure-frc.pdf"
+                href="assets/documents/Brochure-FR-Colors.pdf"
                 download
               >
                 <span class="dl-icon"
@@ -3397,104 +3889,74 @@ SELECT
         </div>
       </section>
 
-      <!-- =========================== PROGRAMA O&O =========================== -->
+      <!-- =========================== CERTIFIED ORIGIN PROGRAM =========================== -->
       <section class="section-split" id="programa">
         <div class="container">
+          <!-- IMAGEN -->
           <div class="split-media reveal">
             <div class="media-frame">
               <img
                 src="assets/img/noah2.jpg"
-                alt="Coffee cupping at La Orquídea y el Oso"
+                alt="Certified Origin Program"
                 loading="lazy"
               />
-              <span class="media-frame-tag"
-                >🏅
-                <span data-i18n="program.eyebrow"
-                  >Certified Origin Program</span
-                ></span
-              >
             </div>
           </div>
+
+          <!-- CONTENIDO -->
           <div class="split-content reveal reveal-delay-1">
-            <span class="eyebrow" data-i18n="program.eyebrow"
-              >Certified Origin Program</span
-            >
-            <h2 data-i18n="program.title">O&amp;O Certified Origin Program</h2>
-            <p data-i18n="program.text">
-              The O&amp;O Index certifies the origin, traceability and
-              socio-environmental impact of every lot.
+            <span class="program-eyebrow"> CERTIFIED ORIGIN PROGRAM </span>
+
+            <h2>
+              What We Verify,<br />
+              Lot by Lot
+            </h2>
+
+            <p>
+              Every coffee lot is carefully verified through our origin,
+              sustainability and quality standards, ensuring transparency,
+              traceability and measurable impact.
             </p>
-            <div class="downloads-row">
-              <span class="downloads-label" data-i18n="program.downloads_label"
-                >Download the O&amp;O Index</span
-              >
-              <a
-                class="btn-download"
-                href="assets/documents/indice-oo-en.pdf"
-                download
-              >
-                <span class="dl-icon"
-                  ><svg viewBox="0 0 24 24" fill="none">
-                    <path
-                      d="M12 4v11m0 0l-4-4m4 4l4-4M5 19h14"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    /></svg
-                ></span>
-                <span class="dl-text"
-                  ><span data-i18n="program.download_en"
-                    >O&amp;O Index (English)</span
-                  ><small>PDF</small></span
-                >
-              </a>
-              <a
-                class="btn-download"
-                href="assets/documents/indice-oo-fr.pdf"
-                download
-              >
-                <span class="dl-icon"
-                  ><svg viewBox="0 0 24 24" fill="none">
-                    <path
-                      d="M12 4v11m0 0l-4-4m4 4l4-4M5 19h14"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    /></svg
-                ></span>
-                <span class="dl-text"
-                  ><span data-i18n="program.download_fr"
-                    >O&amp;O Index (French)</span
-                  ><small>PDF</small></span
-                >
-              </a>
+
+            <!-- 3 BLOQUES -->
+
+            <div class="origin-cards">
+              <div class="origin-card">
+                <h3>01</h3>
+
+                <h4>Origin</h4>
+
+                <p>
+                  Complete traceability from the farm to every exported lot.
+                </p>
+              </div>
+
+              <div class="origin-card">
+                <h3>02</h3>
+
+                <h4>Sustainability</h4>
+
+                <p>
+                  Responsible practices that protect communities and ecosystems.
+                </p>
+              </div>
+
+              <div class="origin-card">
+                <h3>03</h3>
+
+                <h4>Quality</h4>
+
+                <p>
+                  Strict evaluation standards for exceptional coffee profiles.
+                </p>
+              </div>
             </div>
-            <div class="video-note">
-              <svg
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="none"
-                style="flex-shrink: 0"
-              >
-                <path
-                  d="M15 10l5-3v10l-5-3M4 6h11v12H4z"
-                  stroke="currentColor"
-                  stroke-width="1.6"
-                  stroke-linejoin="round"
-                />
-              </svg>
-              <span data-i18n="program.video_note"
-                >Video presentation coming soon.</span
-              >
-            </div>
-            <!-- Cuando el video del Índice O&O esté listo, agrega assets/videos/programa-oo.mp4 y descomenta:
-        <video controls style="margin-top:20px;border-radius:var(--radius-md);width:100%;">
-          <source src="assets/videos/programa-oo.mp4" type="video/mp4">
-        </video>
-        -->
+
+            <!-- CTA -->
+
+            <a href="#indice" class="program-btn">
+              SEE HOW WE SCORE EVERY LOT
+            </a>
           </div>
         </div>
       </section>
@@ -3547,8 +4009,8 @@ SELECT
                 Growers
               </div>
               <p class="trace-col-text" data-i18n="traceability.stage1_text">
-                Partner farming families in Inzá, each lot identified by
-                producer from the very first day.
+                Real families, each one named — scored and tracked through the
+                O&O Index from the very first visit.
               </p>
             </div>
 
@@ -3576,15 +4038,15 @@ SELECT
                 Harvest
               </div>
               <p class="trace-col-text" data-i18n="traceability.stage2_text">
-                Hand-picked ripe cherries, selected cup by cup for quality and
-                consistency.
+                Ripe cherries hand-picked by lot, variety and microclimate —
+                each harvest kept separate, never mixed at collection
               </p>
             </div>
 
             <div class="trace-col">
               <div class="trace-col-media">
                 <span class="trace-col-index" aria-hidden="true">3</span>
-                <img src="assets/img/noah2.jpg" alt="" />
+                <img src="assets/img/ejemploQuality.jpg" alt="" />
                 <span class="trace-col-icon" aria-hidden="true">
                   <svg viewBox="0 0 24 24" fill="none">
                     <path
@@ -3601,11 +4063,11 @@ SELECT
                 class="trace-col-title"
                 data-i18n="traceability.stage3_title"
               >
-                Laboratory
+                Processing
               </div>
               <p class="trace-col-text" data-i18n="traceability.stage3_text">
-                Cupping and profiling of every lot before it is approved for
-                export.
+                Processed with care at the producer's own farm, or alongside our
+                team at the O&O Origin Hub — whichever the lot calls for.
               </p>
             </div>
 
@@ -3613,7 +4075,7 @@ SELECT
               <div class="trace-col-media">
                 <span class="trace-col-index" aria-hidden="true">4</span>
                 <img
-                  src="assets/img/ejemploQuality.jpg"
+                  src="assets/img/noah2.jpg"
                   alt=""
                 /><!-- Imagen pendiente: reemplazar con foto real de control de calidad -->
                 <span class="trace-col-icon" aria-hidden="true">
@@ -3632,11 +4094,11 @@ SELECT
                 class="trace-col-title"
                 data-i18n="traceability.stage4_title"
               >
-                Quality
+                Laboratory
               </div>
               <p class="trace-col-text" data-i18n="traceability.stage4_text">
-                Organic certification and score verified against the O&amp;O
-                Index before packing.
+                Cupping controls and builds every lot — the same process that
+                improves the farm behind it, harvest after harvest.
               </p>
             </div>
 
@@ -3663,9 +4125,59 @@ SELECT
                 class="trace-col-title"
                 data-i18n="traceability.stage5_title"
               >
-                Export
+                Preparation
               </div>
               <p class="trace-col-text" data-i18n="traceability.stage5_text">
+                Milled, sorted and double-packed with a coded report per lot —
+                ready to travel, ready to trace.
+              </p>
+            </div>
+
+            <div class="trace-col">
+              <div class="trace-col-media">
+                <span class="trace-col-index" aria-hidden="true">6</span>
+
+                <img src="assets/img/export-container.jpg" alt="" />
+
+                <span class="trace-col-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none">
+                    <path
+                      d="M3 7h13v10H3z"
+                      stroke="currentColor"
+                      stroke-width="1.6"
+                    />
+                    <path
+                      d="M16 10h3l2 2v5h-5"
+                      stroke="currentColor"
+                      stroke-width="1.6"
+                      stroke-linejoin="round"
+                    />
+                    <circle
+                      cx="7"
+                      cy="18"
+                      r="1.6"
+                      stroke="currentColor"
+                      stroke-width="1.6"
+                    />
+                    <circle
+                      cx="18"
+                      cy="18"
+                      r="1.6"
+                      stroke="currentColor"
+                      stroke-width="1.6"
+                    />
+                  </svg>
+                </span>
+              </div>
+
+              <div
+                class="trace-col-title"
+                data-i18n="traceability.stage6_title"
+              >
+                Export
+              </div>
+
+              <p class="trace-col-text" data-i18n="traceability.stage6_text">
                 Documented, lot-traceable shipment — ready for buyers in South
                 Africa and West Africa.
               </p>
@@ -3687,8 +4199,8 @@ SELECT
                 />
               </svg>
               <span data-i18n="traceability.note"
-                >A lot-level lookup tool is in development — this section will
-                soon let buyers trace each shipment back to its farm.</span
+                >A lot-level lookup tool is in development — Ask our team for a
+                preview during the trade mission.</span
               >
             </div>
           </div>
@@ -3759,10 +4271,14 @@ SELECT
 
             <div class="map-card">
               <iframe
-                src="https://www.google.com/maps?q=Inz%C3%A1%2C%20Tierradentro%2C%20Cauca%2C%20Colombia&output=embed"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3985.931361328339!2d-76.0936879241859!3d2.529305656648394!2m3!1f0!2f0!3f0!2m3!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3ab733ea461255%3A0x4d1cab9981885ef6!2sFincas%20la%20Orqu%C3%ADdea%20y%20el%20Oso!5e0!3m2!1ses!2sco!4v1785329293713!5m2!1ses!2sco"
                 title="La Orquídea y el Oso — Inzá, Tierradentro, Cauca"
+                width="600"
+                height="450"
+                style="border: 0"
+                allowfullscreen=""
                 loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade"
+                referrerpolicy="strict-origin-when-cross-origin"
               ></iframe>
             </div>
           </div>
@@ -3770,7 +4286,7 @@ SELECT
           <form
             class="contact-form reveal reveal-delay-1"
             id="contactForm"
-            action="https://formsubmit.co/santidevolper2002@gmail.com"
+            action="https://formsubmit.co/organics.harmonyfarms@gmail.com"
             method="post"
             novalidate
           >
@@ -3926,7 +4442,9 @@ SELECT
 
             <div class="contact-buttons">
               <button type="submit" class="btn btn-primary" id="submitBtn">
-                <span data-i18n="contact.form.submit">Send message</span>
+                <span data-i18n="contact.form.submit">
+                  Get Samples & Technical Sheet
+                </span>
               </button>
 
               <button
@@ -3977,75 +4495,87 @@ SELECT
             />
           </svg>
         </button>
-        <span class="eyebrow mission-modal-eyebrow"
-          >South Africa Trade Mission 2026</span
-        >
-        <h2 id="missionModalTitle">Why this trade mission?</h2>
+
+        <span class="eyebrow mission-modal-eyebrow">
+          SOUTH AFRICA TRADE MISSION 2026
+        </span>
+
+        <h2 id="missionModalTitle">South Africa Trade Mission 2026</h2>
+
         <p>
           Colombia and South Africa currently trade very little specialty coffee
           directly. Most volumes travel through European or North American
           intermediaries before reaching African roasters — adding cost, time
           and distance between the farm and the cup.
         </p>
+
         <p>
           La Orquídea y el Oso is joining the South Africa Trade Mission 2026 to
-          open a direct route: our specialty, organic coffee from Inzá,
-          Tierradentro, presented straight to buyers, distributors and roasters
-          in South Africa and West Africa.
+          open a direct route to explore and connect authenticity: specialty,
+          organic coffee from Inzá, Tierradentro, presented directly to
+          specialty buyers, distributors and roasters in South Africa and West
+          Africa.
         </p>
+
         <ul class="mission-modal-list">
           <li>
-            <span class="leaf-icon"
-              ><svg viewBox="0 0 24 24" fill="none">
+            <span class="leaf-icon">
+              <svg viewBox="0 0 24 24" fill="none">
                 <path
                   d="M5 13l4 4L19 7"
                   stroke="currentColor"
                   stroke-width="2.4"
                   stroke-linecap="round"
                   stroke-linejoin="round"
-                /></svg
-            ></span>
-            <span
-              >A direct commercial bridge between Colombian growers and African
-              buyers, without unnecessary intermediaries.</span
-            >
+                />
+              </svg>
+            </span>
+            <span>
+              A direct commercial bridge between Colombian growers and African
+              buyers — no unnecessary intermediaries.
+            </span>
           </li>
+
           <li>
-            <span class="leaf-icon"
-              ><svg viewBox="0 0 24 24" fill="none">
+            <span class="leaf-icon">
+              <svg viewBox="0 0 24 24" fill="none">
                 <path
                   d="M5 13l4 4L19 7"
                   stroke="currentColor"
                   stroke-width="2.4"
                   stroke-linecap="round"
                   stroke-linejoin="round"
-                /></svg
-            ></span>
-            <span
-              >Samples, technical sheets and export-ready lots presented in
-              person to the trade.</span
-            >
+                />
+              </svg>
+            </span>
+            <span>
+              Samples, technical sheets and export-ready lots presented in
+              person.
+            </span>
           </li>
+
           <li>
-            <span class="leaf-icon"
-              ><svg viewBox="0 0 24 24" fill="none">
+            <span class="leaf-icon">
+              <svg viewBox="0 0 24 24" fill="none">
                 <path
                   d="M5 13l4 4L19 7"
                   stroke="currentColor"
                   stroke-width="2.4"
                   stroke-linecap="round"
                   stroke-linejoin="round"
-                /></svg
-            ></span>
-            <span
-              >A long-term relationship with African roasters, not a one-off
-              shipment.</span
-            >
+                />
+              </svg>
+            </span>
+            <span>
+              A long-term relationship with African roasters, not a one-off
+              shipment.
+            </span>
           </li>
         </ul>
-        <a href="#contacto" class="btn btn-primary" id="missionModalCta"
-          >Talk to our team</a
-        >
+
+        <a href="#contacto" class="btn btn-primary" id="missionModalCta">
+          Talk to our team
+        </a>
       </div>
     </div>
 
@@ -4163,7 +4693,7 @@ SELECT
                   >organics.harmonyfarms@gmail.com</a
                 >
               </li>
-              <li><a href="tel:+573217025202">+57 321 702 5202</a></li>
+              <li><a href="tel:+573144363097">+57 314 436 3097</a></li>
               <li>
                 <a
                   href="https://fincaslaorquideayeloso.com"
@@ -4201,6 +4731,7 @@ SELECT
         const prefersReducedMotion = window.matchMedia(
           "(prefers-reduced-motion: reduce)",
         ).matches;
+        const isTouchDevice = window.matchMedia("(hover: none)").matches;
 
         // ---------- Header scroll state ----------
         const header = document.getElementById("siteHeader");
@@ -4223,6 +4754,36 @@ SELECT
         mobileNav
           .querySelectorAll("a")
           .forEach((a) => a.addEventListener("click", closeMenu));
+
+        // ---------- Auto-hide header after ~5s of inactivity ----------
+        // No afecta al menú hamburguesa ni a dispositivos táctiles/móviles:
+        // en touch no hay "mousemove" pasivo que deba ocultar la barra, así
+        // que el comportamiento se limita a puntero con hover real (desktop/tablet
+        // con mouse) y se desactiva mientras el menú móvil está abierto.
+        if (!prefersReducedMotion && !isTouchDevice) {
+          let idleTimer = null;
+          const IDLE_MS = 5000;
+
+          function showHeader() {
+            header.classList.remove("is-idle-hidden");
+          }
+          function hideHeaderIfIdle() {
+            if (mobileNav.classList.contains("is-open")) return;
+            if (document.querySelector(".lang-select.is-open")) return;
+            if (window.scrollY < 10) return; // no ocultar en la parte superior
+            header.classList.add("is-idle-hidden");
+          }
+          function resetIdleTimer() {
+            showHeader();
+            if (idleTimer) window.clearTimeout(idleTimer);
+            idleTimer = window.setTimeout(hideHeaderIfIdle, IDLE_MS);
+          }
+
+          ["mousemove", "scroll", "keydown", "wheel"].forEach((evt) =>
+            document.addEventListener(evt, resetIdleTimer, { passive: true }),
+          );
+          resetIdleTimer();
+        }
 
         // ---------- Discrete language dropdown (desktop + mobile) ----------
         function setupLangSelect(wrapId, toggleId, flagId, codeId) {
@@ -4322,6 +4883,8 @@ SELECT
         });
 
         // ---------- Product carousel (auto, fade, infinite + manual arrows) ----------
+        // Sincroniza imagen + nombre + eyebrow + SCA + altitud + familias +
+        // producción + características + descripción en cada cambio de slide.
         const productCarousel = document.getElementById("productCarousel");
         if (productCarousel) {
           const slides = productCarousel.querySelectorAll(".carousel-slide");
@@ -4331,10 +4894,50 @@ SELECT
           let autoTimer = null;
           const AUTO_MS = 4200;
 
+          const el = {
+            eyebrowTag: document.getElementById("carouselEyebrowTag"),
+            eyebrowLabel: document.getElementById("carouselEyebrowLabel"),
+            name: document.getElementById("carouselProductName"),
+            description: document.getElementById("carouselDescription"),
+            bullet1: document.getElementById("carouselBullet1"),
+            bullet2: document.getElementById("carouselBullet2"),
+            bullet3: document.getElementById("carouselBullet3"),
+            sca: document.getElementById("carouselSca"),
+            altitude: document.getElementById("carouselAltitude"),
+            altitudeInline: document.getElementById("carouselAltitudeInline"),
+            families: document.getElementById("carouselFamilies"),
+            production: document.getElementById("carouselProduction"),
+          };
+
+          function applySlideData(slide) {
+            if (!slide) return;
+            const d = slide.dataset;
+            if (el.eyebrowTag && d.eyebrow)
+              el.eyebrowTag.textContent = d.eyebrow;
+            if (el.eyebrowLabel && d.eyebrow)
+              el.eyebrowLabel.textContent = d.eyebrow;
+            if (el.name && d.name) el.name.textContent = d.name;
+            if (el.description && d.description)
+              el.description.textContent = d.description;
+            if (el.bullet1 && d.bullet1) el.bullet1.textContent = d.bullet1;
+            if (el.bullet2 && d.bullet2) el.bullet2.textContent = d.bullet2;
+            if (el.bullet3 && d.bullet3) el.bullet3.textContent = d.bullet3;
+            if (el.sca && d.sca) el.sca.textContent = d.sca;
+            if (d.altitude) {
+              if (el.altitude)
+                el.altitude.textContent = d.altitude.split(" ")[0];
+              if (el.altitudeInline) el.altitudeInline.textContent = d.altitude;
+            }
+            if (el.families && d.families) el.families.textContent = d.families;
+            if (el.production && d.production)
+              el.production.textContent = d.production;
+          }
+
           function goTo(index) {
             slides[activeIndex].classList.remove("is-active");
             activeIndex = (index + slides.length) % slides.length;
             slides[activeIndex].classList.add("is-active");
+            applySlideData(slides[activeIndex]);
           }
 
           function startAuto() {
@@ -4355,6 +4958,9 @@ SELECT
             stopAuto();
             startAuto();
           }
+
+          // Estado inicial sincronizado con el primer slide
+          applySlideData(slides[activeIndex]);
 
           if (slides.length > 1) {
             startAuto();
