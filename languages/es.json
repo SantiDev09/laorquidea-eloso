@@ -1,96 +1,83 @@
 {
-  "meta": {
-    "title": "La Orquídea y el Oso | Café especial y orgánico de Tierradentro, Cauca — Misión Sudáfrica 2026",
-    "description": "Café especial y orgánico cultivado por familias campesinas en Inzá, Tierradentro (Cauca, Colombia). Producto exportable, trazabilidad y Programa de Origen Certificado O&O para compradores en Sudáfrica y África Occidental."
-  },
-  "nav": {
-    "producto": "Producto",
-    "origen": "Origen",
-    "programa": "Programa O&O",
-    "trazabilidad": "Trazabilidad",
-    "contacto": "Contacto",
-    "cta": "Solicitar información"
-  },
   "hero": {
     "badge": "Misión Comercial Sudáfrica 2026",
-    "eyebrow": "Café especial · Origen Cauca, Colombia",
-    "title": "Café que regenera el bosque, listo para el mercado africano",
-    "subtitle": "Desde las montañas de Inzá, Tierradentro, exportamos café especial y orgánico cultivado por familias campesinas comprometidas con la protección del bosque. Presentamos nuestro origen a compradores en Sudáfrica y África Occidental.",
-    "cta_primary": "Ver producto exportable",
-    "cta_secondary": "Hablar con nosotros",
+    "eyebrow": "Café de Especialidad — Misión Comercial Sudáfrica 2026",
+    "title": "Café cuya trazabilidad llega hasta el productor. No solo hasta el país.",
+    "subtitle": "Cada lote está vinculado a la familia que lo cultivó, identificado con el nombre del productor y el número de lote.",
+    "cta_primary": "Conocer el Café O&O",
+    "cta_secondary": "Misión Comercial Sudáfrica 2026 – ProColombia",
     "scroll": "Descubre el origen"
   },
+
   "stats": {
-    "eyebrow": "Impacto medible",
-    "families": "Familias asociadas",
-    "farms": "Fincas protectoras del bosque",
-    "farms_suffix": "hectáreas",
-    "foods": "Alimentos diversos que rompen el monocultivo",
-    "organic": "Producción orgánica certificada",
-    "organic_suffix": "hectáreas"
+    "eyebrow": "Impacto verificado",
+    "families": "300+ familias productoras asociadas",
+    "farms": "Bajo sistemas agroforestales / café cultivado bajo sombra",
+    "farms_suffix": "ha",
+    "foods": "Origen verificado",
+    "organic": "Café de especialidad y relaciones directas",
+    "organic_suffix": ""
   },
+
   "product": {
-    "eyebrow": "Producto exportable",
-    "title": "Café verde especial, trazable y listo para exportar",
-    "text": "Nuestro café es cultivado a la sombra en microclimas de montaña entre los 1.700 y 2.100 msnm, con procesos post-cosecha cuidadosos que resaltan perfiles de taza únicos. Preparamos la información técnica y comercial que su equipo necesita para evaluar el producto.",
-    "bullet1": "Perfiles de taza documentados por lote",
-    "bullet2": "Disponibilidad y volúmenes de cosecha",
-    "bullet3": "Certificación orgánica y prácticas regenerativas",
-    "downloads_label": "Descargar brochure comercial",
+    "eyebrow": "Origen verificado · Café de especialidad · Relaciones directas",
+    "title": "Producto listo para exportación",
+    "text": "Cada lote que exportamos —ya sea de una sola finca o una mezcla de más de 200 productores— viaja acompañado de un informe con su origen, proceso y perfil de taza. Es comercializado y exportado directamente por las familias productoras, sin intermediarios comerciales innecesarios.",
+    "bullet1": "Perfil de taza y notas de catación documentadas.",
+    "bullet2": "Reporte completo del productor, incluso en mezclas de varias fincas.",
+    "bullet3": "Exportado directamente por los productores.",
+    "downloads_label": "Descargar Brochure",
     "download_en": "Brochure (Inglés)",
     "download_fr": "Brochure (Francés)"
   },
+
   "origin": {
     "eyebrow": "Origen",
-    "title": "Tierradentro: bosque, cultura y café en equilibrio",
-    "text": "En Inzá, Cauca, el café convive con bosques nativos, sistemas agroforestales y una tradición campesina que se transmite entre generaciones. Cada finca asociada protege ecosistemas de montaña mientras produce un café con identidad propia, arraigado en el territorio ancestral de Tierradentro.",
-    "bullet1": "Familias campesinas asociadas de Inzá, Tierradentro",
-    "bullet2": "Sistemas agroforestales que conservan biodiversidad",
-    "bullet3": "Tradición cafetera con enfoque regenerativo"
+    "title": "Cada saco puede rastrearse hasta Inzá, Tierradentro. No solo hasta «Colombia».",
+    "text": "En Inzá, Cauca, el café se cultiva dentro del Resguardo Indígena Yaquivá, rodeado de bosque nativo y sistemas agroforestales. No es una historia de marketing; es un territorio real, con familias identificables y un origen verificable.",
+    "bullet1": "Más de 300 familias productoras identificadas.",
+    "bullet2": "Sistemas agroforestales que conservan la biodiversidad.",
+    "bullet3": "Una tradición transmitida de generación en generación."
   },
+
   "program": {
-    "eyebrow": "Certified Origin Program",
-    "title": "Programa de Origen Certificado O&O",
-    "text": "El Índice O&O certifica el origen, la trazabilidad y el impacto socioambiental de cada lote. Es nuestra forma de garantizar a compradores internacionales que detrás de cada taza hay un proceso verificable, justo y regenerativo.",
-    "video_note": "Presentación en video disponible próximamente.",
+    "eyebrow": "Programa de Origen Certificado",
+    "title": "Un estándar que construimos, no una certificación que compramos",
+    "text": "Mantener certificaciones orgánicas internacionales suele ser costoso para pequeños productores. Por eso desarrollamos el Índice O&O, que evalúa el origen, las prácticas sostenibles y la calidad verificada de cada lote, promoviendo una mejora continua en cada finca.",
+    "video_note": "Próximamente estará disponible una plataforma para seguir cada lote.",
     "downloads_label": "Descargar Índice O&O",
     "download_en": "Índice O&O (Inglés)",
     "download_fr": "Índice O&O (Francés)"
   },
+
   "traceability": {
     "eyebrow": "Trazabilidad",
-    "badge": "Próximamente",
-    "title": "Del bosque a su taza: trazabilidad en construcción",
-    "text": "Estamos preparando un módulo de trazabilidad que permitirá a cada comprador consultar el origen exacto de su café: la finca, la familia productora, la altitud, el proceso post-cosecha y las prácticas de conservación asociadas al lote. Este espacio se habilitará en una siguiente fase del proyecto.",
-    "note": "Espacio reservado para el módulo de trazabilidad por lote."
+    "badge": "En desarrollo",
+    "title": "Del bosque a la taza: cada etapa documentada",
+    "text": "Cada contenedor reúne café de decenas de productores de Inzá, Tierradentro. Sin mezclas que oculten el origen. Cada lote conserva su historia desde el árbol hasta el documento de exportación.",
+    "note": "La herramienta de consulta por lote estará disponible próximamente."
   },
+
   "contact": {
     "eyebrow": "Contacto",
     "title": "Conversemos sobre su próxima importación",
-    "text": "Complete el formulario y nuestro equipo comercial se pondrá en contacto para compartir muestras, fichas técnicas y condiciones comerciales adaptadas a su mercado.",
+    "text": "Complete el formulario y nuestro equipo comercial le enviará muestras, fichas técnicas y condiciones comerciales directamente.",
     "form": {
       "name": "Nombre completo",
       "email": "Correo electrónico",
       "company": "Empresa",
       "country": "País",
-      "volume": "Volumen estimado de interés",
-      "volume_placeholder": "Ej. 1 contenedor / trimestre",
+      "volume": "Volumen estimado",
+      "volume_placeholder": "Ej. 1 contenedor por trimestre",
       "message": "Mensaje",
-      "message_placeholder": "Cuéntenos sobre su interés en nuestro café...",
-      "consent": "Acepto ser contactado por La Orquídea y el Oso sobre este mensaje.",
-      "submit": "Enviar mensaje",
+      "message_placeholder": "Cuéntenos qué tipo de café busca...",
+      "consent": "Acepto ser contactado por La Orquídea y el Oso.",
+      "submit": "Solicitar muestras O&O",
       "sending": "Enviando...",
-      "success": "¡Gracias! Hemos recibido su mensaje y le responderemos pronto.",
-      "error": "Ocurrió un error al enviar. Por favor intente nuevamente o escríbanos directamente.",
-      "error_required": "Por favor complete este campo.",
-      "error_email": "Por favor ingrese un correo válido."
+      "success": "¡Gracias! Hemos recibido su solicitud.",
+      "error": "Ocurrió un error. Inténtelo nuevamente.",
+      "error_required": "Este campo es obligatorio.",
+      "error_email": "Ingrese un correo electrónico válido."
     }
-  },
-  "footer": {
-    "tagline": "Café que regenera el bosque y valora el origen.",
-    "links_title": "Enlaces",
-    "contact_title": "Contacto directo",
-    "redirect_note": "Este sitio es la landing de la Misión Comercial Sudáfrica 2026 de fincaslaorquideayeloso.com",
-    "rights": "Todos los derechos reservados."
   }
 }

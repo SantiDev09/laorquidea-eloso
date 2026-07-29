@@ -1,7 +1,7 @@
 {
   "meta": {
-    "title": "La Orquídea y el Oso | Café spécial et biologique de Tierradentro, Cauca — Mission Afrique du Sud 2026",
-    "description": "Café spécial et biologique cultivé par des familles paysannes à Inzá, Tierradentro (Cauca, Colombie). Produit exportable, traçabilité et Programme d'Origine Certifiée O&O pour les acheteurs d'Afrique du Sud et d'Afrique de l'Ouest."
+    "title": "La Orquídea y le Oso | Café de spécialité d'Inzá, Tierradentro — Mission Commerciale Afrique du Sud 2026",
+    "description": "Café de spécialité cultivé et exporté directement depuis Inzá, Tierradentro (Cauca, Colombie). Origine vérifiée, traçabilité et Programme d'Origine Certifiée O&O pour les acheteurs d'Afrique du Sud et d'Afrique de l'Ouest."
   },
   "nav": {
     "producto": "Produit",
@@ -12,85 +12,85 @@
     "cta": "Demander des informations"
   },
   "hero": {
-    "badge": "Mission commerciale Afrique du Sud 2026",
-    "eyebrow": "Café spécial · Origine Cauca, Colombie",
-    "title": "Un café qui régénère la forêt, prêt pour le marché africain",
-    "subtitle": "Depuis les montagnes d'Inzá, Tierradentro, nous exportons un café spécial et biologique cultivé par des familles paysannes engagées dans la protection de la forêt. Nous présentons notre origine aux acheteurs d'Afrique du Sud et d'Afrique de l'Ouest.",
-    "cta_primary": "Voir le produit exportable",
-    "cta_secondary": "Nous contacter",
+    "badge": "Mission Commerciale Afrique du Sud 2026",
+    "eyebrow": "Café de spécialité — Mission Commerciale Afrique du Sud 2026",
+    "title": "Un café dont vous pouvez retracer l'origine jusqu'au producteur. Pas seulement jusqu'au pays.",
+    "subtitle": "Nous cultivons, transformons et exportons directement notre café de spécialité depuis Inzá, Tierradentro — sans intermédiaire ni simple étiquette « Café Colombien ». Chaque lot est lié à la famille qui l'a produit, avec son nom et son numéro de lot. Nous apportons cette authenticité directement aux acheteurs d'Afrique du Sud et d'Afrique de l'Ouest.",
+    "cta_primary": "Découvrir le Café O&O",
+    "cta_secondary": "Mission Commerciale Afrique du Sud 2026 – ProColombia",
     "scroll": "Découvrir l'origine"
   },
   "stats": {
-    "eyebrow": "Impact mesurable",
-    "families": "Familles associées",
-    "farms": "Fermes qui protègent la forêt",
-    "farms_suffix": "hectares",
-    "foods": "Cultures diversifiées qui rompent la monoculture",
-    "organic": "Production biologique certifiée",
-    "organic_suffix": "hectares"
+    "eyebrow": "Impact vérifié",
+    "families": "Plus de 300+ familles productrices partenaires",
+    "farms": "Sous systèmes agroforestiers / café cultivé à l'ombre",
+    "farms_suffix": "ha",
+    "foods": "Origine vérifiée",
+    "organic": "Café de spécialité et relations directes",
+    "organic_suffix": ""
   },
   "product": {
-    "eyebrow": "Produit exportable",
-    "title": "Café vert spécial, traçable et prêt à l'exportation",
-    "text": "Notre café est cultivé à l'ombre dans des microclimats de montagne entre 1 700 et 2 100 m d'altitude, avec des processus post-récolte soignés qui révèlent des profils de tasse uniques. Nous préparons les informations techniques et commerciales dont votre équipe a besoin pour évaluer le produit.",
-    "bullet1": "Profils de tasse documentés par lot",
-    "bullet2": "Disponibilité et volumes de récolte",
-    "bullet3": "Certification biologique et pratiques régénératives",
-    "downloads_label": "Télécharger la brochure commerciale",
+    "eyebrow": "Origine vérifiée · Café de spécialité · Relations directes",
+    "title": "Produit Exportable",
+    "text": "Chaque lot que nous exportons — qu'il provienne d'une seule ferme ou d'un assemblage de plus de 200 producteurs — est accompagné d'un rapport détaillant son origine, son procédé de transformation et son profil sensoriel. Il est vendu et exporté directement par les familles productrices, sans intermédiaires commerciaux inutiles.",
+    "bullet1": "Profil sensoriel et notes de dégustation documentés.",
+    "bullet2": "Rapport complet du producteur, même pour les assemblages.",
+    "bullet3": "Exporté directement par les producteurs.",
+    "downloads_label": "Télécharger la Brochure",
     "download_en": "Brochure (Anglais)",
     "download_fr": "Brochure (Français)"
   },
   "origin": {
     "eyebrow": "Origine",
-    "title": "Tierradentro : forêt, culture et café en équilibre",
-    "text": "À Inzá, Cauca, le café cohabite avec la forêt native, des systèmes agroforestiers et une tradition paysanne transmise de génération en génération. Chaque ferme associée protège les écosystèmes de montagne tout en produisant un café à l'identité propre, ancré dans le territoire ancestral de Tierradentro.",
-    "bullet1": "Familles paysannes associées d'Inzá, Tierradentro",
-    "bullet2": "Systèmes agroforestiers qui préservent la biodiversité",
-    "bullet3": "Tradition caféière à vocation régénérative"
+    "title": "Chaque sac peut être retracé jusqu'à Inzá, Tierradentro. Pas seulement jusqu'à « Colombie ».",
+    "text": "À Inzá, Cauca, le café est cultivé au sein de la Réserve Indigène Yaquivá, entouré de forêts natives et de systèmes agroforestiers. Ce n'est pas une histoire marketing, mais un territoire réel avec des familles identifiables et une origine vérifiable.",
+    "bullet1": "Plus de 300 familles productrices identifiées.",
+    "bullet2": "Des systèmes agroforestiers qui préservent la biodiversité.",
+    "bullet3": "Une tradition transmise de génération en génération."
   },
   "program": {
-    "eyebrow": "Certified Origin Program",
-    "title": "Programme d'Origine Certifiée O&O",
-    "text": "L'Indice O&O certifie l'origine, la traçabilité et l'impact socio-environnemental de chaque lot. C'est notre façon de garantir aux acheteurs internationaux que derrière chaque tasse se trouve un processus vérifiable, équitable et régénératif.",
-    "video_note": "Présentation vidéo disponible prochainement.",
+    "eyebrow": "Programme d'Origine Certifiée",
+    "title": "Une norme que nous avons créée, pas un label que nous avons acheté",
+    "text": "Maintenir une certification biologique internationale est souvent trop coûteux pour les petits producteurs. C'est pourquoi nous avons développé l'Indice O&O, qui évalue l'origine, les pratiques durables et la qualité vérifiée de chaque lot afin d'améliorer continuellement chaque exploitation.",
+    "video_note": "Une plateforme permettant de suivre chaque lot sera disponible prochainement.",
     "downloads_label": "Télécharger l'Indice O&O",
     "download_en": "Indice O&O (Anglais)",
     "download_fr": "Indice O&O (Français)"
   },
   "traceability": {
     "eyebrow": "Traçabilité",
-    "badge": "Bientôt disponible",
-    "title": "De la forêt à votre tasse : traçabilité en préparation",
-    "text": "Nous préparons un module de traçabilité qui permettra à chaque acheteur de consulter l'origine exacte de son café : la ferme, la famille productrice, l'altitude, le processus post-récolte et les pratiques de conservation associées au lot. Cet espace sera activé lors d'une prochaine phase du projet.",
-    "note": "Espace réservé au module de traçabilité par lot."
+    "badge": "En développement",
+    "title": "De la forêt à la tasse : chaque étape est documentée",
+    "text": "Chaque conteneur rassemble le café de dizaines de producteurs d'Inzá, Tierradentro. Sans mélange qui efface l'origine. Chaque lot conserve son histoire depuis l'arbre jusqu'au document d'exportation.",
+    "note": "L'outil de consultation par lot sera bientôt disponible."
   },
   "contact": {
     "eyebrow": "Contact",
     "title": "Parlons de votre prochaine importation",
-    "text": "Remplissez le formulaire et notre équipe commerciale vous contactera pour partager des échantillons, des fiches techniques et des conditions commerciales adaptées à votre marché.",
+    "text": "Remplissez le formulaire et notre équipe commerciale vous enverra directement des échantillons, des fiches techniques et des conditions commerciales.",
     "form": {
       "name": "Nom complet",
       "email": "Adresse e-mail",
       "company": "Entreprise",
       "country": "Pays",
-      "volume": "Volume estimé d'intérêt",
-      "volume_placeholder": "Ex. 1 conteneur / trimestre",
+      "volume": "Volume estimé",
+      "volume_placeholder": "Ex. 1 conteneur par trimestre",
       "message": "Message",
-      "message_placeholder": "Parlez-nous de votre intérêt pour notre café...",
-      "consent": "J'accepte d'être contacté par La Orquídea y el Oso au sujet de ce message.",
-      "submit": "Envoyer le message",
+      "message_placeholder": "Parlez-nous de vos besoins en café...",
+      "consent": "J'accepte d'être contacté par La Orquídea y el Oso au sujet de cette demande.",
+      "submit": "Demander des échantillons O&O",
       "sending": "Envoi en cours...",
-      "success": "Merci ! Nous avons bien reçu votre message et vous répondrons bientôt.",
-      "error": "Une erreur est survenue lors de l'envoi. Veuillez réessayer ou nous écrire directement.",
-      "error_required": "Veuillez remplir ce champ.",
+      "success": "Merci ! Nous avons bien reçu votre demande.",
+      "error": "Une erreur est survenue. Veuillez réessayer.",
+      "error_required": "Ce champ est obligatoire.",
       "error_email": "Veuillez saisir une adresse e-mail valide."
     }
   },
   "footer": {
-    "tagline": "Un café qui régénère la forêt et valorise son origine.",
+    "tagline": "Un café dont l'origine est vérifiable, du producteur jusqu'à la tasse.",
     "links_title": "Liens",
     "contact_title": "Contact direct",
-    "redirect_note": "Ce site est la landing page de la Mission commerciale Afrique du Sud 2026 de fincaslaorquideayeloso.com",
+    "redirect_note": "Ce site présente La Orquídea y el Oso lors de la Mission Commerciale Afrique du Sud 2026.",
     "rights": "Tous droits réservés."
   }
 }
