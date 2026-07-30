@@ -104,7 +104,7 @@
           error_email: "Please enter a valid email.",
           company: "Company",
           country: "Country",
-          volume: "Estimated volume of interest",
+          volume: "Product of interest",
           volume_placeholder: "E.g. 1 container / quarter",
           message: "Message",
           message_placeholder: "Tell us about your interest in our coffee...",

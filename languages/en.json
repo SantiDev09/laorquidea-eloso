@@ -73,7 +73,7 @@
       "email": "Email Address",
       "company": "Company",
       "country": "Country",
-      "volume": "Estimated Volume",
+      "volume": "Product of interest",
       "volume_placeholder": "Example: 1 container per quarter",
       "message": "Message",
       "message_placeholder": "Tell us about your coffee needs...",
