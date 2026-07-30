@@ -59,10 +59,10 @@
   },
   "traceability": {
     "eyebrow": "Traçabilité",
-    "badge": "En développement",
-    "title": "De la forêt à la tasse : chaque étape est documentée",
-    "text": "Chaque conteneur rassemble le café de dizaines de producteurs d'Inzá, Tierradentro. Sans mélange qui efface l'origine. Chaque lot conserve son histoire depuis l'arbre jusqu'au document d'exportation.",
-    "note": "L'outil de consultation par lot sera bientôt disponible."
+    "badge": "Chaque Étape Documentée",
+    "title": "De la Forêt à la Tasse — Six Étapes, Toutes Documentées",
+    "text": "Chaque conteneur que nous exportons rassemble le café de dizaines de producteurs d’Inzá, Tierradentro, tout en préservant la traçabilité de chaque lot. Aucun mélange qui masque l’origine ou les producteurs qui l’ont cultivé. Voici comment un lot parcourt les six étapes, de l’arbre jusqu’aux documents d’exportation.",
+    "note": "Notre outil de consultation par lot est actuellement en cours de développement. Demandez un aperçu à notre équipe lors de la mission commerciale."
   },
   "contact": {
     "eyebrow": "Contact",
