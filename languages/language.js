@@ -32,7 +32,7 @@
       },
       hero: {
         badge: "South Africa Trade Mission 2026",
-        eyebrow: "Specialty Coffee — South Africa Trade Mission 2026",
+        eyebrow: "Specialty Coffee — South Africa Ghana and Senegal Trade Mission 2026",
         title: "Coffee You Can Trace to the Farmer. Not Just the Country.",
         subtitle:
           'We grow, process and export specialty coffee directly from Inzá, Tierradentro — no reseller, no unverified "Colombian" label. Every lot is tied to the family that grew it, by name and lot. We\'re bringing that directly to South Africa and West Africa.',

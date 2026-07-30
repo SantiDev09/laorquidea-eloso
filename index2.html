@@ -10,7 +10,7 @@
     </title>
     <meta
       name="description"
-      content="Specialty coffee grown by 300+ farming families in Inzá, Tierradentro (Cauca, Colombia). Export-ready product, lot-level traceability, and the &amp;O&O Certified Origin Program for buyers in South Africa and West Africa."
+      content="Specialty coffee grown by 300+ farming families in Inzá, Tierradentro (Cauca, Colombia). Export-ready product, lot-level traceability, and the O&O Certified Origin Program for buyers in South Africa, Ghana and Senegal."
     />
     <meta name="robots" content="index, follow" />
     <link
@@ -27,7 +27,7 @@
     />
     <meta
       property="og:description"
-      content="Specialty coffee from Inzá, Tierradentro (Cauca, Colombia) for buyers in South Africa and West Africa. South Africa Trade Mission 2026."
+      content="Specialty coffee from Inzá, Tierradentro (Cauca, Colombia) for buyers in South Africa, Ghana and Senegal. Ella Exporta África 2026."
     />
     <meta
       property="og:image"
@@ -95,7 +95,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500;1,9..144,600&family=Montserrat:wght@300;400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,SOFT,wght@0,9..144,0..100,300..700;1,9..144,0..100,300..700&family=Montserrat:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link
@@ -326,9 +326,21 @@
         grid-template-columns: 1fr auto 1fr;
         align-items: center;
         gap: clamp(10px, 3vw, 24px);
+        padding-bottom: 0;
+        margin-bottom: 0;
+        border-bottom: none;
+        transition:
+          padding-bottom 0.35s var(--ease),
+          margin-bottom 0.35s var(--ease);
+      }
+
+      /* El espacio extra para separar el menú principal (main-nav-row) solo se
+         añade cuando el header está en su estado "scrolled" (que es cuando esa
+         fila se muestra). Así, en el estado inicial el logo queda perfectamente
+         centrado verticalmente dentro del padding simétrico del header. */
+      .site-header.is-scrolled .nav-inner {
         padding-bottom: 14px;
         margin-bottom: 14px;
-        border-bottom: none;
       }
 
       .nav-inner .route-badge {
@@ -369,14 +381,25 @@
         min-width: 0;
       }
 
+      /* Fondo tipo "píldora" para el logo, unificado con el mismo tono que el
+         route-badge y el selector de idioma (las "otras dos cositas" del menú),
+         para que las tres piezas del header compartan un mismo color de base. */
+      .brand-logo-wrap {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        line-height: 0;
+      }
+
       .brand img.brand-logo {
-        height: clamp(26px, 6vw, 34px);
+        height: clamp(30px, 6.5vw, 40px);
         width: auto;
         flex-shrink: 0;
         border: none;
         outline: none;
         box-shadow: none;
         background: transparent;
+        display: block;
       }
 
       .brand-name {
@@ -395,7 +418,7 @@
         color: var(--color-gold);
       }
 
-      /* Colombia -> South Africa / West Africa trade-route badge ("CO-ZA") */
+      /* Colombia -> Africa trade-route badge */
       .route-badge {
         display: inline-flex;
         align-items: center;
@@ -443,11 +466,16 @@
 
       .main-nav a {
         text-decoration: none;
-        font-weight: 400;
+        font-weight: 500;
         font-size: 0.92rem;
         color: var(--color-ink);
         position: relative;
         padding: 4px 0;
+        font-family: var(--font-display);
+        font-variation-settings:
+          "SOFT" 60,
+          "opsz" 14;
+        letter-spacing: 0.01em;
       }
 
       .main-nav a::after {
@@ -483,7 +511,7 @@
         align-items: center;
         gap: 6px;
         border: 1px solid var(--color-line);
-        background: transparent;
+        background: rgba(17, 60, 43, 0.08);
         padding: clamp(5px, 1.6vw, 7px) clamp(8px, 2.4vw, 12px);
         border-radius: 999px;
         font-size: clamp(0.68rem, 2.2vw, 0.74rem);
@@ -506,6 +534,17 @@
       .lang-select-toggle .flag {
         font-size: 0.88rem;
         line-height: 1;
+      }
+
+      /* La bandera del selector de idioma ahora es opcional (detecta el país
+         del visitante) y no representa el idioma activo — por defecto se
+         mantiene oculta para evitar confusión, mostrando solo "EN ▾". */
+      .lang-select-toggle .flag[data-geo-flag] {
+        display: none;
+      }
+
+      .lang-select-toggle .flag[data-geo-flag].is-visible {
+        display: inline;
       }
 
       .lang-select-toggle .lang-caret {
@@ -593,6 +632,7 @@
       .mobile-nav .lang-select-toggle {
         color: rgba(246, 241, 228, 0.85);
         border-color: rgba(255, 255, 255, 0.3);
+        background: rgba(255, 255, 255, 0.08);
       }
 
       .mobile-nav .lang-switch {
@@ -929,6 +969,9 @@
         color: #fefdf3;
         text-decoration: none;
         font-family: var(--font-display);
+        font-variation-settings:
+          "SOFT" 60,
+          "opsz" 30;
         font-size: 1.6rem;
       }
 
@@ -1440,16 +1483,23 @@
    STATS
    ========================================================================== */
       .stats {
-        background: linear-gradient(
-          135deg,
-          var(--color-terracotta) 0%,
-          var(--color-bg-alt) 55%,
-          var(--color-bg) 100%
-        );
+        background: var(--color-bg-alt);
         color: var(--color-forest-dark);
-        padding: 64px 0;
+        padding: 72px 0;
         position: relative;
-        overflow: hidden; /* evita que la onda se salga si es más ancha */
+        overflow: hidden;
+      }
+
+      .stats-title {
+        text-align: center;
+        max-width: 760px;
+        margin: 0 auto 44px;
+        font-family: var(--font-display);
+        font-style: italic;
+        font-weight: 500;
+        font-size: clamp(1.3rem, 2.6vw, 1.9rem);
+        line-height: 1.3;
+        color: var(--color-gold);
       }
 
       .stats-wave {
@@ -1469,8 +1519,27 @@
       .stats-grid {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
-        gap: 32px;
+        gap: 0;
         text-align: center;
+      }
+
+      .stat-card {
+        padding: 40px 26px;
+        border-radius: 18px;
+        background: transparent;
+        box-shadow: none;
+        position: relative;
+      }
+
+      /* Separadores verticales entre contadores: 1px, verde esmeralda, 15% opacidad */
+      .stat-card:not(:first-child)::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 18%;
+        bottom: 18%;
+        width: 1px;
+        background: rgba(17, 60, 43, 0.15);
       }
 
       .stat-icon {
@@ -1478,16 +1547,16 @@
         align-items: center;
         justify-content: center;
 
-        width: 44px;
-        height: 44px;
+        width: 24px;
+        height: 24px;
 
-        margin: 0 auto 18px;
+        margin: 0 auto 12px;
 
         background: transparent;
         border: none;
         box-shadow: none;
 
-        color: rgba(17, 60, 43, 0.18);
+        color: rgba(17, 60, 43, 0.55);
 
         font-size: 22px;
       }
@@ -1506,7 +1575,7 @@
 
         line-height: 1;
 
-        color: #e0b048;
+        color: var(--color-gold);
 
         margin-bottom: 14px;
       }
@@ -1523,15 +1592,6 @@
         margin-left: 2px;
       }
 
-      .stat-card {
-        padding: 40px 26px;
-
-        border-radius: 18px;
-
-        background: transparent;
-
-        box-shadow: none;
-      }
       .stat-card .stat-label {
         margin-top: 14px;
 
@@ -1541,7 +1601,7 @@
 
         font-family: var(--font-body);
 
-        font-size: 12px;
+        font-size: 11px;
 
         font-weight: 500;
 
@@ -1552,6 +1612,87 @@
         line-height: 1.8;
 
         color: rgba(17, 60, 43, 0.7);
+      }
+
+      .stat-card .stat-subnote {
+        display: block;
+        margin-top: 6px;
+        font-family: var(--font-display);
+        font-style: italic;
+        font-size: 10px;
+        font-weight: 400;
+        letter-spacing: 0.02em;
+        text-transform: none;
+        color: rgba(17, 60, 43, 0.45);
+      }
+
+      /* ==========================================================================
+   FRANJA DE EXPORTACIÓN (marquee South Africa · Ghana · Senegal)
+   ========================================================================== */
+      .export-marquee {
+        width: 100%;
+        overflow: hidden;
+        background: var(--color-forest-dark);
+        padding: clamp(14px, 2.4vw, 20px) 0;
+        white-space: nowrap;
+      }
+
+      .export-marquee-track {
+        display: inline-flex;
+        width: max-content;
+        animation: export-marquee-scroll 34s linear infinite;
+      }
+
+      .export-marquee-set {
+        display: inline-flex;
+        align-items: center;
+        flex-shrink: 0;
+      }
+
+      .export-marquee-item {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-family: var(--font-body);
+        font-size: clamp(0.78rem, 1.4vw, 0.92rem);
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--color-gold-light);
+        padding: 0 22px;
+      }
+
+      .export-marquee-item i {
+        font-size: 0.95em;
+        color: var(--color-gold);
+      }
+
+      .export-marquee-sep {
+        color: rgba(255, 255, 255, 0.35);
+        font-size: 0.9em;
+      }
+
+      @keyframes export-marquee-scroll {
+        from {
+          transform: translateX(0);
+        }
+
+        to {
+          transform: translateX(-50%);
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .export-marquee-track {
+          animation: none;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .export-marquee-item {
+          font-size: 0.72rem;
+          padding: 0 14px;
+        }
       }
 
       /* ==========================================================================
@@ -1603,6 +1744,11 @@
         transform: scale(1.05);
       }
 
+      /* Carrusel de imágenes del producto — funcionamiento, velocidad,
+         transición y estructura sin modificar respecto al diseño original
+         (crossfade automático + flechas manuales). Lo único que cambia con
+         cada slide es la información superpuesta sobre la imagen (nombre +
+         atributos); el contenido del lado derecho permanece estático. */
       .product-carousel {
         position: relative;
         width: 100%;
@@ -1671,10 +1817,19 @@
         right: 14px;
       }
 
+      /* Touch devices can't hover, so keep the carousel arrows always visible */
+      @media (hover: none) {
+        .carousel-arrow {
+          opacity: 1;
+        }
+      }
+
+      /* Pequeño recuadro dentro de la imagen con el nombre del producto */
       .media-frame-tag {
         position: absolute;
         bottom: 18px;
         left: 18px;
+        z-index: 5;
         background: rgba(255, 253, 247, 0.92);
         color: var(--color-forest-dark);
         padding: 8px 14px;
@@ -1685,17 +1840,23 @@
         display: flex;
         align-items: center;
         gap: 6px;
+        max-width: calc(100% - 36px);
+        transition: opacity 0.3s var(--ease);
       }
 
+      /* Cuadro de atributos sobre la esquina de la imagen (mismo componente
+         visual "float-card" que ya existía en el diseño original). */
       .split-media .float-card {
         position: absolute;
         bottom: -24px;
         right: -24px;
+        z-index: 5;
         background: var(--color-card);
         border-radius: var(--radius-md);
         box-shadow: var(--shadow-card);
         padding: 18px 20px;
         max-width: 220px;
+        transition: opacity 0.3s var(--ease);
       }
 
       .float-card .fc-title {
@@ -1899,18 +2060,6 @@
         color: rgba(17, 60, 43, 0.85);
       }
 
-      /* Información técnica */
-      #producto p[style] {
-        font-family: var(--font-body) !important;
-        font-size: 14px !important;
-        line-height: 1.7 !important;
-        color: rgba(17, 60, 43, 0.85) !important;
-      }
-
-      #producto p[style] strong {
-        color: #113c2b !important;
-      }
-
       /* Descargas */
       #producto .downloads-label {
         font-family: var(--font-body);
@@ -2015,7 +2164,7 @@
 
         line-height: 1.2;
 
-        color: #16734a;
+        color: var(--color-gold);
 
         margin-bottom: 20px;
       }
@@ -2027,7 +2176,7 @@
 
         line-height: 1.7;
 
-        color: rgba(22, 115, 74, 0.85);
+        color: var(--color-ink-soft);
       }
 
       /* =====================
@@ -2085,7 +2234,7 @@
 
         line-height: 1.5;
 
-        color: #16734a;
+        color: var(--color-ink-soft);
       }
 
       /* =====================
@@ -2135,62 +2284,6 @@
       }
 
       /* ==========================================================================
-   PARALLAX
-   ========================================================================== */
-      .parallax-section {
-        position: relative;
-        height: 78vh;
-        min-height: 460px;
-        max-height: 760px;
-        overflow: hidden;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        isolation: isolate;
-      }
-
-      .parallax-bg {
-        position: absolute;
-        left: 0;
-        right: 0;
-        top: -25%;
-        height: 150%;
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-        will-change: transform;
-        z-index: 0;
-      }
-
-      .parallax-content {
-        position: relative;
-        z-index: 2;
-        text-align: center;
-        color: #fff;
-        padding: 0 24px;
-      }
-
-      .parallax-content .eyebrow {
-        color: var(--color-gold-light);
-        justify-content: center;
-      }
-
-      .parallax-content .eyebrow::before {
-        background: var(--color-gold-light);
-      }
-
-      .parallax-content p {
-        font-family: var(--font-display);
-        font-style: italic;
-        font-weight: 500;
-        font-size: clamp(1.3rem, 3.2vw, 2.1rem);
-        max-width: 760px;
-        margin: 0 auto;
-        color: #fff;
-        text-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
-      }
-
-      /* ==========================================================================
    TRAZA (traceability)
    ========================================================================== */
       .traceability-section {
@@ -2213,6 +2306,14 @@
         text-transform: uppercase;
         letter-spacing: 0.16em;
         color: #d6b46a;
+        justify-content: center;
+      }
+
+      /* Dentro de trazabilidad, el color cereza se reserva únicamente para esta
+         línea decorativa del eyebrow (todos los demás números/subtítulos de la
+         sección permanecen en dorado). */
+      .trace-intro .eyebrow::before {
+        background: var(--color-cherry);
       }
 
       .trace-intro h2 {
@@ -2295,7 +2396,7 @@
         font-weight: 500;
         line-height: 1;
 
-        color: #c14232;
+        color: var(--color-gold);
 
         background: transparent;
         border: none;
@@ -2850,7 +2951,7 @@ SELECT
       }
 
       .footer-brand-logo-only .footer-logo {
-        height: 44px;
+        height: 48px;
       }
 
       .footer-social {
@@ -2999,6 +3100,14 @@ SELECT
           gap: 24px;
         }
 
+        .stat-card:not(:first-child)::before {
+          display: none;
+        }
+
+        .stat-card:nth-child(even)::before {
+          display: none;
+        }
+
         .footer-grid {
           grid-template-columns: 1fr;
           gap: 34px;
@@ -3021,10 +3130,6 @@ SELECT
           gap: 26px;
         }
 
-        .parallax-section {
-          height: 58vh;
-        }
-
         .hero-features {
           flex-wrap: wrap;
         }
@@ -3038,13 +3143,6 @@ SELECT
 
         .hero-reviews-tab {
           display: none;
-        }
-      }
-
-      /* Touch devices can't hover, so keep the carousel arrows always visible */
-      @media (hover: none) {
-        .carousel-arrow {
-          opacity: 1;
         }
       }
 
@@ -3081,24 +3179,6 @@ SELECT
 
         .header-actions {
           gap: 8px;
-        }
-
-        .carousel-arrow {
-          width: 34px;
-          height: 34px;
-        }
-
-        .carousel-arrow svg {
-          width: 14px;
-          height: 14px;
-        }
-
-        .carousel-arrow.prev {
-          left: 10px;
-        }
-
-        .carousel-arrow.next {
-          right: 10px;
         }
 
         .media-frame-tag {
@@ -3187,11 +3267,6 @@ SELECT
           gap: 14px;
         }
 
-        .parallax-section {
-          height: 50vh;
-          min-height: 340px;
-        }
-
         .mission-modal {
           padding: 26px 22px;
           max-height: 90vh;
@@ -3211,8 +3286,8 @@ SELECT
         }
 
         .stat-icon {
-          width: 44px;
-          height: 44px;
+          width: 24px;
+          height: 24px;
           font-size: 1.1rem;
         }
       }
@@ -3279,14 +3354,11 @@ SELECT
     <!-- =========================== HEADER =========================== -->
     <header class="site-header" id="siteHeader">
       <div class="container nav-inner">
-        <span
-          class="route-badge"
-          title="Colombia → South Africa & West Africa"
-          aria-hidden="true"
-        >
+        <span class="route-badge" title="Colombia → Africa" aria-hidden="true">
           <span class="flag">🇨🇴</span>
+          <span>CO</span>
           <span class="route-arrow">→</span>
-          <span class="flag">🇿🇦</span>
+          <span>Africa</span>
         </span>
 
         <a
@@ -3294,13 +3366,15 @@ SELECT
           class="brand"
           aria-label="La Orquídea y el Oso — Home"
         >
-          <img
-            class="brand-logo"
-            src="assets/img/orqyoso_410logo.png"
-            alt="La Orquídea y el Oso logo"
-            loading="eager"
-          />
-          <span class="brand-name">La Orquídea & el Oso</span>
+          <span class="brand-logo-wrap">
+            <img
+              class="brand-logo"
+              src="assets/img/logoini1.png"
+              alt="La Orquídea y el Oso logo"
+              loading="eager"
+            />
+          </span>
+          <!-- <span class="brand-name">La Orquídea & el Oso</span> -->
         </a>
 
         <div class="header-actions">
@@ -3312,7 +3386,7 @@ SELECT
               aria-haspopup="listbox"
               aria-expanded="false"
             >
-              <span class="flag" id="langCurrentFlag">🇿🇦</span>
+              <span class="flag" id="langCurrentFlag" data-geo-flag></span>
               <span id="langCurrentCode">EN</span>
               <span class="lang-caret" aria-hidden="true"></span>
             </button>
@@ -3335,7 +3409,7 @@ SELECT
                 aria-pressed="true"
                 role="option"
               >
-                <span class="flag">🇿🇦</span>English
+                <span class="flag">🇬🇧</span>English
               </button>
               <button
                 type="button"
@@ -3387,9 +3461,7 @@ SELECT
       <div class="mobile-route" aria-hidden="true">
         <span class="flag">🇨🇴</span> Colombia
         <span class="route-arrow">→</span>
-        <span class="flag">🇿🇦</span> South Africa
-        <span class="route-arrow">→</span>
-        <span class="flag">🇸🇳</span> West Africa
+        Africa
       </div>
       <div class="lang-select" id="langSelectMobile">
         <button
@@ -3399,7 +3471,7 @@ SELECT
           aria-haspopup="listbox"
           aria-expanded="false"
         >
-          <span class="flag" id="langCurrentFlagMobile">🇿🇦</span>
+          <span class="flag" id="langCurrentFlagMobile" data-geo-flag></span>
           <span id="langCurrentCodeMobile">EN</span>
           <span class="lang-caret" aria-hidden="true"></span>
         </button>
@@ -3418,7 +3490,7 @@ SELECT
             aria-pressed="true"
             role="option"
           >
-            <span class="flag">🇿🇦</span>English
+            <span class="flag">🇬🇧</span>English
           </button>
           <button
             type="button"
@@ -3503,16 +3575,112 @@ SELECT
         </div>
       </section>
 
+      <!-- =========================== FRANJA DE EXPORTACIÓN =========================== -->
+      <!-- Franja delgada, de ancho completo, con desplazamiento continuo y suave
+           en bucle infinito, reforzando visualmente los tres destinos de
+           exportación. No es un banner publicitario: usa la misma paleta e
+           identidad tipográfica del resto del sitio. -->
+      <section class="export-marquee" aria-label="Direct export destinations">
+        <div class="export-marquee-track" aria-hidden="true">
+          <span class="export-marquee-set">
+            <span class="export-marquee-item"
+              ><i class="bi bi-flag"></i> South Africa</span
+            >
+            <span class="export-marquee-sep">→</span>
+            <span class="export-marquee-item"
+              ><i class="bi bi-flag"></i> Ghana</span
+            >
+            <span class="export-marquee-sep">→</span>
+            <span class="export-marquee-item"
+              ><i class="bi bi-flag"></i> Senegal</span
+            >
+            <span class="export-marquee-sep">·</span>
+            <span class="export-marquee-item"
+              ><i class="bi bi-box-seam"></i> Direct Export</span
+            >
+            <span class="export-marquee-sep">·</span>
+            <span class="export-marquee-item"
+              ><i class="bi bi-flower1"></i> Lot-Traceable Coffee</span
+            >
+            <span class="export-marquee-sep">·</span>
+            <span class="export-marquee-item"
+              ><i class="bi bi-flag"></i> South Africa</span
+            >
+            <span class="export-marquee-sep">→</span>
+            <span class="export-marquee-item"
+              ><i class="bi bi-flag"></i> Ghana</span
+            >
+            <span class="export-marquee-sep">→</span>
+            <span class="export-marquee-item"
+              ><i class="bi bi-flag"></i> Senegal</span
+            >
+            <span class="export-marquee-sep">·</span>
+            <span class="export-marquee-item"
+              ><i class="bi bi-box-seam"></i> Direct Export</span
+            >
+            <span class="export-marquee-sep">·</span>
+            <span class="export-marquee-item"
+              ><i class="bi bi-flower1"></i> Lot-Traceable Coffee</span
+            >
+          </span>
+          <!-- Segundo set idéntico, requerido para el loop perfecto (translateX -50%) -->
+          <span class="export-marquee-set">
+            <span class="export-marquee-item"
+              ><i class="bi bi-flag"></i> South Africa</span
+            >
+            <span class="export-marquee-sep">→</span>
+            <span class="export-marquee-item"
+              ><i class="bi bi-flag"></i> Ghana</span
+            >
+            <span class="export-marquee-sep">→</span>
+            <span class="export-marquee-item"
+              ><i class="bi bi-flag"></i> Senegal</span
+            >
+            <span class="export-marquee-sep">·</span>
+            <span class="export-marquee-item"
+              ><i class="bi bi-box-seam"></i> Direct Export</span
+            >
+            <span class="export-marquee-sep">·</span>
+            <span class="export-marquee-item"
+              ><i class="bi bi-flower1"></i> Lot-Traceable Coffee</span
+            >
+            <span class="export-marquee-sep">·</span>
+            <span class="export-marquee-item"
+              ><i class="bi bi-flag"></i> South Africa</span
+            >
+            <span class="export-marquee-sep">→</span>
+            <span class="export-marquee-item"
+              ><i class="bi bi-flag"></i> Ghana</span
+            >
+            <span class="export-marquee-sep">→</span>
+            <span class="export-marquee-item"
+              ><i class="bi bi-flag"></i> Senegal</span
+            >
+            <span class="export-marquee-sep">·</span>
+            <span class="export-marquee-item"
+              ><i class="bi bi-box-seam"></i> Direct Export</span
+            >
+            <span class="export-marquee-sep">·</span>
+            <span class="export-marquee-item"
+              ><i class="bi bi-flower1"></i> Lot-Traceable Coffee</span
+            >
+          </span>
+        </div>
+      </section>
+
       <!-- =========================== STATS =========================== -->
       <section class="stats">
         <div class="container">
+          <p class="stats-title" data-i18n="stats.title">
+            What Direct Trade to South Africa, Ghana and Senegal Looks Like
+          </p>
           <div class="stats-grid">
             <div class="stat-card reveal">
               <span class="stat-icon" aria-hidden="true"
-                ><i class="bi bi-house-heart-fill"></i
+                ><i class="bi bi-flower1"></i
               ></span>
               <div class="stat-number">
-                <span class="count-up" data-target="300+">0</span>
+                <span class="count-up" data-target="328">0</span>
               </div>
               <p class="stat-label" data-i18n="stats.families">
                 Partner farming families
@@ -3523,7 +3691,7 @@ SELECT
                 ><i class="bi bi-tree-fill"></i
               ></span>
               <div class="stat-number">
-                <span class="count-up" data-target="1200">x</span
+                <span class="count-up" data-target="227">0</span
                 ><span class="stat-suffix" data-i18n="stats.farms_suffix"
                   >ha</span
                 >
@@ -3534,38 +3702,37 @@ SELECT
             </div>
             <div class="stat-card reveal reveal-delay-2">
               <span class="stat-icon" aria-hidden="true"
-                ><i class="bi bi-flower3"></i
+                ><i class="bi bi-shield-check"></i
               ></span>
               <div class="stat-number">
-                <span class="count-up" data-target="35">0</span>
+                <span class="count-up" data-target="48.75" data-decimals="2"
+                  >0</span
+                ><span
+                  class="stat-suffix"
+                  data-i18n="stats.deforestation_suffix"
+                  >%</span
+                >
               </div>
-              <p class="stat-label" data-i18n="stats.foods">
-                Diverse crops that break the monoculture
+              <p class="stat-label" data-i18n="stats.deforestation">
+                Farms verified zero-deforestation
               </p>
+              <span class="stat-subnote" data-i18n="stats.deforestation_note"
+                >verification ongoing</span
+              >
             </div>
             <div class="stat-card reveal reveal-delay-3">
               <span class="stat-icon" aria-hidden="true"
-                ><i class="bi bi-award-fill"></i
+                ><i class="bi bi-box-seam"></i
               ></span>
               <div class="stat-number">
-                <span class="count-up" data-target="480">0</span
-                ><span class="stat-suffix" data-i18n="stats.organic_suffix"
-                  >ha</span
-                >
+                <span class="count-up" data-target="990">0</span>
               </div>
-              <p class="stat-label" data-i18n="stats.organic">
-                Certified organic production
+              <p class="stat-label" data-i18n="stats.sacks">
+                Sacks exported directly in 2025
               </p>
             </div>
           </div>
         </div>
-        <!-- Separador en ondas
-      <img
-        class="stats-wave"
-        src="assets/img/cartaseparador.png"
-        alt=""
-        aria-hidden="true"
-      /> -->
       </section>
 
       <!-- =========================== PRODUCTO =========================== -->
@@ -3573,78 +3740,47 @@ SELECT
         <div class="container">
           <div class="split-media reveal">
             <div class="media-frame">
-              <!-- Carrusel automático (fade, infinito) + control manual con flechas.
-                   Cada slide trae su propio set de datos en data-* y el script
-                   sincroniza imagen + nombre + eyebrow + puntaje SCA + altitud +
-                   familias + producción + características + info técnica. -->
-              <div
-                class="product-carousel"
-                id="productCarousel"
-                data-eyebrow-default="Exportable Product"
-              >
+              <!-- Carrusel automático (fade, infinito) + control manual con flechas,
+                   igual que en el diseño original: velocidad, transición y estructura
+                   sin modificar. Con cada cambio de slide solo se actualiza la imagen,
+                   el recuadro con el nombre del producto (dentro de la imagen) y el
+                   cuadro de atributos en la esquina de la imagen (float-card). -->
+              <div class="product-carousel" id="productCarousel">
                 <img
                   class="carousel-slide is-active"
                   src="assets/img/O%26O%20premium.png"
-                  alt="Organic coffee by La Orquídea y el Oso"
+                  alt="Inzá Heritage Terroir — La Orquídea y el Oso"
                   loading="lazy"
-                  data-name="La Orquídea y el Oso — Premium Lot"
-                  data-eyebrow="Exportable Product"
-                  data-sca="86.5"
-                  data-altitude="1,700–2,100 masl"
-                  data-families="46"
-                  data-production="480 ha certified organic"
-                  data-bullet1="Cup profiles documented by lot"
-                  data-bullet2="Harvest availability and volumes"
-                  data-bullet3="Organic certification and regenerative practices"
-                  data-description="Our coffee is shade-grown in mountain microclimates, with careful post-harvest processes that bring out unique cup profiles."
+                  data-name="Inzá Heritage Terroir"
+                  data-attr-main="84+ SCA"
+                  data-attr-rest="1500 bags/year · +1400 MASL · +300 families"
                 />
                 <img
                   class="carousel-slide"
                   src="assets/img/noah2.jpg"
-                  alt="Coffee cupping at La Orquídea y el Oso"
+                  alt="Yaquivá Reserve — La Orquídea y el Oso"
                   loading="lazy"
-                  data-name="La Orquídea y el Oso — Cupping Selection"
-                  data-eyebrow="Exportable Product"
-                  data-sca="85.0"
-                  data-altitude="1,700–2,100 masl"
-                  data-families="46"
-                  data-production="480 ha certified organic"
-                  data-bullet1="Scored and profiled at our own cupping lab"
-                  data-bullet2="Consistent quality lot after lot"
-                  data-bullet3="Full traceability from farm to cup"
-                  data-description="Every lot is cupped and scored before approval, so buyers know exactly what they are importing."
+                  data-name="Yaquivá Reserve"
+                  data-attr-main="84.5–85+ SCA"
+                  data-attr-rest="500 bags/year · +1700 MASL · +120 families"
                 />
                 <img
                   class="carousel-slide"
                   src="assets/img/fondoIni1.png"
-                  alt="Specialty organic coffee by La Orquídea y el Oso"
+                  alt="Craft Fermentations — La Orquídea y el Oso"
                   loading="lazy"
-                  data-name="La Orquídea y el Oso — Specialty Organic"
-                  data-eyebrow="Exportable Product"
-                  data-sca="86.0"
-                  data-altitude="1,700–2,100 masl"
-                  data-families="46"
-                  data-production="480 ha certified organic"
-                  data-bullet1="Grown under native forest canopy"
-                  data-bullet2="Certified organic since origin"
-                  data-bullet3="Regenerative agroforestry practices"
-                  data-description="Specialty and organic coffee grown alongside farming families who protect the forest that surrounds every crop."
+                  data-name="Craft Fermentations"
+                  data-attr-main="85–86 SCA"
+                  data-attr-rest="300 bags/year · Washed · Natural"
                 />
                 <img
                   class="carousel-slide"
                   src="assets/img/img-paralax.png"
-                  alt="Coffee-growing forest in Tierradentro"
+                  alt="Microlots — La Orquídea y el Oso"
                   loading="lazy"
-                  data-name="La Orquídea y el Oso — Forest Reserve Lot"
-                  data-eyebrow="Exportable Product"
-                  data-sca="85.5"
-                  data-altitude="1,700–2,100 masl"
-                  data-families="46"
-                  data-production="480 ha certified organic"
-                  data-bullet1="Sourced from the highest micro-lots"
-                  data-bullet2="35 companion crops break the monoculture"
-                  data-bullet3="Export-ready volumes documented by harvest"
-                  data-description="A coffee that regenerates the forest it grows in — from Inzá, Tierradentro, ready for export."
+                  data-name="Microlots"
+                  data-attr-main="86.5+ SCA"
+                  data-attr-rest="250 bags/year · Washed · Natural"
                 />
               </div>
               <button
@@ -3679,33 +3815,35 @@ SELECT
                   />
                 </svg>
               </button>
-              <span class="media-frame-tag"
+              <!-- Recuadro con el nombre del producto, dentro de la imagen -->
+              <span class="media-frame-tag" id="carouselNameTag"
                 >☕
-                <span data-i18n="product.eyebrow" id="carouselEyebrowTag"
-                  >Exportable Product</span
-                ></span
+                <span id="carouselNameText">Inzá Heritage Terroir</span></span
               >
             </div>
+            <!-- Cuadro de atributos sobre la esquina de la imagen -->
             <div class="float-card">
-              <div class="fc-title" id="carouselAltitude">1,700–2,100</div>
-              <div class="fc-text">masl · mountain microclimates</div>
+              <div class="fc-title" id="carouselAttrMain">84+ SCA</div>
+              <div class="fc-text" id="carouselAttrRest">
+                1500 bags/year · +1400 MASL · +300 families
+              </div>
             </div>
           </div>
+          <!-- El contenido de este lado (eyebrow, título, texto, lista y
+               descargas) permanece completamente estático: no rota, no
+               cambia y no se oculta durante el recorrido del carrusel. -->
           <div class="split-content reveal reveal-delay-1">
-            <span
-              class="eyebrow"
-              data-i18n="product.eyebrow"
-              id="carouselEyebrowLabel"
+            <span class="eyebrow" data-i18n="product.eyebrow"
               >Exportable Product</span
             >
-            <h2 data-i18n="product.title" id="carouselProductName">
+            <h2 data-i18n="product.title">
               Specialty green coffee, traceable and export-ready
             </h2>
-            <p data-i18n="product.text" id="carouselDescription">
+            <p data-i18n="product.text">
               Our coffee is shade-grown in mountain microclimates, with careful
               post-harvest processes that bring out unique cup profiles.
             </p>
-            <ul class="feature-list" id="carouselFeatureList">
+            <ul class="feature-list">
               <li>
                 <span class="leaf-icon"
                   ><svg viewBox="0 0 24 24" fill="none">
@@ -3716,7 +3854,7 @@ SELECT
                       stroke-linecap="round"
                       stroke-linejoin="round"
                     /></svg></span
-                ><span data-i18n="product.bullet1" id="carouselBullet1"
+                ><span data-i18n="product.bullet1"
                   >Cup profiles documented by lot</span
                 >
               </li>
@@ -3730,7 +3868,7 @@ SELECT
                       stroke-linecap="round"
                       stroke-linejoin="round"
                     /></svg></span
-                ><span data-i18n="product.bullet2" id="carouselBullet2"
+                ><span data-i18n="product.bullet2"
                   >Harvest availability and volumes</span
                 >
               </li>
@@ -3744,46 +3882,11 @@ SELECT
                       stroke-linecap="round"
                       stroke-linejoin="round"
                     /></svg></span
-                ><span data-i18n="product.bullet3" id="carouselBullet3"
+                ><span data-i18n="product.bullet3"
                   >Organic certification and regenerative practices</span
                 >
               </li>
             </ul>
-            <p
-              style="
-                display: flex;
-                gap: 18px;
-                flex-wrap: wrap;
-                margin: -10px 0 22px;
-                font-size: 0.86rem;
-                color: var(--color-ink-soft);
-              "
-            >
-              <span
-                ><strong style="color: var(--color-forest-dark)">SCA:</strong>
-                <span id="carouselSca">86.5</span></span
-              >
-              <span
-                ><strong style="color: var(--color-forest-dark)"
-                  >Altitude:</strong
-                >
-                <span id="carouselAltitudeInline">1,700–2,100 masl</span></span
-              >
-              <span
-                ><strong style="color: var(--color-forest-dark)"
-                  >Families:</strong
-                >
-                <span id="carouselFamilies">46</span></span
-              >
-              <span
-                ><strong style="color: var(--color-forest-dark)"
-                  >Production:</strong
-                >
-                <span id="carouselProduction"
-                  >480 ha certified organic</span
-                ></span
-              >
-            </p>
             <div class="downloads-row">
               <span class="downloads-label" data-i18n="product.downloads_label"
                 >Download commercial brochure</span
@@ -3936,23 +4039,6 @@ SELECT
         </div>
       </section>
 
-      <!-- =========================== PARALLAX (bosque nativo) =========================== -->
-      <section
-        class="parallax-section"
-        aria-label="Native forest of Tierradentro"
-      >
-        <div
-          class="parallax-bg"
-          id="parallaxBg"
-          style="background-image: url(&quot;assets/img/O&O-paralax.png&quot;)"
-        ></div>
-        <div class="parallax-overlay"></div>
-        <div class="parallax-content">
-          <!-- <span class="eyebrow">Andes · Tierradentro</span> -->
-          <!-- <p>Coffee that regenerates the forest and honors its origin.</p> -->
-        </div>
-      </section>
-
       <!-- =========================== CERTIFIED ORIGIN PROGRAM =========================== -->
       <section class="section-split" id="programa">
         <div class="container">
@@ -3977,9 +4063,10 @@ SELECT
             </h2>
 
             <p>
-              Every coffee lot is carefully verified through our origin,
-              sustainability and quality standards, ensuring transparency,
-              traceability and measurable impact.
+              Every coffee lot is verified through our own 60-point standard —
+              origin, sustainability, and quality. It's not third-party
+              certification. It's how we make what we already do visible and
+              verifiable — and we invite buyers to check it themselves.
             </p>
 
             <!-- 3 BLOQUES -->
@@ -3991,7 +4078,8 @@ SELECT
                 <h4>Origin</h4>
 
                 <p>
-                  Complete traceability from the farm to every exported lot.
+                  GPS-verified location, altitude, and variety — traced to the
+                  exact farm and lot.
                 </p>
               </div>
 
@@ -4001,7 +4089,8 @@ SELECT
                 <h4>Sustainability</h4>
 
                 <p>
-                  Responsible practices that protect communities and ecosystems.
+                  Regulated shade cover, water source protection, and agronomic
+                  practices aligned with organic standards.
                 </p>
               </div>
 
@@ -4029,9 +4118,11 @@ SELECT
       <section class="traceability-section" id="trazabilidad">
         <div class="container">
           <div class="trace-intro reveal">
-            <span class="eyebrow" data-i18n="traceability.eyebrow">Traza</span>
+            <span class="eyebrow" data-i18n="traceability.eyebrow"
+              >Trazabilidad</span
+            >
             <h2 data-i18n="traceability.title">
-              From forest to cup: five stages, one traceable lot
+              From forest to cup: six stages, one traceable lot
             </h2>
             <p data-i18n="traceability.text">
               Every container we export carries coffee from dozens of individual
@@ -4243,7 +4334,7 @@ SELECT
 
               <p class="trace-col-text" data-i18n="traceability.stage6_text">
                 Documented, lot-traceable shipment — ready for buyers in South
-                Africa and West Africa.
+                Africa, Ghana and Senegal.
               </p>
             </div>
           </div>
@@ -4276,10 +4367,11 @@ SELECT
         <div class="container contact-grid">
           <div class="contact-intro reveal">
             <span class="eyebrow" data-i18n="contact.eyebrow">Contact</span>
-            <h2 data-i18n="contact.title">Let's talk about your next import</h2>
+            <h2 data-i18n="contact.title">Let's Talk About Your Next Import</h2>
             <p data-i18n="contact.text">
-              Fill out the form and our sales team will reach out to share
-              samples, technical sheets and commercial terms.
+              Fill out the form and our sales team will send samples, technical
+              sheets and commercial terms — whether you're buying from South
+              Africa, Ghana or Senegal.
             </p>
             <div class="contact-info">
               <div class="ci-item">
@@ -4311,7 +4403,7 @@ SELECT
                       stroke-linejoin="round"
                     /></svg
                 ></span>
-                <span>organics.harmonyfarms@gmail.com</span>
+                <span>export@fincaslaorquideayeloso.com</span>
               </div>
               <div class="ci-item">
                 <span class="ci-icon"
@@ -4354,6 +4446,12 @@ SELECT
             method="post"
             novalidate
           >
+            <!-- NOTA: la acción del formulario sigue apuntando al buzón verificado
+                 en FormSubmit.co (organics.harmonyfarms@gmail.com). Si se desea
+                 recibir los mensajes en export@fincaslaorquideayeloso.com, esa
+                 dirección debe verificarse primero en FormSubmit.co y luego
+                 actualizar este "action" — de lo contrario el formulario dejará
+                 de funcionar. -->
             <input type="hidden" name="_captcha" value="false" />
             <input type="hidden" name="_template" value="table" />
             <input
@@ -4460,7 +4558,7 @@ SELECT
             </div>
             <div class="field">
               <label for="f-volume" data-i18n="contact.form.volume"
-                >Estimated volume of interest</label
+                >Product of interest</label
               >
               <select id="f-volume" name="product">
                 <option value="">Select a product</option>
@@ -4564,21 +4662,20 @@ SELECT
           SOUTH AFRICA TRADE MISSION 2026
         </span>
 
-        <h2 id="missionModalTitle">South Africa Trade Mission 2026</h2>
+        <h2 id="missionModalTitle">Specialty Coffee — South Africa Ghana and Senegal Trade Mission 2026</h2>
 
         <p>
-          Colombia and South Africa currently trade very little specialty coffee
-          directly. Most volumes travel through European or North American
-          intermediaries before reaching African roasters — adding cost, time
-          and distance between the farm and the cup.
+          Colombia trades very little specialty coffee directly with South
+          Africa, Ghana and Senegal. Most volumes travel through European or
+          North American intermediaries before reaching African roasters —
+          adding cost, time and distance between the farm and the cup.
         </p>
 
         <p>
-          La Orquídea y el Oso is joining the South Africa Trade Mission 2026 to
-          open a direct route to explore and connect authenticity: specialty,
-          organic coffee from Inzá, Tierradentro, presented directly to
-          specialty buyers, distributors and roasters in South Africa and West
-          Africa.
+          La Orquídea y el Oso is joining Ella Exporta África 2026 to open a
+          direct route: specialty coffee from Inzá, Tierradentro, presented
+          directly to buyers, distributors and roasters across all three
+          markets.
         </p>
 
         <ul class="mission-modal-list">
@@ -4595,8 +4692,8 @@ SELECT
               </svg>
             </span>
             <span>
-              A direct commercial bridge between Colombian growers and African
-              buyers — no unnecessary intermediaries.
+              A direct commercial bridge between Colombian growers and West and
+              Southern African buyers — no unnecessary intermediaries.
             </span>
           </li>
 
@@ -4614,7 +4711,8 @@ SELECT
             </span>
             <span>
               Samples, technical sheets and export-ready lots presented in
-              person.
+              person. A long-term relationship with African roasters, not a
+              one-off shipment.
             </span>
           </li>
 
@@ -4661,19 +4759,52 @@ SELECT
               />
             </a>
             <p data-i18n="footer.tagline">
-              Coffee that regenerates the forest and honors its origin.
+              84–86+ SCA · Inzá Tierradentro · Exported by those who grow it ·
+              Verifiable lot by lot
             </p>
             <div class="footer-social">
               <a
-                href="https://www.facebook.com/fincaslaorquideayeloso/"
+                href="https://www.linkedin.com/company/fincaslaorquideayeloso/"
                 target="_blank"
                 rel="noopener"
-                aria-label="Facebook"
+                aria-label="LinkedIn"
+              >
+                <svg viewBox="0 0 24 24" fill="none">
+                  <rect
+                    x="3"
+                    y="3"
+                    width="18"
+                    height="18"
+                    rx="3"
+                    stroke="#fff"
+                    stroke-width="1.6"
+                  />
+                  <path
+                    d="M7.5 10.5v6M7.5 7.75v.01M11.5 16.5v-3.6c0-1.3.9-2.4 2.4-2.4s2.1 1 2.1 2.5v3.5"
+                    stroke="#fff"
+                    stroke-width="1.6"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </a>
+              <a
+                href="https://api.whatsapp.com/send?phone=573144363097"
+                target="_blank"
+                rel="noopener"
+                aria-label="WhatsApp"
               >
                 <svg viewBox="0 0 24 24" fill="none">
                   <path
-                    d="M14 9h3V6h-3c-1.7 0-3 1.3-3 3v2H9v3h2v6h3v-6h3l1-3h-4V9c0-.6.4-1 1-1z"
-                    fill="#fff"
+                    d="M20 12a8 8 0 10-14.6 4.6L4 21l4.6-1.3A8 8 0 0020 12z"
+                    stroke="#fff"
+                    stroke-width="1.6"
+                  />
+                  <path
+                    d="M9 9.5c0 3 2.5 5.5 5.5 5.5"
+                    stroke="#fff"
+                    stroke-width="1.6"
+                    stroke-linecap="round"
                   />
                 </svg>
               </a>
@@ -4704,27 +4835,7 @@ SELECT
                 </svg>
               </a>
               <a
-                href="https://api.whatsapp.com/send?phone=573144363097"
-                target="_blank"
-                rel="noopener"
-                aria-label="WhatsApp"
-              >
-                <svg viewBox="0 0 24 24" fill="none">
-                  <path
-                    d="M20 12a8 8 0 10-14.6 4.6L4 21l4.6-1.3A8 8 0 0020 12z"
-                    stroke="#fff"
-                    stroke-width="1.6"
-                  />
-                  <path
-                    d="M9 9.5c0 3 2.5 5.5 5.5 5.5"
-                    stroke="#fff"
-                    stroke-width="1.6"
-                    stroke-linecap="round"
-                  />
-                </svg>
-              </a>
-              <a
-                href="mailto:organics.harmonyfarms@gmail.com"
+                href="mailto:export@fincaslaorquideayeloso.com"
                 aria-label="Email"
               >
                 <svg viewBox="0 0 24 24" fill="none">
@@ -4753,8 +4864,8 @@ SELECT
             <h4 data-i18n="footer.contact_title">Direct contact</h4>
             <ul>
               <li>
-                <a href="mailto:organics.harmonyfarms@gmail.com"
-                  >organics.harmonyfarms@gmail.com</a
+                <a href="mailto:export@fincaslaorquideayeloso.com"
+                  >export@fincaslaorquideayeloso.com</a
                 >
               </li>
               <li><a href="tel:+573144363097">+57 314 436 3097</a></li>
@@ -4775,8 +4886,8 @@ SELECT
             2026 by fincaslaorquideayeloso.com</span
           >
           <span
-            >&copy; <span id="footerYear"></span> La Orquídea y el Oso.
-            <span data-i18n="footer.rights">All rights reserved.</span></span
+            >&copy; 2026 Mulita Group SAS · NIT 901.020.327-7 · La Orquídea y el
+            Oso® · Inzá, Tierradentro, Cauca, Colombia</span
           >
         </div>
       </div>
@@ -4877,8 +4988,6 @@ SELECT
 
           wrap.querySelectorAll("[data-lang-option]").forEach((btn) => {
             btn.addEventListener("click", () => {
-              const flag = btn.querySelector(".flag");
-              if (flagEl && flag) flagEl.textContent = flag.textContent;
               if (codeEl)
                 codeEl.textContent = btn
                   .getAttribute("data-lang-option")
@@ -4909,7 +5018,10 @@ SELECT
         );
 
         // Keep the two selectors (desktop + mobile) in sync so both always
-        // reflect the language currently applied by language.js.
+        // reflect the language currently applied by language.js. The toggle
+        // button itself only shows the language code (e.g. "EN ▾") — the
+        // flag is reserved for optionally showing the visitor's detected
+        // country, not the language.
         function syncLangSelectors(langCode) {
           document.querySelectorAll(".lang-switch").forEach((group) => {
             group.querySelectorAll("[data-lang-option]").forEach((btn) => {
@@ -4919,17 +5031,8 @@ SELECT
               btn.setAttribute("aria-pressed", isActive ? "true" : "false");
             });
           });
-          const flag = document.querySelector(
-            `.lang-switch [data-lang-option="${langCode}"] .flag`,
-          );
-          const flagText = flag ? flag.textContent : "";
-          [
-            ["langCurrentFlag", "langCurrentCode"],
-            ["langCurrentFlagMobile", "langCurrentCodeMobile"],
-          ].forEach(([flagId, codeId]) => {
-            const flagEl = document.getElementById(flagId);
+          ["langCurrentCode", "langCurrentCodeMobile"].forEach((codeId) => {
             const codeEl = document.getElementById(codeId);
-            if (flagEl) flagEl.textContent = flagText;
             if (codeEl) codeEl.textContent = langCode.toUpperCase();
           });
         }
@@ -4946,55 +5049,63 @@ SELECT
           if (e.detail && e.detail.lang) syncLangSelectors(e.detail.lang);
         });
 
+        // Detección opcional del país del visitante para mostrar una
+        // pequeña bandera junto al selector de idioma (best-effort, sin
+        // bloquear si el servicio no responde).
+        (function detectVisitorFlag() {
+          const flagEls = [
+            document.getElementById("langCurrentFlag"),
+            document.getElementById("langCurrentFlagMobile"),
+          ].filter(Boolean);
+          if (!flagEls.length) return;
+
+          const countryToFlag = (code) => {
+            if (!code || code.length !== 2) return "";
+            const A = 127397;
+            return String.fromCodePoint(
+              ...[...code.toUpperCase()].map((c) => c.charCodeAt(0) + A),
+            );
+          };
+
+          fetch("https://ipapi.co/json/", { cache: "force-cache" })
+            .then((r) => (r.ok ? r.json() : null))
+            .then((data) => {
+              const cc = data && data.country_code;
+              const flag = countryToFlag(cc);
+              if (!flag) return;
+              flagEls.forEach((el) => {
+                el.textContent = flag;
+                el.classList.add("is-visible");
+              });
+            })
+            .catch(() => {
+              /* silencioso: si falla, el toggle se queda solo con "EN ▾" */
+            });
+        })();
+
         // ---------- Product carousel (auto, fade, infinite + manual arrows) ----------
-        // Sincroniza imagen + nombre + eyebrow + SCA + altitud + familias +
-        // producción + características + descripción en cada cambio de slide.
+        // Funcionamiento, velocidad y transición idénticos al diseño original:
+        // solo cambia, por cada slide, la imagen y la información superpuesta
+        // sobre ella (nombre del producto + atributos). El contenido del lado
+        // derecho de la sección no se toca desde aquí — permanece estático.
         const productCarousel = document.getElementById("productCarousel");
         if (productCarousel) {
           const slides = productCarousel.querySelectorAll(".carousel-slide");
           const prevBtn = document.getElementById("carouselPrev");
           const nextBtn = document.getElementById("carouselNext");
+          const nameText = document.getElementById("carouselNameText");
+          const attrMain = document.getElementById("carouselAttrMain");
+          const attrRest = document.getElementById("carouselAttrRest");
           let activeIndex = 0;
           let autoTimer = null;
           const AUTO_MS = 4200;
 
-          const el = {
-            eyebrowTag: document.getElementById("carouselEyebrowTag"),
-            eyebrowLabel: document.getElementById("carouselEyebrowLabel"),
-            name: document.getElementById("carouselProductName"),
-            description: document.getElementById("carouselDescription"),
-            bullet1: document.getElementById("carouselBullet1"),
-            bullet2: document.getElementById("carouselBullet2"),
-            bullet3: document.getElementById("carouselBullet3"),
-            sca: document.getElementById("carouselSca"),
-            altitude: document.getElementById("carouselAltitude"),
-            altitudeInline: document.getElementById("carouselAltitudeInline"),
-            families: document.getElementById("carouselFamilies"),
-            production: document.getElementById("carouselProduction"),
-          };
-
           function applySlideData(slide) {
             if (!slide) return;
             const d = slide.dataset;
-            if (el.eyebrowTag && d.eyebrow)
-              el.eyebrowTag.textContent = d.eyebrow;
-            if (el.eyebrowLabel && d.eyebrow)
-              el.eyebrowLabel.textContent = d.eyebrow;
-            if (el.name && d.name) el.name.textContent = d.name;
-            if (el.description && d.description)
-              el.description.textContent = d.description;
-            if (el.bullet1 && d.bullet1) el.bullet1.textContent = d.bullet1;
-            if (el.bullet2 && d.bullet2) el.bullet2.textContent = d.bullet2;
-            if (el.bullet3 && d.bullet3) el.bullet3.textContent = d.bullet3;
-            if (el.sca && d.sca) el.sca.textContent = d.sca;
-            if (d.altitude) {
-              if (el.altitude)
-                el.altitude.textContent = d.altitude.split(" ")[0];
-              if (el.altitudeInline) el.altitudeInline.textContent = d.altitude;
-            }
-            if (el.families && d.families) el.families.textContent = d.families;
-            if (el.production && d.production)
-              el.production.textContent = d.production;
+            if (nameText && d.name) nameText.textContent = d.name;
+            if (attrMain && d.attrMain) attrMain.textContent = d.attrMain;
+            if (attrRest && d.attrRest) attrRest.textContent = d.attrRest;
           }
 
           function goTo(index) {
@@ -5113,13 +5224,17 @@ SELECT
         // ---------- Count-up stats ----------
         const counters = document.querySelectorAll(".count-up");
         function animateCount(el) {
-          const target = parseInt(el.getAttribute("data-target"), 10) || 0;
+          const target = parseFloat(el.getAttribute("data-target")) || 0;
+          const decimals = parseInt(el.getAttribute("data-decimals"), 10) || 0;
           const duration = 1600;
           const start = performance.now();
           function tick(now) {
             const progress = Math.min((now - start) / duration, 1);
             const eased = 1 - Math.pow(1 - progress, 3);
-            el.textContent = Math.round(eased * target).toLocaleString("en-US");
+            const value = eased * target;
+            el.textContent = decimals
+              ? value.toFixed(decimals)
+              : Math.round(value).toLocaleString("en-US");
             if (progress < 1) requestAnimationFrame(tick);
           }
           requestAnimationFrame(tick);
@@ -5156,36 +5271,6 @@ SELECT
           });
         }
 
-        // ---------- Parallax effect on scroll ----------
-        const parallaxBg = document.getElementById("parallaxBg");
-        if (parallaxBg && !prefersReducedMotion) {
-          const parallaxSection = parallaxBg.closest(".parallax-section");
-          let ticking = false;
-          const speed = 0.35; // qué tan rápido se mueve la imagen respecto al scroll
-
-          function updateParallax() {
-            const rect = parallaxSection.getBoundingClientRect();
-            // Solo calcular cuando la sección está cerca del viewport (mejor rendimiento)
-            if (rect.bottom > -200 && rect.top < window.innerHeight + 200) {
-              const offset = rect.top * speed;
-              parallaxBg.style.transform = `translate3d(0, ${offset}px, 0)`;
-            }
-            ticking = false;
-          }
-          function onParallaxScroll() {
-            if (!ticking) {
-              window.requestAnimationFrame(updateParallax);
-              ticking = true;
-            }
-          }
-          window.addEventListener("scroll", onParallaxScroll, {
-            passive: true,
-          });
-          window.addEventListener("resize", onParallaxScroll, {
-            passive: true,
-          });
-          updateParallax();
-        }
         ///////////////////////////////////////////////////////////////////////////////////////////
         // ---------- Contact form ----------
         const form = document.getElementById("contactForm");
@@ -5363,10 +5448,6 @@ Thank you.`;
             }, 650);
           });
         });
-
-        // ---------- Footer year ----------
-        document.getElementById("footerYear").textContent =
-          new Date().getFullYear();
       })();
     </script>
   </body>
