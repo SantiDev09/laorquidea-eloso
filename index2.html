@@ -314,7 +314,8 @@
         box-shadow: 0 8px 24px -18px rgba(12, 46, 32, 0.4);
       }
 
-      /* Ocultamiento automático del menú tras inactividad (5s) */
+      /* Ocultamiento automático del menú al hacer scroll hacia abajo; reaparece
+         automáticamente tras ~2s, sin desaparecer nunca definitivamente. */
       .site-header.is-idle-hidden {
         transform: translateY(-110%);
         opacity: 0;
@@ -329,18 +330,6 @@
         padding-bottom: 0;
         margin-bottom: 0;
         border-bottom: none;
-        transition:
-          padding-bottom 0.35s var(--ease),
-          margin-bottom 0.35s var(--ease);
-      }
-
-      /* El espacio extra para separar el menú principal (main-nav-row) solo se
-         añade cuando el header está en su estado "scrolled" (que es cuando esa
-         fila se muestra). Así, en el estado inicial el logo queda perfectamente
-         centrado verticalmente dentro del padding simétrico del header. */
-      .site-header.is-scrolled .nav-inner {
-        padding-bottom: 14px;
-        margin-bottom: 14px;
       }
 
       .nav-inner .route-badge {
@@ -353,23 +342,6 @@
 
       .nav-inner .header-actions {
         justify-self: end;
-      }
-
-      .main-nav-row {
-        display: none;
-        justify-content: flex-end;
-        max-height: 0;
-        overflow: hidden;
-        opacity: 0;
-        transition:
-          opacity 0.35s var(--ease),
-          max-height 0.35s var(--ease);
-      }
-
-      .site-header.is-scrolled .main-nav-row {
-        display: flex;
-        max-height: 60px;
-        opacity: 1;
       }
 
       .brand {
@@ -392,7 +364,7 @@
       }
 
       .brand img.brand-logo {
-        height: clamp(30px, 6.5vw, 40px);
+        height: clamp(38px, 7vw, 50px);
         width: auto;
         flex-shrink: 0;
         border: none;
@@ -455,43 +427,6 @@
         50% {
           transform: translateX(4px);
         }
-      }
-
-      .main-nav {
-        display: flex;
-        align-items: center;
-        justify-content: flex-end;
-        gap: 30px;
-      }
-
-      .main-nav a {
-        text-decoration: none;
-        font-weight: 500;
-        font-size: 0.92rem;
-        color: var(--color-ink);
-        position: relative;
-        padding: 4px 0;
-        font-family: var(--font-display);
-        font-variation-settings:
-          "SOFT" 60,
-          "opsz" 14;
-        letter-spacing: 0.01em;
-      }
-
-      .main-nav a::after {
-        content: "";
-        position: absolute;
-        left: 0;
-        bottom: -2px;
-        width: 0;
-        height: 2px;
-        background: var(--color-gold);
-        transition: width 0.3s var(--ease);
-      }
-
-      .main-nav a:hover::after,
-      .main-nav a:focus-visible::after {
-        width: 100%;
       }
 
       .header-actions {
@@ -626,33 +561,6 @@
       .lang-switch button:hover:not(.is-active) {
         background: var(--color-bg-alt);
         color: var(--color-forest-dark);
-      }
-
-      /* Mobile drawer keeps its own always-visible variant of the selector */
-      .mobile-nav .lang-select-toggle {
-        color: rgba(246, 241, 228, 0.85);
-        border-color: rgba(255, 255, 255, 0.3);
-        background: rgba(255, 255, 255, 0.08);
-      }
-
-      .mobile-nav .lang-switch {
-        position: static;
-        opacity: 1;
-        visibility: visible;
-        transform: none;
-        background: rgba(255, 255, 255, 0.08);
-        border-color: rgba(255, 255, 255, 0.16);
-        box-shadow: none;
-        margin-top: 4px;
-      }
-
-      .mobile-nav .lang-switch button {
-        color: #fefdf3;
-      }
-
-      .mobile-nav .lang-switch button.is-active {
-        background: var(--color-gold);
-        color: #fff;
       }
 
       .btn {
@@ -912,23 +820,54 @@
       }
 
       .menu-toggle {
-        display: none;
+        display: flex;
         background: none;
         border: none;
         cursor: pointer;
-        padding: 8px;
-        margin: -8px;
-        flex-direction: column;
+        padding: 8px 10px;
+        margin: 0;
+        flex-direction: row;
         justify-content: center;
         align-items: center;
-        gap: 5px;
+        gap: 8px;
         flex-shrink: 0;
         min-width: 40px;
         min-height: 40px;
+        color: var(--color-forest-dark);
+        font-family: var(--font-body);
+        font-weight: 700;
+        font-size: 0.78rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        border-radius: 999px;
+        transition:
+          background 0.3s var(--ease),
+          left 0.3s var(--ease);
+        /* Reposicionado bien a la izquierda del header (sacado del flujo del
+           grid de nav-inner), para que el resto del header — route-badge,
+           logo/marca y selector de idioma — no cambie de posición. Al ser
+           position:absolute dentro de .site-header (que es position:fixed),
+           se posiciona respecto al borde izquierdo real del header. */
+        position: absolute;
+        left: clamp(14px, 4vw, 28px);
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 5;
+      }
+
+      .menu-toggle:hover {
+        background: rgba(17, 60, 43, 0.06);
+      }
+
+      .menu-toggle .menu-toggle-bars {
+        display: inline-flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 5px;
       }
 
       .menu-toggle span {
-        width: 24px;
+        width: 22px;
         height: 2px;
         background: var(--color-ink);
         border-radius: 2px;
@@ -937,57 +876,246 @@
           opacity 0.3s var(--ease);
       }
 
-      .mobile-nav {
+      .menu-toggle[aria-expanded="true"] span:nth-child(1) {
+        transform: translateY(3.5px) rotate(45deg);
+      }
+
+      .menu-toggle[aria-expanded="true"] span:nth-child(2) {
+        opacity: 0;
+      }
+
+      .menu-toggle[aria-expanded="true"] span:nth-child(3) {
+        transform: translateY(-3.5px) rotate(-45deg);
+      }
+
+      /* ==========================================================================
+   MEGA MENU — "editorial panel" opening like the page of a book
+   ========================================================================== */
+      .mega-menu {
         position: fixed;
         inset: 0;
-        background: var(--color-forest-dark);
-        z-index: 99;
+        z-index: 200;
+        visibility: hidden;
+      }
+
+      .mega-menu-scrim {
+        position: absolute;
+        inset: 0;
+        background: rgba(12, 46, 32, 0.55);
+        opacity: 0;
+        transition: opacity 0.5s var(--ease);
+      }
+
+      .mega-menu-panel {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: min(92vw, 980px);
+        background: var(--color-bg);
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        transform-origin: left center;
+        transform: perspective(2400px) rotateY(-90deg);
+        transition: transform 0.7s cubic-bezier(0.65, 0, 0.35, 1);
+        box-shadow: 40px 0 80px -30px rgba(12, 46, 32, 0.5);
+        overflow: hidden;
+      }
+
+      .mega-menu.is-open {
+        visibility: visible;
+      }
+
+      .mega-menu.is-open .mega-menu-scrim {
+        opacity: 1;
+      }
+
+      .mega-menu.is-open .mega-menu-panel {
+        transform: perspective(2400px) rotateY(0deg);
+      }
+
+      .mega-menu-left {
+        padding: clamp(80px, 9vw, 120px) clamp(32px, 5vw, 64px) 40px;
         display: flex;
         flex-direction: column;
-        align-items: center;
         justify-content: center;
-        gap: 28px;
-        opacity: 0;
-        visibility: hidden;
-        transform: translateY(-12px);
-        transition:
-          opacity 0.4s var(--ease),
-          transform 0.4s var(--ease),
-          visibility 0s linear 0.4s;
+        position: relative;
       }
 
-      .mobile-nav.is-open {
-        opacity: 1;
-        visibility: visible;
-        transform: translateY(0);
-        transition:
-          opacity 0.4s var(--ease),
-          transform 0.4s var(--ease);
-      }
-
-      .mobile-nav a {
-        color: #fefdf3;
-        text-decoration: none;
-        font-family: var(--font-display);
-        font-variation-settings:
-          "SOFT" 60,
-          "opsz" 30;
-        font-size: 1.6rem;
-      }
-
-      .mobile-route {
+      .mega-menu-close {
+        position: absolute;
+        top: 24px;
+        right: 24px;
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        border: 1px solid var(--color-line);
+        background: transparent;
+        color: var(--color-forest-dark);
         display: flex;
         align-items: center;
-        gap: 8px;
-        color: rgba(246, 241, 228, 0.75);
+        justify-content: center;
+        cursor: pointer;
+        transition:
+          background 0.25s var(--ease),
+          transform 0.25s var(--ease);
+      }
+
+      .mega-menu-close:hover {
+        background: var(--color-cherry);
+        color: #fff;
+        transform: rotate(90deg);
+      }
+
+      .mega-menu-eyebrow {
+        color: var(--color-gold);
+        margin-bottom: 30px;
+      }
+
+      .mega-menu-links {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+
+      .mega-menu-links li {
+        overflow: hidden;
+      }
+
+      .mega-menu-links a {
+        display: flex;
+        align-items: baseline;
+        gap: 16px;
+        text-decoration: none;
+        font-family: var(--font-display);
+        font-size: clamp(1.6rem, 3vw, 2.3rem);
+        font-weight: 500;
+        color: var(--color-forest-dark);
+        padding: 10px 0;
+        position: relative;
+        transition:
+          color 0.35s var(--ease),
+          padding-left 0.35s var(--ease);
+      }
+
+      .mega-menu-links a .mm-index {
+        font-family: var(--font-body);
+        font-size: 0.8rem;
+        font-weight: 700;
+        color: var(--color-gold);
+        letter-spacing: 0.05em;
+      }
+
+      .mega-menu-links a::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 4px;
+        width: 0%;
+        height: 2px;
+        background: var(--color-gold);
+        transition: width 0.4s var(--ease);
+      }
+
+      .mega-menu-links a:hover,
+      .mega-menu-links a:focus-visible,
+      .mega-menu-links a.is-active-hover {
+        color: var(--color-gold);
+        padding-left: 14px;
+      }
+
+      .mega-menu-links a:hover::after,
+      .mega-menu-links a:focus-visible::after,
+      .mega-menu-links a.is-active-hover::after {
+        width: 46px;
+      }
+
+      .mega-menu-foot {
+        margin-top: 46px;
+        padding-top: 26px;
+        border-top: 1px solid var(--color-line);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: var(--color-ink-soft);
         font-size: 0.82rem;
         font-weight: 600;
         letter-spacing: 0.03em;
       }
 
-      .mobile-route .route-arrow {
-        color: var(--color-gold-light);
+      .mega-menu-foot .route-arrow {
+        color: var(--color-gold);
         animation: route-slide 2.6s ease-in-out infinite;
+      }
+
+      .mega-menu-right {
+        position: relative;
+        background: var(--color-forest-dark);
+        overflow: hidden;
+      }
+
+      .mega-menu-right img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0;
+        transform: scale(1.06);
+        transition:
+          opacity 0.65s var(--ease),
+          transform 1.1s var(--ease);
+      }
+
+      .mega-menu-right img.is-active {
+        opacity: 0.92;
+        transform: scale(1);
+      }
+
+      .mega-menu-right::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          200deg,
+          rgba(12, 46, 32, 0.05) 20%,
+          rgba(12, 46, 32, 0.65) 100%
+        );
+      }
+
+      .mega-menu-right-caption {
+        position: absolute;
+        left: 32px;
+        bottom: 32px;
+        z-index: 2;
+        color: #fefdf3;
+        font-family: var(--font-display);
+        font-style: italic;
+        font-size: clamp(1.1rem, 1.8vw, 1.4rem);
+        max-width: 80%;
+        transition: opacity 0.4s var(--ease);
+      }
+
+      @media (max-width: 980px) {
+        .mega-menu-panel {
+          width: 100vw;
+          grid-template-columns: 1fr;
+        }
+
+        .mega-menu-right {
+          display: none;
+        }
+
+        .mega-menu-left {
+          padding: 96px 24px 40px;
+        }
+
+        .mega-menu-links a {
+          font-size: 1.5rem;
+        }
       }
 
       /* ==========================================================================
@@ -1402,6 +1530,18 @@
         font-weight: 700;
         letter-spacing: 0.1em;
         text-transform: uppercase;
+        border: none;
+        cursor: pointer;
+        text-decoration: none;
+        transition:
+          background 0.3s var(--ease),
+          padding-right 0.3s var(--ease);
+      }
+
+      .hero-reviews-tab:hover,
+      .hero-reviews-tab:focus-visible {
+        background: rgba(224, 176, 72, 1);
+        padding-right: 16px;
       }
 
       .hero-video {
@@ -1499,7 +1639,7 @@
         font-weight: 500;
         font-size: clamp(1.3rem, 2.6vw, 1.9rem);
         line-height: 1.3;
-        color: var(--color-gold);
+        color: var(--color-forest);
       }
 
       .stats-wave {
@@ -1547,8 +1687,8 @@
         align-items: center;
         justify-content: center;
 
-        width: 24px;
-        height: 24px;
+        width: 26px;
+        height: 26px;
 
         margin: 0 auto 12px;
 
@@ -1556,9 +1696,13 @@
         border: none;
         box-shadow: none;
 
-        color: rgba(17, 60, 43, 0.55);
+        opacity: 0.7;
+      }
 
-        font-size: 22px;
+      .stat-icon img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
       }
 
       .stat-card .stat-number {
@@ -1991,14 +2135,28 @@
    PRODUCTO EXPORTABLE - ESTILOS ESPECÍFICOS
    ========================================================================== */
 
-      /* Eyebrow */
+      /* Eyebrow — pequeño subtítulo, dorado corporativo */
       #producto .eyebrow {
         font-family: var(--font-body);
         font-size: 12px;
         font-weight: 500;
         letter-spacing: 0.16em;
         text-transform: uppercase;
-        color: #c14232;
+        color: var(--color-gold);
+      }
+
+      #producto .eyebrow::before {
+        background: var(--color-gold);
+      }
+
+      /* Línea decorativa bajo el título, rojo cereza corporativo */
+      #producto .split-content-divider {
+        display: block;
+        width: 64px;
+        height: 3px;
+        border-radius: 2px;
+        background: var(--color-cherry);
+        margin: 0 0 20px;
       }
 
       /* Título */
@@ -2008,7 +2166,7 @@
         font-weight: 500;
         line-height: 1.2;
         color: #113c2b;
-        margin-bottom: 20px;
+        margin-bottom: 12px;
       }
 
       /* Texto */
@@ -2148,7 +2306,7 @@
 
         text-transform: uppercase;
 
-        color: #c14232;
+        color: var(--color-gold);
 
         display: block;
 
@@ -2164,7 +2322,7 @@
 
         line-height: 1.2;
 
-        color: var(--color-gold);
+        color: var(--color-forest);
 
         margin-bottom: 20px;
       }
@@ -2201,6 +2359,19 @@
         border-radius: 18px;
 
         box-shadow: var(--shadow-soft);
+
+        transition:
+          transform 0.4s var(--ease),
+          box-shadow 0.4s var(--ease);
+        will-change: transform;
+      }
+
+      .origin-card:hover,
+      .origin-card:focus-within {
+        transform: translateY(-8px) scale(1.015);
+        box-shadow:
+          0 30px 46px -20px rgba(12, 46, 32, 0.35),
+          0 4px 12px -4px rgba(224, 176, 72, 0.25);
       }
 
       .origin-card h3 {
@@ -2213,6 +2384,11 @@
         color: #e0b048;
 
         margin: 0 0 8px;
+        transition: transform 0.4s var(--ease);
+      }
+
+      .origin-card:hover h3 {
+        transform: translateY(-2px);
       }
 
       .origin-card h4 {
@@ -2336,7 +2512,7 @@
 
       .trace-grid {
         display: grid;
-        grid-template-columns: repeat(6, 1fr);
+        grid-template-columns: repeat(5, 1fr);
         gap: 16px;
       }
 
@@ -2381,9 +2557,12 @@
         transition: opacity 0.4s var(--ease);
       }
 
-      .trace-col-media .trace-col-icon svg {
+      .trace-col-media .trace-col-icon img {
         width: 30px;
         height: 30px;
+        object-fit: contain;
+        opacity: 1;
+        filter: brightness(0) invert(1);
       }
 
       .trace-col-media .trace-col-index {
@@ -2577,6 +2756,20 @@
       .contact-info .ci-icon svg {
         width: 18px;
         height: 18px;
+      }
+
+      .ci-item-text {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+      }
+
+      .ci-caption {
+        font-family: var(--font-body);
+        font-size: 11px;
+        font-weight: 500;
+        letter-spacing: 0.03em;
+        color: rgba(248, 244, 238, 0.55);
       }
 
       .map-card {
@@ -2804,12 +2997,35 @@ SELECT
    FILA DE BOTONES DE CONTACTO
 =================================*/
 
+      .contact-buttons-wrap {
+        display: flex;
+        gap: 16px;
+        margin-top: 10px;
+      }
+
+      .contact-buttons-wrap .contact-btn-col {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .contact-btn-caption {
+        font-family: var(--font-body);
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: rgba(17, 60, 43, 0.55);
+        text-align: center;
+      }
+
       .contact-buttons {
         display: flex;
         justify-content: center;
         align-items: stretch;
         gap: 16px;
-        margin-top: 10px;
+        margin-top: 0;
       }
 
       .contact-buttons .btn {
@@ -2831,7 +3047,8 @@ SELECT
       }
 
       @media (max-width: 768px) {
-        .contact-buttons {
+        .contact-buttons,
+        .contact-buttons-wrap {
           flex-direction: column;
         }
 
@@ -3014,9 +3231,10 @@ SELECT
 
       .footer-bottom {
         display: flex;
-        justify-content: space-between;
+        flex-direction: column;
         align-items: center;
-        flex-wrap: wrap;
+        justify-content: center;
+        text-align: center;
         gap: 12px;
         padding-top: 26px;
         font-size: 0.8rem;
@@ -3047,10 +3265,6 @@ SELECT
           --header-h: 78px;
         }
 
-        .main-nav-row {
-          display: none !important;
-        }
-
         .nav-inner {
           display: flex;
           justify-content: space-between;
@@ -3064,10 +3278,6 @@ SELECT
         .nav-inner .brand,
         .nav-inner .header-actions {
           justify-self: unset;
-        }
-
-        .menu-toggle {
-          display: flex;
         }
 
         .route-badge {
@@ -3288,7 +3498,6 @@ SELECT
         .stat-icon {
           width: 24px;
           height: 24px;
-          font-size: 1.1rem;
         }
       }
 
@@ -3374,7 +3583,6 @@ SELECT
               loading="eager"
             />
           </span>
-          <!-- <span class="brand-name">La Orquídea & el Oso</span> -->
         </a>
 
         <div class="header-actions">
@@ -3421,85 +3629,151 @@ SELECT
               </button>
             </div>
           </div>
-          <a
-            href="#contacto"
-            class="btn btn-primary"
-            data-i18n="nav.cta"
-            style="display: none"
-            id="navCtaDesktop"
-            >Request information</a
-          >
           <button
             class="menu-toggle"
             id="menuToggle"
             aria-label="Open menu"
             aria-expanded="false"
-            aria-controls="mobileNav"
+            aria-controls="megaMenu"
+            aria-haspopup="dialog"
           >
-            <span></span><span></span><span></span>
+            <span class="menu-toggle-bars"
+              ><span></span><span></span><span></span
+            ></span>
+            <span data-i18n="nav.menu_label">Menu</span>
           </button>
         </div>
       </div>
-
-      <div class="main-nav-row">
-        <nav class="container main-nav" aria-label="Main navigation">
-          <a href="#producto" data-i18n="nav.producto">Product</a>
-          <a href="#origen" data-i18n="nav.origen">Origin</a>
-          <a href="#programa" data-i18n="nav.programa">O&amp;O Program</a>
-          <a href="#trazabilidad" data-i18n="nav.trazabilidad">Traceability</a>
-          <a href="#contacto" data-i18n="nav.contacto">Contact</a>
-        </nav>
-      </div>
     </header>
 
-    <div class="mobile-nav" id="mobileNav">
-      <a href="#producto" data-i18n="nav.producto">Product</a>
-      <a href="#origen" data-i18n="nav.origen">Origin</a>
-      <a href="#programa" data-i18n="nav.programa">O&amp;O Program</a>
-      <a href="#trazabilidad" data-i18n="nav.trazabilidad">Traceability</a>
-      <a href="#contacto" data-i18n="nav.contacto">Contact</a>
-      <div class="mobile-route" aria-hidden="true">
-        <span class="flag">🇨🇴</span> Colombia
-        <span class="route-arrow">→</span>
-        Africa
-      </div>
-      <div class="lang-select" id="langSelectMobile">
-        <button
-          type="button"
-          class="lang-select-toggle"
-          id="langSelectToggleMobile"
-          aria-haspopup="listbox"
-          aria-expanded="false"
-        >
-          <span class="flag" id="langCurrentFlagMobile" data-geo-flag></span>
-          <span id="langCurrentCodeMobile">EN</span>
-          <span class="lang-caret" aria-hidden="true"></span>
-        </button>
-        <div class="lang-switch" role="listbox" aria-label="Language selector">
+    <!-- =========================== MEGA MENU (editorial panel) =========================== -->
+    <div
+      class="mega-menu"
+      id="megaMenu"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Main navigation"
+    >
+      <div class="mega-menu-scrim" id="megaMenuScrim"></div>
+      <div class="mega-menu-panel">
+        <div class="mega-menu-left">
           <button
             type="button"
-            data-lang-option="es"
-            aria-pressed="false"
-            role="option"
+            class="mega-menu-close"
+            id="megaMenuClose"
+            aria-label="Close menu"
           >
-            <span class="flag">🇨🇴</span>Español
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+              <path
+                d="M6 6l12 12M18 6L6 18"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+              />
+            </svg>
           </button>
-          <button
-            type="button"
-            data-lang-option="en"
-            aria-pressed="true"
-            role="option"
+
+          <span class="eyebrow mega-menu-eyebrow" data-i18n="nav.menu_eyebrow"
+            >La Orquídea y el Oso</span
           >
-            <span class="flag">🇬🇧</span>English
-          </button>
-          <button
-            type="button"
-            data-lang-option="fr"
-            aria-pressed="false"
-            role="option"
+
+          <ul class="mega-menu-links" id="megaMenuLinks">
+            <li>
+              <a
+                href="#inicio"
+                data-menu-image="assets/img/menu/menu-home.jpg"
+                data-menu-caption="South Africa Trade Mission 2026"
+                data-i18n="nav.home"
+                ><span class="mm-index">01</span>Home</a
+              >
+            </li>
+            <li>
+              <a
+                href="#origen"
+                data-menu-image="assets/img/menu/menu-origin.jpg"
+                data-menu-caption="Tierradentro, Cauca — Colombia"
+                data-i18n="nav.origen"
+                ><span class="mm-index">02</span>Origin</a
+              >
+            </li>
+            <li>
+              <a
+                href="#producto"
+                data-menu-image="assets/img/menu/menu-products.jpg"
+                data-menu-caption="Specialty, export-ready green coffee"
+                data-i18n="nav.producto"
+                ><span class="mm-index">03</span>Products</a
+              >
+            </li>
+            <li>
+              <a
+                href="#trazabilidad"
+                data-menu-image="assets/img/menu/menu-traceability.jpg"
+                data-menu-caption="Five stages, every one documented"
+                data-i18n="nav.trazabilidad"
+                ><span class="mm-index">04</span>Traceability</a
+              >
+            </li>
+            <li>
+              <a
+                href="#programa"
+                data-menu-image="assets/img/menu/menu-certifications.jpg"
+                data-menu-caption="Our own 60-point verification standard"
+                data-i18n="nav.certifications"
+                ><span class="mm-index">05</span>Certifications</a
+              >
+            </li>
+            <li>
+              <a
+                href="#programa"
+                data-menu-image="assets/img/menu/menu-program.jpg"
+                data-menu-caption="What we verify, lot by lot"
+                data-i18n="nav.programa"
+                ><span class="mm-index">06</span>O&amp;O Program</a
+              >
+            </li>
+            <li>
+              <a
+                href="#contacto"
+                data-menu-image="assets/img/menu/menu-contact.jpg"
+                data-menu-caption="Let's talk about your next import"
+                data-i18n="nav.contacto"
+                ><span class="mm-index">07</span>Contact</a
+              >
+            </li>
+          </ul>
+
+          <div class="mega-menu-foot">
+            <span class="flag">🇨🇴</span>
+            <span>Colombia</span>
+            <span class="route-arrow">→</span>
+            <span>South Africa · Ghana · Senegal</span>
+          </div>
+        </div>
+        <div class="mega-menu-right" id="megaMenuRight" aria-hidden="true">
+          <img
+            src="assets/img/fondoIni1.png"
+            class="is-active"
+            data-menu-slide
+            alt=""
+          />
+          <img src="assets/img/fondoIni1.png" data-menu-slide alt="" />
+          <img src="assets/img/fondoIni1.png" data-menu-slide alt="" />
+          <img
+            src="assets/img/fondoIni1.png"
+            data-menu-slide
+            alt=""
+          />
+          <img
+            src="assets/img/ejemploQuality.jpg"
+            data-menu-slide
+            alt=""
+          />
+          <img src="assets/img/menu/menu-program.jpg" data-menu-slide alt="" />
+          <img src="assets/img/menu/menu-contact.jpg" data-menu-slide alt="" />
+          <span class="mega-menu-right-caption" id="megaMenuCaption"
+            >South Africa Trade Mission 2026</span
           >
-            <span class="flag">🇸🇳</span>Français
-          </button>
         </div>
       </div>
     </div>
@@ -3516,7 +3790,12 @@ SELECT
 
         <div class="hero-overlay"></div>
 
-        <span class="hero-reviews-tab" aria-hidden="true">
+        <a
+          class="hero-reviews-tab"
+          href="#"
+          id="heroReviewsBtn"
+          aria-label="See our reviews"
+        >
           <svg viewBox="0 0 24 24" fill="none" width="12" height="12">
             <path
               d="M12 3l2.6 5.9 6.4.6-4.8 4.3 1.4 6.3L12 16.9 6.4 20.1l1.4-6.3-4.8-4.3 6.4-.6L12 3z"
@@ -3524,7 +3803,7 @@ SELECT
             />
           </svg>
           <span data-i18n="hero.reviews_tab">Reviews</span>
-        </span>
+        </a>
 
         <div class="hero-inner container">
           <div class="hero-content reveal is-visible">
@@ -3576,10 +3855,6 @@ SELECT
       </section>
 
       <!-- =========================== FRANJA DE EXPORTACIÓN =========================== -->
-      <!-- Franja delgada, de ancho completo, con desplazamiento continuo y suave
-           en bucle infinito, reforzando visualmente los tres destinos de
-           exportación. No es un banner publicitario: usa la misma paleta e
-           identidad tipográfica del resto del sitio. -->
       <section class="export-marquee" aria-label="Direct export destinations">
         <div class="export-marquee-track" aria-hidden="true">
           <span class="export-marquee-set">
@@ -3623,7 +3898,6 @@ SELECT
               ><i class="bi bi-flower1"></i> Lot-Traceable Coffee</span
             >
           </span>
-          <!-- Segundo set idéntico, requerido para el loop perfecto (translateX -50%) -->
           <span class="export-marquee-set">
             <span class="export-marquee-item"
               ><i class="bi bi-flag"></i> South Africa</span
@@ -3677,8 +3951,8 @@ SELECT
           <div class="stats-grid">
             <div class="stat-card reveal">
               <span class="stat-icon" aria-hidden="true"
-                ><i class="bi bi-flower1"></i
-              ></span>
+                ><img src="assets/img/ICONOS OYO-01.png" alt=""
+              /></span>
               <div class="stat-number">
                 <span class="count-up" data-target="328">0</span>
               </div>
@@ -3688,8 +3962,8 @@ SELECT
             </div>
             <div class="stat-card reveal reveal-delay-1">
               <span class="stat-icon" aria-hidden="true"
-                ><i class="bi bi-tree-fill"></i
-              ></span>
+                ><img src="assets/img/ICONOS OYO-15.png" alt=""
+              /></span>
               <div class="stat-number">
                 <span class="count-up" data-target="227">0</span
                 ><span class="stat-suffix" data-i18n="stats.farms_suffix"
@@ -3702,8 +3976,8 @@ SELECT
             </div>
             <div class="stat-card reveal reveal-delay-2">
               <span class="stat-icon" aria-hidden="true"
-                ><i class="bi bi-shield-check"></i
-              ></span>
+                ><img src="assets/img/ICONOS OYO-11.png" alt=""
+              /></span>
               <div class="stat-number">
                 <span class="count-up" data-target="48.75" data-decimals="2"
                   >0</span
@@ -3722,8 +3996,8 @@ SELECT
             </div>
             <div class="stat-card reveal reveal-delay-3">
               <span class="stat-icon" aria-hidden="true"
-                ><i class="bi bi-box-seam"></i
-              ></span>
+                ><img src="assets/img/ICONOS OYO-05.png" alt=""
+              /></span>
               <div class="stat-number">
                 <span class="count-up" data-target="990">0</span>
               </div>
@@ -3740,11 +4014,6 @@ SELECT
         <div class="container">
           <div class="split-media reveal">
             <div class="media-frame">
-              <!-- Carrusel automático (fade, infinito) + control manual con flechas,
-                   igual que en el diseño original: velocidad, transición y estructura
-                   sin modificar. Con cada cambio de slide solo se actualiza la imagen,
-                   el recuadro con el nombre del producto (dentro de la imagen) y el
-                   cuadro de atributos en la esquina de la imagen (float-card). -->
               <div class="product-carousel" id="productCarousel">
                 <img
                   class="carousel-slide is-active"
@@ -3815,13 +4084,11 @@ SELECT
                   />
                 </svg>
               </button>
-              <!-- Recuadro con el nombre del producto, dentro de la imagen -->
               <span class="media-frame-tag" id="carouselNameTag"
                 >☕
                 <span id="carouselNameText">Inzá Heritage Terroir</span></span
               >
             </div>
-            <!-- Cuadro de atributos sobre la esquina de la imagen -->
             <div class="float-card">
               <div class="fc-title" id="carouselAttrMain">84+ SCA</div>
               <div class="fc-text" id="carouselAttrRest">
@@ -3829,13 +4096,8 @@ SELECT
               </div>
             </div>
           </div>
-          <!-- El contenido de este lado (eyebrow, título, texto, lista y
-               descargas) permanece completamente estático: no rota, no
-               cambia y no se oculta durante el recorrido del carrusel. -->
           <div class="split-content reveal reveal-delay-1">
-            <span class="eyebrow" data-i18n="product.eyebrow"
-              >Exportable Product</span
-            >
+            <span class="eyebrow" data-i18n="product.eyebrow">Exportable Product</span>
             <h2 data-i18n="product.title">
               Specialty green coffee, traceable and export-ready
             </h2>
@@ -3944,7 +4206,6 @@ SELECT
         style="background: var(--color-bg-alt)"
       >
         <div class="container origin-layout">
-          <!-- Orden solicitado por el cliente: 1) Texto de Origen  2) Video -->
           <div class="origin-bottom">
             <div class="origin-text reveal">
               <span class="eyebrow" data-i18n="origin.eyebrow">Origin</span>
@@ -4003,7 +4264,6 @@ SELECT
               </ul>
             </div>
             <div class="origin-image reveal reveal-delay-1">
-              <!-- Imagen pendiente: reemplazar por una foto propia del origen/finca -->
               <div class="media-frame origin-image-frame">
                 <img
                   src="assets/img/fondoBN3.jpg"
@@ -4016,7 +4276,6 @@ SELECT
 
           <div class="origin-video-row reveal reveal-delay-2">
             <div class="media-frame origin-video-frame">
-              <!-- Video real del bosque y las fincas (antes estaba en el Inicio) -->
               <video
                 class="origin-video"
                 id="originVideo"
@@ -4027,22 +4286,75 @@ SELECT
               >
                 <source src="assets/videos/Loop%20Intro.mp4" type="video/mp4" />
               </video>
-              <!-- Nota: se removió el atributo "poster" porque apuntaba al propio archivo de video
-                 (.mp4), que no es una imagen válida y por eso no se mostraba. Si quieres un
-                 fotograma como portada, agrega assets/img/origin-poster.jpg y usa
-                 poster="assets/img/origin-poster.jpg" aquí. -->
               <span class="media-frame-tag"
                 >🌱 <span data-i18n="origin.eyebrow">Origin</span></span
               >
             </div>
           </div>
+
+          <!-- =========================== CARRUSEL INFINITO =========================== -->
+          <!-- Reubicado aquí, dentro de Origin, como cierre natural de la narrativa
+               de origen/exportación antes de pasar al producto certificado — evita
+               la saturación visual de tenerlo pegado al Hero y refuerza el mensaje
+               justo cuando el usuario ya conoce el contexto del origen. -->
+          <!-- <div class="reveal reveal-delay-3">
+            <div
+              class="export-marquee"
+              style="border-radius: var(--radius-lg)"
+              aria-label="Direct export destinations"
+            >
+              <div class="export-marquee-track" aria-hidden="true">
+                <span class="export-marquee-set">
+                  <span class="export-marquee-item"
+                    ><i class="bi bi-flag"></i> South Africa</span
+                  >
+                  <span class="export-marquee-sep">→</span>
+                  <span class="export-marquee-item"
+                    ><i class="bi bi-flag"></i> Ghana</span
+                  >
+                  <span class="export-marquee-sep">→</span>
+                  <span class="export-marquee-item"
+                    ><i class="bi bi-flag"></i> Senegal</span
+                  >
+                  <span class="export-marquee-sep">·</span>
+                  <span class="export-marquee-item"
+                    ><i class="bi bi-box-seam"></i> Direct Export</span
+                  >
+                  <span class="export-marquee-sep">·</span>
+                  <span class="export-marquee-item"
+                    ><i class="bi bi-flower1"></i> Lot-Traceable Coffee</span
+                  >
+                </span>
+                <span class="export-marquee-set">
+                  <span class="export-marquee-item"
+                    ><i class="bi bi-flag"></i> South Africa</span
+                  >
+                  <span class="export-marquee-sep">→</span>
+                  <span class="export-marquee-item"
+                    ><i class="bi bi-flag"></i> Ghana</span
+                  >
+                  <span class="export-marquee-sep">→</span>
+                  <span class="export-marquee-item"
+                    ><i class="bi bi-flag"></i> Senegal</span
+                  >
+                  <span class="export-marquee-sep">·</span>
+                  <span class="export-marquee-item"
+                    ><i class="bi bi-box-seam"></i> Direct Export</span
+                  >
+                  <span class="export-marquee-sep">·</span>
+                  <span class="export-marquee-item"
+                    ><i class="bi bi-flower1"></i> Lot-Traceable Coffee</span
+                  >
+                </span>
+              </div>
+            </div>
+          </div> -->
         </div>
       </section>
 
       <!-- =========================== CERTIFIED ORIGIN PROGRAM =========================== -->
       <section class="section-split" id="programa">
         <div class="container">
-          <!-- IMAGEN -->
           <div class="split-media reveal">
             <div class="media-frame">
               <img
@@ -4053,9 +4365,10 @@ SELECT
             </div>
           </div>
 
-          <!-- CONTENIDO -->
           <div class="split-content reveal reveal-delay-1">
-            <span class="program-eyebrow"> CERTIFIED ORIGIN PROGRAM </span>
+            <span class="eyebrow" data-i18n="traceability.eyebrow"
+              >CERTIFIED ORIGIN PROGRAM</span
+            >
 
             <h2>
               What We Verify,<br />
@@ -4069,43 +4382,33 @@ SELECT
               verifiable — and we invite buyers to check it themselves.
             </p>
 
-            <!-- 3 BLOQUES -->
-
             <div class="origin-cards">
-              <div class="origin-card">
+              <div class="origin-card" tabindex="0">
                 <h3>01</h3>
-
                 <h4>Origin</h4>
-
                 <p>
                   GPS-verified location, altitude, and variety — traced to the
                   exact farm and lot.
                 </p>
               </div>
 
-              <div class="origin-card">
+              <div class="origin-card" tabindex="0">
                 <h3>02</h3>
-
                 <h4>Sustainability</h4>
-
                 <p>
                   Regulated shade cover, water source protection, and agronomic
                   practices aligned with organic standards.
                 </p>
               </div>
 
-              <div class="origin-card">
+              <div class="origin-card" tabindex="0">
                 <h3>03</h3>
-
                 <h4>Quality</h4>
-
                 <p>
                   Strict evaluation standards for exceptional coffee profiles.
                 </p>
               </div>
             </div>
-
-            <!-- CTA -->
 
             <a href="#indice" class="program-btn">
               SEE HOW WE SCORE EVERY LOT
@@ -4119,16 +4422,15 @@ SELECT
         <div class="container">
           <div class="trace-intro reveal">
             <span class="eyebrow" data-i18n="traceability.eyebrow"
-              >Trazabilidad</span
+              >Traceability</span
             >
             <h2 data-i18n="traceability.title">
-              From forest to cup: six stages, one traceable lot
+              From Forest to Cup — Five Stages, Every One Documented
             </h2>
             <p data-i18n="traceability.text">
               Every container we export carries coffee from dozens of individual
-              producers in Inzá, Tierradentro — quality with artisanal
-              complexity that no monoculture can replicate, tracked from the
-              tree to the export document.
+              producers in Inzá, Tierradentro. No blending that erases who grew
+              what. Here's exactly how a lot moves from tree to export document:
             </p>
           </div>
 
@@ -4136,25 +4438,9 @@ SELECT
             <div class="trace-col">
               <div class="trace-col-media">
                 <span class="trace-col-index" aria-hidden="true">1</span>
-                <img
-                  src="assets/img/cultivadores.png"
-                  alt=""
-                /><!-- Imagen pendiente: reemplazar con foto real de recolectores -->
+                <img src="assets/img/cultivadores.png" alt="" />
                 <span class="trace-col-icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none">
-                    <path
-                      d="M12 21s-7-5.2-7-11a7 7 0 0114 0c0 5.8-7 11-7 11z"
-                      stroke="currentColor"
-                      stroke-width="1.6"
-                    />
-                    <circle
-                      cx="12"
-                      cy="10"
-                      r="2.6"
-                      stroke="currentColor"
-                      stroke-width="1.6"
-                    />
-                  </svg>
+                  <img src="assets/img/ICONOS OYO-01.png" alt="" />
                 </span>
               </div>
               <div
@@ -4172,29 +4458,24 @@ SELECT
             <div class="trace-col">
               <div class="trace-col-media">
                 <span class="trace-col-index" aria-hidden="true">2</span>
-                <img
-                  src="assets/img/cosecha.png"
-                  alt=""
-                /><!-- Imagen pendiente: reemplazar con foto real de recolección -->
+                <img src="assets/img/cosecha.png" alt="" />
                 <span class="trace-col-icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none">
-                    <path
-                      d="M12 3C7 6 5 10 5 13.5A7 7 0 0012 21a7 7 0 007-7.5C19 10 17 6 12 3z"
-                      stroke="currentColor"
-                      stroke-width="1.6"
-                    />
-                  </svg>
+                  <img
+                    src="assets/img/icons/icon-harvest-processing.png"
+                    alt=""
+                  />
                 </span>
               </div>
               <div
                 class="trace-col-title"
                 data-i18n="traceability.stage2_title"
               >
-                Harvest
+                Harvest &amp; Processing
               </div>
               <p class="trace-col-text" data-i18n="traceability.stage2_text">
-                Ripe cherries hand-picked by lot, variety and microclimate —
-                each harvest kept separate, never mixed at collection
+                Ripe cherries hand-picked, one by one, by lot, variety and
+                microclimate — then processed with care at the producer's own
+                farm, or alongside our team at the O&amp;O Origin Hub.
               </p>
             </div>
 
@@ -4203,55 +4484,16 @@ SELECT
                 <span class="trace-col-index" aria-hidden="true">3</span>
                 <img src="assets/img/ejemploQuality.jpg" alt="" />
                 <span class="trace-col-icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none">
-                    <path
-                      d="M9 3h6M10 3v6l-5.5 9.2A1.6 1.6 0 005.9 21h12.2a1.6 1.6 0 001.4-2.8L14 9V3"
-                      stroke="currentColor"
-                      stroke-width="1.6"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                  </svg>
+                  <img src="assets/img/icons/icon-laboratory.png" alt="" />
                 </span>
               </div>
               <div
                 class="trace-col-title"
                 data-i18n="traceability.stage3_title"
               >
-                Processing
-              </div>
-              <p class="trace-col-text" data-i18n="traceability.stage3_text">
-                Processed with care at the producer's own farm, or alongside our
-                team at the O&O Origin Hub — whichever the lot calls for.
-              </p>
-            </div>
-
-            <div class="trace-col">
-              <div class="trace-col-media">
-                <span class="trace-col-index" aria-hidden="true">4</span>
-                <img
-                  src="assets/img/noah2.jpg"
-                  alt=""
-                /><!-- Imagen pendiente: reemplazar con foto real de control de calidad -->
-                <span class="trace-col-icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none">
-                    <path
-                      d="M5 13l4 4L19 7"
-                      stroke="currentColor"
-                      stroke-width="2.2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                  </svg>
-                </span>
-              </div>
-              <div
-                class="trace-col-title"
-                data-i18n="traceability.stage4_title"
-              >
                 Laboratory
               </div>
-              <p class="trace-col-text" data-i18n="traceability.stage4_text">
+              <p class="trace-col-text" data-i18n="traceability.stage3_text">
                 Cupping controls and builds every lot — the same process that
                 improves the farm behind it, harvest after harvest.
               </p>
@@ -4259,30 +4501,19 @@ SELECT
 
             <div class="trace-col">
               <div class="trace-col-media">
-                <span class="trace-col-index" aria-hidden="true">5</span>
-                <img
-                  src="assets/img/export-ejemplo.jpg"
-                  alt=""
-                /><!-- Imagen pendiente: reemplazar con foto real de exportación / contenedor -->
+                <span class="trace-col-index" aria-hidden="true">4</span>
+                <img src="assets/img/export-ejemplo.jpg" alt="" />
                 <span class="trace-col-icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none">
-                    <path
-                      d="M3 12h4l3 8 4-16 3 8h4"
-                      stroke="currentColor"
-                      stroke-width="1.6"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                  </svg>
+                  <img src="assets/img/icons/icon-preparation.png" alt="" />
                 </span>
               </div>
               <div
                 class="trace-col-title"
-                data-i18n="traceability.stage5_title"
+                data-i18n="traceability.stage4_title"
               >
                 Preparation
               </div>
-              <p class="trace-col-text" data-i18n="traceability.stage5_text">
+              <p class="trace-col-text" data-i18n="traceability.stage4_text">
                 Milled, sorted and double-packed with a coded report per lot —
                 ready to travel, ready to trace.
               </p>
@@ -4290,51 +4521,21 @@ SELECT
 
             <div class="trace-col">
               <div class="trace-col-media">
-                <span class="trace-col-index" aria-hidden="true">6</span>
-
+                <span class="trace-col-index" aria-hidden="true">5</span>
                 <img src="assets/img/export-container.jpg" alt="" />
-
                 <span class="trace-col-icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none">
-                    <path
-                      d="M3 7h13v10H3z"
-                      stroke="currentColor"
-                      stroke-width="1.6"
-                    />
-                    <path
-                      d="M16 10h3l2 2v5h-5"
-                      stroke="currentColor"
-                      stroke-width="1.6"
-                      stroke-linejoin="round"
-                    />
-                    <circle
-                      cx="7"
-                      cy="18"
-                      r="1.6"
-                      stroke="currentColor"
-                      stroke-width="1.6"
-                    />
-                    <circle
-                      cx="18"
-                      cy="18"
-                      r="1.6"
-                      stroke="currentColor"
-                      stroke-width="1.6"
-                    />
-                  </svg>
+                  <img src="assets/img/icons/icon-export.png" alt="" />
                 </span>
               </div>
-
               <div
                 class="trace-col-title"
-                data-i18n="traceability.stage6_title"
+                data-i18n="traceability.stage5_title"
               >
                 Export
               </div>
-
-              <p class="trace-col-text" data-i18n="traceability.stage6_text">
+              <p class="trace-col-text" data-i18n="traceability.stage5_text">
                 Documented, lot-traceable shipment — ready for buyers in South
-                Africa, Ghana and Senegal.
+                Africa and West Africa.
               </p>
             </div>
           </div>
@@ -4385,7 +4586,12 @@ SELECT
                       stroke-linejoin="round"
                     /></svg
                 ></span>
-                <span>+57 314 436 3097</span>
+                <span class="ci-item-text">
+                  <span class="ci-caption"
+                    >Call our commercial team directly</span
+                  >
+                  <span>+57 314 436 3097</span>
+                </span>
               </div>
               <div class="ci-item">
                 <span class="ci-icon"
@@ -4403,7 +4609,12 @@ SELECT
                       stroke-linejoin="round"
                     /></svg
                 ></span>
-                <span>export@fincaslaorquideayeloso.com</span>
+                <span class="ci-item-text">
+                  <span class="ci-caption"
+                    >Send us your inquiries by email</span
+                  >
+                  <span>export@fincaslaorquideayeloso.com</span>
+                </span>
               </div>
               <div class="ci-item">
                 <span class="ci-icon"
@@ -4446,12 +4657,6 @@ SELECT
             method="post"
             novalidate
           >
-            <!-- NOTA: la acción del formulario sigue apuntando al buzón verificado
-                 en FormSubmit.co (organics.harmonyfarms@gmail.com). Si se desea
-                 recibir los mensajes en export@fincaslaorquideayeloso.com, esa
-                 dirección debe verificarse primero en FormSubmit.co y luego
-                 actualizar este "action" — de lo contrario el formulario dejará
-                 de funcionar. -->
             <input type="hidden" name="_captcha" value="false" />
             <input type="hidden" name="_template" value="table" />
             <input
@@ -4602,23 +4807,36 @@ SELECT
               >
             </div>
 
-            <div class="contact-buttons">
-              <button type="submit" class="btn btn-primary" id="submitBtn">
-                <span data-i18n="contact.form.submit">
-                  Get Samples & Technical Sheet
-                </span>
-              </button>
-
-              <button
-                type="button"
-                class="btn btn-secondary"
-                id="whatsappBtn"
-                disabled
-              >
-                <span data-i18n="contact.form.whatsapp"
-                  >Contact via WhatsApp</span
+            <div class="contact-buttons-wrap">
+              <div class="contact-btn-col">
+                <span class="contact-btn-caption"
+                  >Get samples & technical sheet</span
                 >
-              </button>
+                <div class="contact-buttons" style="margin-top: 0">
+                  <button type="submit" class="btn btn-primary" id="submitBtn">
+                    <span data-i18n="contact.form.submit">
+                      Get Samples & Technical Sheet
+                    </span>
+                  </button>
+                </div>
+              </div>
+              <div class="contact-btn-col">
+                <span class="contact-btn-caption"
+                  >Contact us instantly through WhatsApp</span
+                >
+                <div class="contact-buttons" style="margin-top: 0">
+                  <button
+                    type="button"
+                    class="btn btn-secondary"
+                    id="whatsappBtn"
+                    disabled
+                  >
+                    <span data-i18n="contact.form.whatsapp"
+                      >Contact via WhatsApp</span
+                    >
+                  </button>
+                </div>
+              </div>
             </div>
 
             <div
@@ -4662,7 +4880,9 @@ SELECT
           SOUTH AFRICA TRADE MISSION 2026
         </span>
 
-        <h2 id="missionModalTitle">Specialty Coffee — South Africa Ghana and Senegal Trade Mission 2026</h2>
+        <h2 id="missionModalTitle">
+          Specialty Coffee — South Africa Ghana and Senegal Trade Mission 2026
+        </h2>
 
         <p>
           Colombia trades very little specialty coffee directly with South
@@ -4893,8 +5113,6 @@ SELECT
       </div>
     </footer>
 
-    <!-- Se marca <html> como "pendiente de traducir" antes de que se pinte el body,
-       así language.js puede aplicar el idioma detectado sin parpadeo visible. -->
     <script>
       document.documentElement.classList.add("i18n-pending");
     </script>
@@ -4906,7 +5124,6 @@ SELECT
         const prefersReducedMotion = window.matchMedia(
           "(prefers-reduced-motion: reduce)",
         ).matches;
-        const isTouchDevice = window.matchMedia("(hover: none)").matches;
 
         // ---------- Header scroll state ----------
         const header = document.getElementById("siteHeader");
@@ -4915,49 +5132,127 @@ SELECT
         document.addEventListener("scroll", onScroll, { passive: true });
         onScroll();
 
-        // ---------- Mobile menu ----------
-        const menuToggle = document.getElementById("menuToggle");
-        const mobileNav = document.getElementById("mobileNav");
-        function closeMenu() {
-          mobileNav.classList.remove("is-open");
-          menuToggle.setAttribute("aria-expanded", "false");
-        }
-        menuToggle.addEventListener("click", () => {
-          const isOpen = mobileNav.classList.toggle("is-open");
-          menuToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
-        });
-        mobileNav
-          .querySelectorAll("a")
-          .forEach((a) => a.addEventListener("click", closeMenu));
-
-        // ---------- Auto-hide header after ~5s of inactivity ----------
-        // No afecta al menú hamburguesa ni a dispositivos táctiles/móviles:
-        // en touch no hay "mousemove" pasivo que deba ocultar la barra, así
-        // que el comportamiento se limita a puntero con hover real (desktop/tablet
-        // con mouse) y se desactiva mientras el menú móvil está abierto.
-        if (!prefersReducedMotion && !isTouchDevice) {
-          let idleTimer = null;
-          const IDLE_MS = 5000;
+        // ---------- Header hide-on-scroll-down, auto reappear after ~2s ----------
+        // Nunca desaparece definitivamente: al dejar de hacer scroll (o al
+        // hacer scroll hacia arriba) vuelve a mostrarse automáticamente tras
+        // ~2 segundos.
+        if (!prefersReducedMotion) {
+          let lastScrollY = window.scrollY;
+          let reappearTimer = null;
+          const REAPPEAR_MS = 2000;
 
           function showHeader() {
             header.classList.remove("is-idle-hidden");
           }
-          function hideHeaderIfIdle() {
-            if (mobileNav.classList.contains("is-open")) return;
-            if (document.querySelector(".lang-select.is-open")) return;
-            if (window.scrollY < 10) return; // no ocultar en la parte superior
-            header.classList.add("is-idle-hidden");
-          }
-          function resetIdleTimer() {
-            showHeader();
-            if (idleTimer) window.clearTimeout(idleTimer);
-            idleTimer = window.setTimeout(hideHeaderIfIdle, IDLE_MS);
+          function scheduleReappear() {
+            if (reappearTimer) window.clearTimeout(reappearTimer);
+            reappearTimer = window.setTimeout(showHeader, REAPPEAR_MS);
           }
 
-          ["mousemove", "scroll", "keydown", "wheel"].forEach((evt) =>
-            document.addEventListener(evt, resetIdleTimer, { passive: true }),
+          window.addEventListener(
+            "scroll",
+            () => {
+              const currentY = window.scrollY;
+              const goingDown = currentY > lastScrollY;
+
+              if (megaMenuIsOpen()) {
+                lastScrollY = currentY;
+                return;
+              }
+
+              if (goingDown && currentY > 80) {
+                header.classList.add("is-idle-hidden");
+                scheduleReappear();
+              } else {
+                showHeader();
+                scheduleReappear();
+              }
+              lastScrollY = currentY;
+            },
+            { passive: true },
           );
-          resetIdleTimer();
+        }
+
+        function megaMenuIsOpen() {
+          const mm = document.getElementById("megaMenu");
+          return mm && mm.classList.contains("is-open");
+        }
+
+        // ---------- Mega menu (editorial panel, book-page opening) ----------
+        const menuToggle = document.getElementById("menuToggle");
+        const megaMenu = document.getElementById("megaMenu");
+        const megaMenuScrim = document.getElementById("megaMenuScrim");
+        const megaMenuClose = document.getElementById("megaMenuClose");
+        const megaMenuLinks = document.getElementById("megaMenuLinks");
+        const megaMenuRight = document.getElementById("megaMenuRight");
+        const megaMenuCaption = document.getElementById("megaMenuCaption");
+
+        function openMegaMenu() {
+          megaMenu.classList.add("is-open");
+          menuToggle.setAttribute("aria-expanded", "true");
+          document.body.style.overflow = "hidden";
+          header.classList.remove("is-idle-hidden");
+          if (megaMenuClose) megaMenuClose.focus();
+        }
+        function closeMegaMenu() {
+          megaMenu.classList.remove("is-open");
+          menuToggle.setAttribute("aria-expanded", "false");
+          document.body.style.overflow = "";
+          menuToggle.focus();
+        }
+
+        if (menuToggle && megaMenu) {
+          menuToggle.addEventListener("click", () => {
+            if (megaMenu.classList.contains("is-open")) {
+              closeMegaMenu();
+            } else {
+              openMegaMenu();
+            }
+          });
+          if (megaMenuClose)
+            megaMenuClose.addEventListener("click", closeMegaMenu);
+          if (megaMenuScrim)
+            megaMenuScrim.addEventListener("click", closeMegaMenu);
+          document.addEventListener("keydown", (e) => {
+            if (e.key === "Escape" && megaMenu.classList.contains("is-open")) {
+              closeMegaMenu();
+            }
+          });
+
+          if (megaMenuLinks) {
+            const linkEls =
+              megaMenuLinks.querySelectorAll("a[data-menu-image]");
+            const imgEls = megaMenuRight
+              ? megaMenuRight.querySelectorAll("img[data-menu-slide]")
+              : [];
+
+            function setActiveImage(src, caption) {
+              imgEls.forEach((img) => {
+                img.classList.toggle(
+                  "is-active",
+                  img.getAttribute("src") === src,
+                );
+              });
+              if (megaMenuCaption && caption)
+                megaMenuCaption.textContent = caption;
+            }
+
+            linkEls.forEach((a) => {
+              a.addEventListener("mouseenter", () => {
+                setActiveImage(
+                  a.getAttribute("data-menu-image"),
+                  a.getAttribute("data-menu-caption"),
+                );
+              });
+              a.addEventListener("focus", () => {
+                setActiveImage(
+                  a.getAttribute("data-menu-image"),
+                  a.getAttribute("data-menu-caption"),
+                );
+              });
+              a.addEventListener("click", closeMegaMenu);
+            });
+          }
         }
 
         // ---------- Discrete language dropdown (desktop + mobile) ----------
@@ -5010,18 +5305,11 @@ SELECT
           "langCurrentFlag",
           "langCurrentCode",
         );
-        setupLangSelect(
-          "langSelectMobile",
-          "langSelectToggleMobile",
-          "langCurrentFlagMobile",
-          "langCurrentCodeMobile",
-        );
 
-        // Keep the two selectors (desktop + mobile) in sync so both always
-        // reflect the language currently applied by language.js. The toggle
-        // button itself only shows the language code (e.g. "EN ▾") — the
-        // flag is reserved for optionally showing the visitor's detected
-        // country, not the language.
+        // Keep the selector reflecting the language currently applied by
+        // language.js. The toggle button only shows the language code
+        // (e.g. "EN ▾") — the flag is reserved for optionally showing the
+        // visitor's detected country, not the language.
         function syncLangSelectors(langCode) {
           document.querySelectorAll(".lang-switch").forEach((group) => {
             group.querySelectorAll("[data-lang-option]").forEach((btn) => {
@@ -5031,10 +5319,8 @@ SELECT
               btn.setAttribute("aria-pressed", isActive ? "true" : "false");
             });
           });
-          ["langCurrentCode", "langCurrentCodeMobile"].forEach((codeId) => {
-            const codeEl = document.getElementById(codeId);
-            if (codeEl) codeEl.textContent = langCode.toUpperCase();
-          });
+          const codeEl = document.getElementById("langCurrentCode");
+          if (codeEl) codeEl.textContent = langCode.toUpperCase();
         }
 
         document
@@ -5053,11 +5339,8 @@ SELECT
         // pequeña bandera junto al selector de idioma (best-effort, sin
         // bloquear si el servicio no responde).
         (function detectVisitorFlag() {
-          const flagEls = [
-            document.getElementById("langCurrentFlag"),
-            document.getElementById("langCurrentFlagMobile"),
-          ].filter(Boolean);
-          if (!flagEls.length) return;
+          const flagEl = document.getElementById("langCurrentFlag");
+          if (!flagEl) return;
 
           const countryToFlag = (code) => {
             if (!code || code.length !== 2) return "";
@@ -5073,10 +5356,8 @@ SELECT
               const cc = data && data.country_code;
               const flag = countryToFlag(cc);
               if (!flag) return;
-              flagEls.forEach((el) => {
-                el.textContent = flag;
-                el.classList.add("is-visible");
-              });
+              flagEl.textContent = flag;
+              flagEl.classList.add("is-visible");
             })
             .catch(() => {
               /* silencioso: si falla, el toggle se queda solo con "EN ▾" */
@@ -5084,10 +5365,6 @@ SELECT
         })();
 
         // ---------- Product carousel (auto, fade, infinite + manual arrows) ----------
-        // Funcionamiento, velocidad y transición idénticos al diseño original:
-        // solo cambia, por cada slide, la imagen y la información superpuesta
-        // sobre ella (nombre del producto + atributos). El contenido del lado
-        // derecho de la sección no se toca desde aquí — permanece estático.
         const productCarousel = document.getElementById("productCarousel");
         if (productCarousel) {
           const slides = productCarousel.querySelectorAll(".carousel-slide");
@@ -5134,7 +5411,6 @@ SELECT
             startAuto();
           }
 
-          // Estado inicial sincronizado con el primer slide
           applySlideData(slides[activeIndex]);
 
           if (slides.length > 1) {
@@ -5202,6 +5478,15 @@ SELECT
           }
         }
 
+        // ---------- Hero "Reviews" button (href prepared, no redirect yet) ----------
+        const heroReviewsBtn = document.getElementById("heroReviewsBtn");
+        if (heroReviewsBtn) {
+          heroReviewsBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+            // href pendiente de configurar por el cliente — no redirige por ahora.
+          });
+        }
+
         // ---------- Reveal on scroll ----------
         const revealEls = document.querySelectorAll(".reveal:not(.is-visible)");
         if ("IntersectionObserver" in window) {
@@ -5254,7 +5539,7 @@ SELECT
           counters.forEach((c) => ioCount.observe(c));
         }
 
-        // ---------- Video de la sección "Origen" (antes en el hero) ----------
+        // ---------- Video de la sección "Origen" ----------
         const originVideo = document.getElementById("originVideo");
         const originPlayBtn = document.getElementById("originPlayBtn");
         if (originVideo && originPlayBtn) {
@@ -5271,7 +5556,6 @@ SELECT
           });
         }
 
-        ///////////////////////////////////////////////////////////////////////////////////////////
         // ---------- Contact form ----------
         const form = document.getElementById("contactForm");
         const status = document.getElementById("formStatus");
@@ -5328,8 +5612,6 @@ SELECT
           return valid;
         }
 
-        // Activar o desactivar botón WhatsApp
-
         form.addEventListener("submit", async function (e) {
           e.preventDefault();
 
@@ -5381,7 +5663,6 @@ SELECT
         });
 
         // ---------- WhatsApp ----------
-        // ---------- WhatsApp ----------
         if (whatsappBtn) {
           whatsappBtn.disabled = false;
 
@@ -5419,8 +5700,6 @@ Thank you.`;
         document.querySelectorAll(".btn, .btn-download").forEach(attachRipple);
 
         // ---------- Botones de descarga: animación + descarga real del PDF ----------
-        // El atributo "download" del <a> ya dispara la descarga nativa del navegador;
-        // aquí solo añadimos la animación visual del ícono y la barra de progreso.
         document.querySelectorAll(".btn-download").forEach((btn) => {
           const icon = btn.querySelector(".dl-icon");
           if (!icon) return;
