@@ -50,6 +50,45 @@
     "download_fr": "Índice O&O (Francés)"
   },
 
+  "verification": {
+    "eyebrow": "Índice de Origen Certificado — O&O",
+    "title": "Lo que encontramos cuando verificamos finca por finca",
+    "text": "Un estándar propio de evaluación de 60 puntos, aplicado presencialmente por nuestro equipo. No es una autoevaluación ni una certificación de terceros. Estos son los resultados reales obtenidos en nuestro estudio continuo dentro del Resguardo Indígena Yaquivá, Inzá Tierradentro, Cauca.",
+
+    "farms_value": "100+",
+    "farms_label": "Fincas visitadas",
+
+    "score_value": "41/60",
+    "score_label": "Puntaje promedio del Índice O&O",
+
+    "sectors_value": "6",
+    "sectors_label": "Veredas / sectores evaluados",
+
+    "chart_title": "Puntaje por bloque de evaluación",
+
+    "origin": "Origen y territorio",
+    "origin_score": "15/20",
+
+    "sustainability": "Sostenibilidad y prácticas",
+    "sustainability_score": "13/20",
+
+    "quality": "Calidad verificable",
+    "quality_score": "13/20",
+
+    "grower_percent": "48%",
+    "grower_label": "O&O Grower",
+
+    "select_percent": "37%",
+    "select_label": "O&O Select",
+
+    "reserve_percent": "15%",
+    "reserve_label": "O&O Reserve",
+
+    "description": "El 68% de las fincas evaluadas mantiene una cobertura de sombra regulada dentro del rango agronómico recomendado (20–35%), protegiendo el bosque altoandino mientras conserva la productividad del cultivo. No le pedimos que confíe únicamente en nuestra palabra: lo invitamos a comprobarlo mediante una visita a las fincas, una videollamada con los productores o una revisión detallada finca por finca.",
+
+    "cta": "Solicitar informe completo"
+  },
+
   "traceability": {
     "eyebrow": "Trazabilidad",
     "badge": "En desarrollo",

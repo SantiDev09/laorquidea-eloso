@@ -5,13 +5,27 @@
  /*
  * La Orquídea y el Oso — i18n
  * ---------------------------------------------------------------
- * Orden de idiomas: English (por defecto) -> Español -> Français.
- * Detección automática:
- *   1) Preferencia guardada por el usuario (localStorage), si eligió manualmente.
- *   2) Idioma del navegador (navigator.languages).
- *   3) Refinamiento opcional por país (best-effort, no bloqueante) usando
- *      un servicio gratuito de geolocalización por IP. Si falla, se
- *      calla en silencio y se queda con el idioma del navegador.
+ * El idioma por defecto es SIEMPRE inglés (English). A partir de ahí, la
+ * detección automática por país (geolocalización por IP) puede cambiarlo
+ * a español o francés únicamente para los mercados donde corresponde
+ * (Colombia/Latinoamérica -> es, África Occidental francófona/Francia -> fr).
+ * Para Sudáfrica, Ghana y el resto de mercados angloparlantes el sitio
+ * permanece en inglés, que es el idioma correcto para esos compradores.
+ *
+ * Orden de prioridad al cargar la página:
+ *   1) Preferencia guardada por el usuario (localStorage), si eligió
+ *      manualmente un idioma alguna vez -> se respeta siempre.
+ *   2) Si no hay preferencia manual: inglés por defecto (nunca se adivina
+ *      a partir del idioma del navegador, que no es un indicador confiable
+ *      del país real del visitante ni del idioma que debería ver).
+ *   3) Refinamiento automático por país (best-effort, no bloqueante): se
+ *      consulta el país del visitante por IP y, si corresponde a uno de
+ *      los mercados francófonos o hispanohablantes del mapa de abajo, se
+ *      cambia el idioma automáticamente. Se usan DOS proveedores gratuitos
+ *      de geolocalización por IP en cadena (uno de respaldo del otro) para
+ *      que la detección funcione de forma confiable incluso si el primer
+ *      servicio falla, está bloqueado por un adblocker, o excede su límite
+ *      de solicitudes. Si ambos fallan, el sitio se queda en inglés.
  * ---------------------------------------------------------------
  */
 (function () {
@@ -19,6 +33,7 @@
 
   const STORAGE_KEY = "oo_lang";
   const MANUAL_KEY = "oo_lang_manual";
+  const DEFAULT_LANG = "en";
 
   const dict = {
     en: {
@@ -32,12 +47,13 @@
       },
       hero: {
         badge: "South Africa Trade Mission 2026",
-        eyebrow: "Specialty Coffee — South Africa Ghana and Senegal Trade Mission 2026",
+        eyebrow: "Specialty Coffee — South Africa Trade Mission 2026",
         title: "Coffee You Can Trace to the Farmer. Not Just the Country.",
         subtitle:
-          'We grow, process and export specialty coffee directly from Inzá, Tierradentro — no reseller, no unverified "Colombian" label. Every lot is tied to the family that grew it, by name and lot. We\'re bringing that directly to South Africa and West Africa.',
+          'We grow, process and export specialty coffee directly from Inzá, Tierradentro — no reseller, no unverified "Colombian" label. Every lot is tied to the family that grew it, by name and lot.',
+        inline_link: "See the Direct-Trade Model →",
         cta_primary: "See the Traceable Lots",
-        cta_secondary: "Why We're Skipping the Middlemen",
+        cta_secondary: "Our Mission to Africa",
         reviews_tab: "Reviews",
         feature1_title: "100% Organic",
         feature1_text: "Certified coffee",
@@ -49,12 +65,17 @@
         feature4_text: "Regenerative farming",
       },
       stats: {
+        eyebrow: "Verified Impact",
+        title:
+          "What Direct Trade to South Africa, Ghana and Senegal Looks Like",
         families: "Partner farming families",
         farms_suffix: "ha",
         farms: "Under agroforestry / shade-grown coffee",
-        foods: "Diverse crops that break the monoculture",
-        organic_suffix: "ha",
-        organic: "Certified organic production",
+        foods_suffix: "%",
+        foods: "Farms verified zero-deforestation",
+        foods_note: "Verification ongoing",
+        organic_suffix: "",
+        organic: "Sacks exported directly in 2025",
       },
       product: {
         eyebrow: "Verified Origin, Specialty Cup, Direct Relations",
@@ -87,11 +108,74 @@
         video_note:
           "Buyers who choose O&O back that progress directly. A platform to follow it lot by lot is coming.",
       },
+      verification: {
+        eyebrow: "Certified Origin Index — O&O",
+        title: "What We Find When We Verify, Farm by Farm",
+        text: "A proprietary 60-point field standard, applied in person by our own team—not self-declared, not third-party. These are the real figures from our ongoing survey in the Yaquivá Indigenous Reserve, Inzá Tierradentro, Cauca.",
+
+        farms_value: "100+",
+        farms_label: "Farms visited",
+
+        score_value: "41/60",
+        score_label: "Average O&O Index score",
+
+        sectors_value: "6",
+        sectors_label: "Veredas / sectors covered",
+
+        chart_title: "Score by evaluation block",
+
+        origin: "Origin & territory",
+        origin_score: "15/20",
+
+        sustainability: "Sustainability & practices",
+        sustainability_score: "13/20",
+
+        quality: "Verifiable quality",
+        quality_score: "13/20",
+
+        grower_percent: "48%",
+        grower_label: "O&O Grower",
+
+        select_percent: "37%",
+        select_label: "O&O Select",
+
+        reserve_percent: "15%",
+        reserve_label: "O&O Reserve",
+
+        description:
+          "68% of evaluated farms keep regulated shade cover within the recommended agronomic range (20–35%), protecting the high-Andean forest while sustaining crop productivity. We don't ask you to take our word for it—we invite you to verify it yourself through a farm visit, a live video call with producers, or a farm-by-farm data review.",
+
+        cta: "Request Full Report",
+      },
+
+      directTrade: {
+        eyebrow: "Direct Trade, Verified",
+        title: "One Less Chain Between Farm and Roastery",
+
+        chain_title: "Typical Colombian Coffee Chain",
+        chain_text:
+          "Grower → Local trader → Cooperative / Exporter → Importer → Roaster",
+        chain_note: '4–5 margins. Origin usually stops at "Colombia."',
+
+        oo_title: "The O&O Chain",
+        oo_text:
+          "Named grower (GPS-tracked) → O&O Origin Hub (same team that exports) → Your roastery",
+        oo_note: "One step. Full visibility, farm to export.",
+
+        bullet1: "300+ producer families, named and GPS-verified, lot by lot.",
+        bullet2:
+          "O&O Origin Hub: producers process alongside our own team—no centralized industrial intermediary.",
+        bullet3:
+          "Every lot scored under our 60-point Certified Origin standard—ask to see it.",
+
+        cta: "See how we verify this",
+      },
       traceability: {
+        eyebrow: "Traceability",
         badge: "Coming soon",
-        title: "From forest to your cup: traceability in progress",
-        text: "We are building a traceability module that will let you look up the exact origin of every coffee lot.",
-        note: "Reserved space for the lot-level traceability module.",
+        title: "From Forest to Your Cup — Five Stages, All Documented",
+        text: "Every container we export brings together coffee from dozens of producers in Inzá, Tierradentro — no blends that hide who grew each lot. Here's the journey from tree to export document.",
+        note: "The lot-lookup tool is currently in development. Ask for a demo during the trade mission.",
       },
       contact: {
         eyebrow: "Contact",
@@ -111,7 +195,7 @@
           consent:
             "I agree to be contacted by La Orquídea y el Oso about this message.",
           submit: "Get My O&O Samples",
-          whatsapp: "WhatsApp - Directly",
+          whatsapp: "Or write to us directly on WhatsApp",
           sending: "Sending...",
           success: "Thank you! La Orquídea y el Oso has received your message.",
         },
@@ -141,9 +225,10 @@
         title:
           "Café que puede rastrear hasta el productor. No solo hasta el país.",
         subtitle:
-          "Cultivamos, procesamos y exportamos café de especialidad directamente desde Inzá, Tierradentro, sin intermediarios ni una etiqueta genérica de «café colombiano». Cada lote está vinculado a la familia que lo produjo, identificada por nombre y lote. Llevamos ese origen directamente a compradores de Sudáfrica y África Occidental.",
-        cta_primary: "Conocer el Café O&O",
-        cta_secondary: "Misión Comercial Sudáfrica 2026 – ProColombia",
+          "Cultivamos, procesamos y exportamos café de especialidad directamente desde Inzá, Tierradentro, sin intermediarios ni una etiqueta genérica de «café colombiano». Cada lote está vinculado a la familia que lo produjo, identificada por nombre y lote.",
+        inline_link: "Ver el modelo de comercio directo →",
+        cta_primary: "Ver los lotes trazables",
+        cta_secondary: "Nuestra misión en África",
         reviews_tab: "Reseñas",
         feature1_title: "100% Orgánico",
         feature1_text: "Café certificado",
@@ -155,12 +240,16 @@
         feature4_text: "Agricultura regenerativa",
       },
       stats: {
+        eyebrow: "Impacto verificado",
+        title: "Así se ve el comercio directo hacia Sudáfrica, Ghana y Senegal",
         families: "300+ familias productoras asociadas",
         farms: "Bajo sistemas agroforestales / café cultivado bajo sombra",
         farms_suffix: "ha",
-        foods: "Origen verificado",
-        organic: "Café de especialidad y relaciones directas",
+        foods_suffix: "%",
+        foods: "Fincas verificadas con cero deforestación",
+        foods_note: "Verificación en curso",
         organic_suffix: "",
+        organic: "Sacos exportados directamente en 2025",
       },
       product: {
         eyebrow:
@@ -195,10 +284,81 @@
         video_note:
           "Los compradores que eligen O&O respaldan ese progreso. Próximamente estará disponible una plataforma para seguir cada lote.",
       },
+      verification: {
+        eyebrow: "Índice de Origen Certificado — O&O",
+        title: "Lo que encontramos cuando verificamos finca por finca",
+        text: "Un estándar propio de evaluación en campo de 60 puntos, aplicado personalmente por nuestro equipo; no es una autoevaluación ni una certificación de terceros. Estas son las cifras reales de nuestro levantamiento continuo en el Resguardo Indígena Yaquivá, Inzá Tierradentro, Cauca.",
+
+        farms_value: "100+",
+        farms_label: "Fincas visitadas",
+
+        score_value: "41/60",
+        score_label: "Puntaje promedio del Índice O&O",
+
+        sectors_value: "6",
+        sectors_label: "Veredas / sectores cubiertos",
+
+        chart_title: "Puntaje por bloque de evaluación",
+
+        origin: "Origen y territorio",
+        origin_score: "15/20",
+
+        sustainability: "Sostenibilidad y prácticas",
+        sustainability_score: "13/20",
+
+        quality: "Calidad verificable",
+        quality_score: "13/20",
+
+        grower_percent: "48%",
+        grower_label: "O&O Grower",
+
+        select_percent: "37%",
+        select_label: "O&O Select",
+
+        reserve_percent: "15%",
+        reserve_label: "O&O Reserve",
+
+        description:
+          "El 68% de las fincas evaluadas mantiene una cobertura de sombra regulada dentro del rango agronómico recomendado (20–35%), protegiendo el bosque altoandino mientras conserva la productividad del cultivo. No le pedimos que crea en nuestra palabra; lo invitamos a comprobarlo mediante una visita a las fincas, una videollamada con los productores o una revisión detallada de los datos finca por finca.",
+
+        cta: "Solicitar informe completo",
+      },
+
+      directTrade: {
+        eyebrow: "Comercio Directo, Verificado",
+        title: "Un eslabón menos entre la finca y la tostadora",
+
+        chain_title: "Cadena tradicional del café colombiano",
+        chain_text:
+          "Productor → Comprador local → Cooperativa / Exportador → Importador → Tostadora",
+
+        chain_note:
+          "4–5 márgenes comerciales. Normalmente el origen termina en «Colombia».",
+
+        oo_title: "La cadena O&O",
+
+        oo_text:
+          "Productor identificado (georreferenciado por GPS) → Centro de Origen O&O (el mismo equipo que exporta) → Su tostadora",
+
+        oo_note:
+          "Un solo paso. Visibilidad completa desde la finca hasta la exportación.",
+
+        bullet1:
+          "Más de 300 familias productoras identificadas y verificadas por GPS, lote por lote.",
+
+        bullet2:
+          "Centro de Origen O&O: los productores procesan el café junto a nuestro equipo, sin intermediarios industriales centralizados.",
+
+        bullet3:
+          "Cada lote es evaluado bajo nuestro estándar de 60 puntos de Origen Certificado. Solicite conocerlo.",
+
+        cta: "Vea cómo realizamos esta verificación",
+      },
       traceability: {
+        eyebrow: "Trazabilidad",
         badge: "Próximamente",
         title: "Del bosque a la taza — cinco etapas, todas documentadas",
-        text: "Cada contenedor reúne café de decenas de productores de Inzá, Tierradentro. No hay mezclas que oculten quién cultivó cada lote. Así es el recorrido desde el árbol hasta el documento de exportación.",
+        text: "Cada contenedor que exportamos reúne café de decenas de productores de Inzá, Tierradentro — sin mezclas que oculten quién cultivó cada lote. Así es el recorrido desde el árbol hasta el documento de exportación.",
         note: "La herramienta de consulta por lote está en desarrollo. Solicite una demostración durante la misión comercial.",
       },
       contact: {
@@ -238,7 +398,7 @@
       nav: {
         producto: "Produit",
         origen: "Origine",
-        programa: "Programme O&O",
+        programa: "Programme O&amp;O",
         trazabilidad: "Traçabilité",
         contacto: "Contact",
         cta: "Demander des informations",
@@ -250,28 +410,33 @@
         title:
           "Un café dont vous pouvez retracer l'origine jusqu'au producteur. Pas seulement jusqu'au pays.",
         subtitle:
-          "Nous cultivons, transformons et exportons directement notre café de spécialité depuis Inzá, Tierradentro — sans intermédiaires ni simple étiquette « Café colombien ». Chaque lot est lié à la famille qui l'a produit, avec son nom et son numéro de lot. Nous apportons cette authenticité directement aux acheteurs d'Afrique du Sud et d'Afrique de l'Ouest.",
-        cta_primary: "Découvrir le Café O&O",
-        cta_secondary: "Mission Commerciale Afrique du Sud 2026 – ProColombia",
+          "Nous cultivons, transformons et exportons directement notre café de spécialité depuis Inzá, Tierradentro — sans intermédiaires ni simple étiquette « Café colombien ». Chaque lot est lié à la famille qui l'a produit, avec son nom et son numéro de lot.",
+        inline_link: "Voir le modèle de commerce direct →",
+        cta_primary: "Voir les lots traçables",
+        cta_secondary: "Notre mission en Afrique",
         reviews_tab: "Avis",
-        feature1_title: "",
-        feature1_text: "",
-        feature2_title: "",
-        feature2_text: "",
-        feature3_title: "",
-        feature3_text: "",
-        feature4_title: "",
-        feature4_text: "",
+        feature1_title: "100% biologique",
+        feature1_text: "Café certifié",
+        feature2_title: "Petits producteurs",
+        feature2_text: "Commerce direct",
+        feature3_title: "Café de spécialité",
+        feature3_text: "Tasse de haute qualité",
+        feature4_title: "Durable",
+        feature4_text: "Agriculture régénérative",
       },
 
       stats: {
         eyebrow: "Impact vérifié",
+        title:
+          "À quoi ressemble le commerce direct vers l'Afrique du Sud, le Ghana et le Sénégal",
         families: "300+ familles productrices partenaires",
         farms: "Sous systèmes agroforestiers / café cultivé à l'ombre",
         farms_suffix: "ha",
-        foods: "Origine vérifiée",
-        organic: "Café de spécialité et relations directes",
+        foods_suffix: "%",
+        foods: "Fermes vérifiées zéro déforestation",
+        foods_note: "Vérification en cours",
         organic_suffix: "",
+        organic: "Sacs exportés directement en 2025",
       },
 
       product: {
@@ -312,10 +477,77 @@
           "Les acheteurs qui choisissent O&O soutiennent directement cette amélioration continue. Une plateforme permettant de suivre chaque lot sera bientôt disponible.",
       },
 
+      verification: {
+        eyebrow: "Indice d'Origine Certifiée — O&O",
+        title:
+          "Ce que nous découvrons lors de nos vérifications, ferme par ferme",
+        text: "Une méthode d'évaluation exclusive sur 60 points, réalisée directement sur le terrain par notre équipe. Il ne s'agit ni d'une auto-déclaration ni d'une certification tierce. Voici les résultats réels de notre enquête menée dans la Réserve Indigène Yaquivá, Inzá Tierradentro, Cauca.",
+
+        farms_value: "100+",
+        farms_label: "Fermes visitées",
+
+        score_value: "41/60",
+        score_label: "Score moyen de l'indice O&O",
+
+        sectors_value: "6",
+        sectors_label: "Villages / secteurs couverts",
+
+        chart_title: "Résultat par bloc d'évaluation",
+
+        origin: "Origine et territoire",
+        origin_score: "15/20",
+
+        sustainability: "Durabilité et pratiques",
+        sustainability_score: "13/20",
+
+        quality: "Qualité vérifiable",
+        quality_score: "13/20",
+
+        grower_percent: "48%",
+        grower_label: "O&O Grower",
+
+        select_percent: "37%",
+        select_label: "O&O Select",
+
+        reserve_percent: "15%",
+        reserve_label: "O&O Reserve",
+
+        description:
+          "68 % des exploitations évaluées conservent une couverture d'ombrage réglementée dans la plage agronomique recommandée (20 à 35 %), protégeant ainsi la forêt andine tout en maintenant la productivité des cultures. Nous ne vous demandons pas de nous croire sur parole : nous vous invitons à le vérifier vous-même lors d'une visite des fermes, d'un appel vidéo avec les producteurs ou d'une analyse détaillée des données ferme par ferme.",
+
+        cta: "Demander le rapport complet",
+      },
+
+      directTrade: {
+        eyebrow: "Commerce Direct, Vérifié",
+        title: "Un intermédiaire de moins entre la ferme et votre torréfaction",
+
+        chain_title: "Chaîne classique du café colombien",
+        chain_text:
+          "Producteur → Acheteur local → Coopérative / Exportateur → Importateur → Torréfacteur",
+        chain_note:
+          "4 à 5 marges. L'origine s'arrête généralement à « Colombie ».",
+
+        oo_title: "La chaîne O&O",
+        oo_text:
+          "Producteur identifié (géolocalisé par GPS) → Centre d'Origine O&O (la même équipe qui exporte) → Votre torréfaction",
+        oo_note:
+          "Une seule étape. Visibilité complète de la ferme jusqu'à l'exportation.",
+
+        bullet1:
+          "Plus de 300 familles productrices identifiées et vérifiées par GPS, lot par lot.",
+        bullet2:
+          "Centre d'Origine O&O : les producteurs transforment leur café avec notre équipe, sans intermédiaire industriel centralisé.",
+        bullet3:
+          "Chaque lot est évalué selon notre norme propriétaire de 60 points pour l'Origine Certifiée. Demandez à la consulter.",
+
+        cta: "Découvrez notre méthode de vérification",
+      },
+
       traceability: {
         eyebrow: "Traçabilité",
-        badge: "En développement",
-        title: "De la forêt à la tasse — six étapes, toutes documentées",
+        badge: "Bientôt disponible",
+        title: "De la forêt à la tasse — cinq étapes, toutes documentées",
         text: "Chaque conteneur que nous exportons rassemble le café de dizaines de producteurs d'Inzá, Tierradentro, sans mélanges qui effacent l'origine. Chaque lot est suivi depuis l'arbre jusqu'au document d'exportation.",
         note: "Un outil de consultation des lots est actuellement en développement. Demandez une démonstration à notre équipe pendant la Mission Commerciale.",
       },
@@ -339,7 +571,7 @@
           consent:
             "J'accepte d'être contacté par La Orquídea y el Oso au sujet de cette demande.",
           submit: "Recevoir mes échantillons O&O",
-          whatsapp: "Passer le formulaire — WhatsApp",
+          whatsapp: "Ou écrivez-nous directement sur WhatsApp",
           sending: "Envoi en cours...",
           success: "Merci ! Nous avons bien reçu votre demande.",
         },
@@ -357,20 +589,13 @@
     },
   };
 
-  // Refinamiento opcional por país (código ISO -> idioma).
+  // Refinamiento automático por país (código ISO -> idioma).
   // Cubre principalmente los mercados objetivo: Sudáfrica y África
   // Occidental francófona, más el origen en Colombia/Latinoamérica.
+  // Cualquier país que NO aparezca aquí (incluida Sudáfrica, Ghana, y el
+  // resto de mercados angloparlantes) se queda en inglés, que es el
+  // idioma por defecto del sitio.
   const countryLangMap = {
-    // Sudáfrica y África angloparlante
-    ZA: "en",
-    NA: "en",
-    BW: "en",
-    ZW: "en",
-    ZM: "en",
-    GH: "en",
-    NG: "en",
-    KE: "en",
-    UG: "en",
     // África Occidental francófona
     SN: "fr",
     CI: "fr",
@@ -403,18 +628,6 @@
       .reduce((o, k) => (o && o[k] !== undefined ? o[k] : undefined), obj);
   }
 
-  function browserGuess() {
-    const langs =
-      navigator.languages && navigator.languages.length
-        ? navigator.languages
-        : [navigator.language || "en"];
-    for (const l of langs) {
-      const code = (l || "").slice(0, 2).toLowerCase();
-      if (dict[code]) return code;
-    }
-    return "en";
-  }
-
   function readStorage(key) {
     try {
       return localStorage.getItem(key);
@@ -432,7 +645,7 @@
   }
 
   function applyLanguage(lang) {
-    if (!dict[lang]) lang = "en";
+    if (!dict[lang]) lang = DEFAULT_LANG;
     const d = dict[lang];
 
     document.documentElement.setAttribute("lang", lang);
@@ -470,51 +683,77 @@
     if (manual) writeStorage(MANUAL_KEY, "1");
   }
 
-  function tryGeoRefinement(initialLang, manual) {
-    if (manual) return;
-    if (!("fetch" in window)) return;
-
+  // --- Geolocalización por IP con proveedor de respaldo -----------------
+  // Se intenta primero con ipapi.co; si falla, no responde a tiempo, o
+  // devuelve un resultado inválido (bloqueado por adblocker, límite de
+  // solicitudes alcanzado, sin conexión, etc.), se reintenta automáticamente
+  // con ipwho.is como segundo proveedor. Esto es lo que hace que la
+  // identificación automática de idioma por país sea confiable en la
+  // práctica y no dependa de un único servicio externo.
+  function fetchWithTimeout(url, ms) {
     let controller = null;
     let timeoutId = null;
     try {
       controller = new AbortController();
-      timeoutId = setTimeout(() => controller.abort(), 2500);
+      timeoutId = setTimeout(() => controller.abort(), ms);
     } catch (e) {
       /* AbortController no disponible en navegadores muy antiguos */
     }
-
-    fetch("https://ipapi.co/json/", {
-      signal: controller ? controller.signal : undefined,
-    })
+    return fetch(url, { signal: controller ? controller.signal : undefined })
       .then((r) => (r.ok ? r.json() : null))
-      .then((data) => {
+      .finally(() => {
         if (timeoutId) clearTimeout(timeoutId);
-        if (!data || !data.country_code) return;
-        // Si el usuario eligió un idioma manualmente mientras esperábamos
-        // la respuesta, no lo sobreescribimos.
-        if (readStorage(MANUAL_KEY) === "1") return;
+      });
+  }
 
-        const geoLang = countryLangMap[data.country_code];
-        if (geoLang && geoLang !== initialLang) {
-          applyLanguage(geoLang);
-          writeStorage(STORAGE_KEY, geoLang);
-        }
+  function getVisitorCountryCode() {
+    // Proveedor 1: ipapi.co (formato: { country_code: "CO", ... })
+    return fetchWithTimeout("https://ipapi.co/json/", 2500)
+      .then((data) => {
+        if (data && data.country_code) return data.country_code;
+        throw new Error("ipapi.co: sin country_code");
       })
       .catch(() => {
-        // Sin conexión, bloqueado por el navegador/adblocker, o límite de
-        // solicitudes alcanzado: se ignora en silencio y se conserva el
-        // idioma detectado por el navegador.
+        // Proveedor 2 (respaldo): ipwho.is (formato: { country_code: "CO", success: true, ... })
+        return fetchWithTimeout("https://ipwho.is/", 2500)
+          .then((data) => {
+            if (data && data.success !== false && data.country_code) {
+              return data.country_code;
+            }
+            return null;
+          })
+          .catch(() => null);
       });
+  }
+
+  function tryGeoRefinement(manual) {
+    if (manual) return;
+    if (!("fetch" in window)) return;
+
+    getVisitorCountryCode().then((countryCode) => {
+      if (!countryCode) return;
+      // Si el usuario eligió un idioma manualmente mientras esperábamos
+      // la respuesta, no lo sobreescribimos.
+      if (readStorage(MANUAL_KEY) === "1") return;
+
+      const geoLang = countryLangMap[countryCode] || DEFAULT_LANG;
+      applyLanguage(geoLang);
+      writeStorage(STORAGE_KEY, geoLang);
+    });
   }
 
   function init() {
     const saved = readStorage(STORAGE_KEY);
     const manual = readStorage(MANUAL_KEY) === "1";
 
-    const initialLang = saved || browserGuess();
+    // El idioma inicial SIEMPRE es inglés salvo que el visitante ya haya
+    // elegido (o se le haya detectado) otro idioma en una visita anterior.
+    // Ya no se adivina a partir del idioma del navegador: no es un
+    // indicador confiable del país real del visitante.
+    const initialLang = saved || DEFAULT_LANG;
     applyLanguage(initialLang);
 
-    tryGeoRefinement(initialLang, manual);
+    tryGeoRefinement(manual);
 
     document.querySelectorAll("[data-lang-option]").forEach((btn) => {
       btn.addEventListener("click", () => {

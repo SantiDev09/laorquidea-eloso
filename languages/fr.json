@@ -64,6 +64,46 @@
     "text": "Chaque conteneur que nous exportons rassemble le café de dizaines de producteurs d’Inzá, Tierradentro, tout en préservant la traçabilité de chaque lot. Aucun mélange qui masque l’origine ou les producteurs qui l’ont cultivé. Voici comment un lot parcourt les six étapes, de l’arbre jusqu’aux documents d’exportation.",
     "note": "Notre outil de consultation par lot est actuellement en cours de développement. Demandez un aperçu à notre équipe lors de la mission commerciale."
   },
+
+  "verification": {
+    "eyebrow": "Indice d'Origine Certifiée — O&O",
+    "title": "Ce que nous découvrons lors de nos vérifications, ferme par ferme",
+    "text": "Une méthode d'évaluation exclusive sur 60 points, réalisée directement sur le terrain par notre équipe. Il ne s'agit ni d'une auto-déclaration ni d'une certification tierce. Voici les résultats réels de notre enquête menée dans la Réserve Indigène Yaquivá, Inzá Tierradentro, Cauca.",
+
+    "farms_value": "100+",
+    "farms_label": "Fermes visitées",
+
+    "score_value": "41/60",
+    "score_label": "Score moyen de l'indice O&O",
+
+    "sectors_value": "6",
+    "sectors_label": "Villages / secteurs couverts",
+
+    "chart_title": "Résultat par bloc d'évaluation",
+
+    "origin": "Origine et territoire",
+    "origin_score": "15/20",
+
+    "sustainability": "Durabilité et pratiques",
+    "sustainability_score": "13/20",
+
+    "quality": "Qualité vérifiable",
+    "quality_score": "13/20",
+
+    "grower_percent": "48%",
+    "grower_label": "O&O Grower",
+
+    "select_percent": "37%",
+    "select_label": "O&O Select",
+
+    "reserve_percent": "15%",
+    "reserve_label": "O&O Reserve",
+
+    "description": "68 % des exploitations évaluées conservent une couverture d'ombrage réglementée dans la plage agronomique recommandée (20 à 35 %), protégeant ainsi la forêt andine tout en maintenant la productivité des cultures. Nous ne vous demandons pas de nous croire sur parole : nous vous invitons à le vérifier vous-même lors d'une visite des fermes, d'un appel vidéo avec les producteurs ou d'une analyse détaillée des données ferme par ferme.",
+
+    "cta": "Demander le rapport complet"
+  },
+
   "contact": {
     "eyebrow": "Contact",
     "title": "Parlons de votre prochaine importation",

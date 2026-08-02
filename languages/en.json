@@ -57,6 +57,39 @@
     "download_en": "O&O Index EN",
     "download_fr": "O&O Index FR"
   },
+  "verification": {
+    "eyebrow": "Certified Origin Index — O&O",
+    "title": "What We Find When We Verify, Farm by Farm",
+    "text": "A proprietary 60-point field standard, applied in person by our own team—not self-declared, not third-party. These are the real figures from our ongoing survey in the Yaquivá Indigenous Reserve, Inzá Tierradentro, Cauca.",
+
+    "farms_value": "100+",
+    "farms_label": "Farms visited",
+
+    "score_value": "41/60",
+    "score_label": "Average O&O Index score",
+
+    "sectors_value": "6",
+    "sectors_label": "Veredas / sectors covered",
+
+    "chart_title": "Score by evaluation block",
+
+    "origin": "Origin & territory",
+    "sustainability": "Sustainability & practices",
+    "quality": "Verifiable quality",
+
+    "grower_percent": "48%",
+    "grower_label": "O&O Grower",
+
+    "select_percent": "37%",
+    "select_label": "O&O Select",
+
+    "reserve_percent": "15%",
+    "reserve_label": "O&O Reserve",
+
+    "description": "68% of evaluated farms keep regulated shade cover within the recommended agronomic range (20–35%), protecting the high-Andean forest while sustaining crop productivity. We don't ask you to take our word for it—we invite you to verify it yourself through a farm visit, a live video call with producers, or a farm-by-farm data review.",
+
+    "cta": "Request Full Report"
+  },
   "traceability": {
     "eyebrow": "Trazabilidad",
     "badge": "Cada Etapa Documentada",
