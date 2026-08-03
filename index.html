@@ -118,7 +118,7 @@
         --color-forest-dark: #0c2e20;
         --color-cherry: #be4b33;
         --color-terracotta: #e8bfb0;
-        --color-gold: #e0b048;
+        --color-gold: #e0b048; 
         --color-gold-light: #ecc978;
         --color-orchid: #be4b33;
         --color-line: rgba(17, 60, 43, 0.14);
@@ -246,7 +246,7 @@
         content: "";
         width: 22px;
         height: 1.5px;
-        background: var(--color-gold);
+        background: var(--color-cherry);
         display: inline-block;
       }
 
@@ -588,16 +588,17 @@
         background: rgba(255, 255, 255, 0.08);
       }
 
-      .mega-menu-lang .lang-switch {
-        position: static;
-        opacity: 1;
-        visibility: visible;
-        transform: none;
-        background: rgba(255, 255, 255, 0.08);
-        border-color: rgba(255, 255, 255, 0.16);
-        box-shadow: none;
-        margin-top: 4px;
-      }
+      /* Ahora sí es un desplegable real (igual que el del header), solo que
+   con tema oscuro para verse bien dentro del panel del mega menú */
+.mega-menu-lang .lang-switch {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  right: auto;
+  background: rgba(12, 46, 32, 0.98);
+  border-color: rgba(255, 255, 255, 0.16);
+  box-shadow: 0 14px 34px -18px rgba(0, 0, 0, 0.5);
+}
 
       .mega-menu-lang .lang-switch button {
         color: #fefdf3;
@@ -2055,6 +2056,20 @@
         color: #e0b048;
       }
 
+      /* Contenedor del carrusel de Producto: un poco menos alto que el resto
+   de .media-frame del sitio, sin afectar Origen ni Programa */
+#producto .media-frame {
+  max-width: 460px;
+  aspect-ratio: 4/4.3;
+}
+
+@media (max-width: 560px) {
+  #producto .media-frame {
+    max-width: 100%;
+    aspect-ratio: 5/4.3;
+  }
+}
+
       /* Etiqueta sobre la imagen */
       #producto .media-frame-tag {
         background: rgba(254, 253, 247, 0.95);
@@ -2134,16 +2149,13 @@
       }
 
       .origin-image-frame {
-        position: relative;
-        width: 100%;
-        max-width: 480px;
-        aspect-ratio: 4/5;
-        overflow: hidden;
-        border-radius: var(
-          --radius,
-          8px
-        ); /* usa tu variable de radius si la tienes, si no bórrala */
-      }
+    width: 100%;
+    max-width: 580px;   /* antes 480px */
+    aspect-ratio: 5/4;  /* más ancho */
+    overflow: hidden;
+    border-radius: var(--radius-lg);
+}
+      
 
       .origin-image-frame img {
         position: absolute;
@@ -2153,6 +2165,15 @@
         object-fit: cover;
         display: block;
       }
+
+      .origin-image-frame video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
 
       /* ---- Breakpoints intermedios: tablets grandes / laptops pequeñas ---- */
       @media (max-width: 1200px) {
@@ -3909,12 +3930,17 @@ SELECT
       }
 
       .mega-menu-brand {
-        display: block;
-        text-align: center;
-        width: 100%;
-        margin-top: -10px;
-        margin-bottom: 28px;
-      }
+  display: block;
+  text-align: center;
+  width: 100%;
+  margin-top: -10px;
+  margin-bottom: 28px;
+  text-decoration: none; /* NUEVO: quita el subrayado por defecto del <a> */
+}
+
+.mega-menu-brand em {
+  font-style: normal; /* NUEVO: quita la cursiva solo aquí, sin tocar .brand-name em global */
+}
 
       .logo-menu {
         display: block;
@@ -4261,7 +4287,7 @@ SELECT
                 Every lot is tied to the family that grew it, by name and lot.
               </span>
               <a
-                href="#origin"
+                href="#origen"
                 class="hero-inline-link"
                 data-i18n="hero.inline_link"
                 >See the Direct-Trade Model →</a
@@ -4468,104 +4494,11 @@ SELECT
         </div>
       </section>
 
-      <!-- =========================== FRANJA DE EXPORTACIÓN =========================== -->
-      <!-- Franja delgada, de ancho completo, con desplazamiento continuo y suave
-     en bucle infinito, reforzando visualmente los tres destinos de
-     exportación. No es un banner publicitario: usa la misma paleta e
-     identidad tipográfica del resto del sitio. -->
-      <section class="export-marquee" aria-label="Direct export destinations">
-        <div class="export-marquee-track" aria-hidden="true">
-          <span class="export-marquee-set">
-            <span class="export-marquee-item"
-              ><span class="export-flag">🇿🇦</span> South Africa</span
-            >
-            <span class="export-marquee-sep">→</span>
-            <span class="export-marquee-item"
-              ><span class="export-flag">🇬🇭</span> Ghana</span
-            >
-            <span class="export-marquee-sep">→</span>
-            <span class="export-marquee-item"
-              ><span class="export-flag">🇸🇳</span> Senegal</span
-            >
-            <span class="export-marquee-sep">·</span>
-            <span class="export-marquee-item"
-              ><i class="bi bi-box-seam"></i> Direct Export</span
-            >
-            <span class="export-marquee-sep">·</span>
-            <span class="export-marquee-item"
-              ><i class="bi bi-flower1"></i> Lot-Traceable Coffee</span
-            >
-            <span class="export-marquee-sep">·</span>
-            <span class="export-marquee-item"
-              ><span class="export-flag">🇿🇦</span> South Africa</span
-            >
-            <span class="export-marquee-sep">→</span>
-            <span class="export-marquee-item"
-              ><span class="export-flag">🇬🇭</span> Ghana</span
-            >
-            <span class="export-marquee-sep">→</span>
-            <span class="export-marquee-item"
-              ><span class="export-flag">🇸🇳</span> Senegal</span
-            >
-            <span class="export-marquee-sep">·</span>
-            <span class="export-marquee-item"
-              ><i class="bi bi-box-seam"></i> Direct Export</span
-            >
-            <span class="export-marquee-sep">·</span>
-            <span class="export-marquee-item"
-              ><i class="bi bi-flower1"></i> Lot-Traceable Coffee</span
-            >
-          </span>
-          <!-- Segundo set idéntico, requerido para el loop perfecto (translateX -50%) -->
-          <span class="export-marquee-set">
-            <span class="export-marquee-item"
-              ><span class="export-flag">🇿🇦</span> South Africa</span
-            >
-            <span class="export-marquee-sep">→</span>
-            <span class="export-marquee-item"
-              ><span class="export-flag">🇬🇭</span> Ghana</span
-            >
-            <span class="export-marquee-sep">→</span>
-            <span class="export-marquee-item"
-              ><span class="export-flag">🇸🇳</span> Senegal</span
-            >
-            <span class="export-marquee-sep">·</span>
-            <span class="export-marquee-item"
-              ><i class="bi bi-box-seam"></i> Direct Export</span
-            >
-            <span class="export-marquee-sep">·</span>
-            <span class="export-marquee-item"
-              ><i class="bi bi-flower1"></i> Lot-Traceable Coffee</span
-            >
-            <span class="export-marquee-sep">·</span>
-            <span class="export-marquee-item"
-              ><span class="export-flag">🇿🇦</span> South Africa</span
-            >
-            <span class="export-marquee-sep">→</span>
-            <span class="export-marquee-item"
-              ><span class="export-flag">🇬🇭</span> Ghana</span
-            >
-            <span class="export-marquee-sep">→</span>
-            <span class="export-marquee-item"
-              ><span class="export-flag">🇸🇳</span> Senegal</span
-            >
-            <span class="export-marquee-sep">·</span>
-            <span class="export-marquee-item"
-              ><i class="bi bi-box-seam"></i> Direct Export</span
-            >
-            <span class="export-marquee-sep">·</span>
-            <span class="export-marquee-item"
-              ><i class="bi bi-flower1"></i> Lot-Traceable Coffee</span
-            >
-          </span>
-        </div>
-      </section>
-
       <!-- =========================== ORIGEN + DIRECT TRADE (unificado) =========================== -->
       <section
         class="origin-section"
         id="origen"
-        style="background: var(--color-bg-alt)"
+        style="background: var(--color-bg)"
       >
         <div class="container origin-layout">
           <!-- Orden solicitado por el cliente: 1) Texto de Origen  2) Video -->
@@ -4627,15 +4560,18 @@ SELECT
               </ul>
             </div>
             <div class="origin-image reveal reveal-delay-1">
-              <!-- Imagen pendiente: reemplazar por una foto propia del origen/finca -->
-              <div class="media-frame origin-image-frame">
-                <img
-                  src="assets/img/pruebaorigen.png"
-                  alt="Coffee-growing landscape in Inzá, Tierradentro"
-                  loading="lazy"
-                />
-              </div>
-            </div>
+  <div class="media-frame origin-image-frame">
+    <video
+      autoplay
+      muted
+      loop
+      playsinline
+      preload="auto"
+    >
+      <source src="assets/videos/origen.mp4" type="video/mp4" />
+    </video>
+  </div>
+</div>
           </div>
 
           <!-- =========================== DIRECT TRADE (dentro de la misma sección) =========================== -->
@@ -4675,7 +4611,7 @@ SELECT
               centralized industrial intermediary
             </li>
             <li>
-              Every lot scored under our 60-point Certified Origin standard —
+              Every lot scored under our 65-point Certified Origin standard —
               ask to see it
             </li>
           </ul>
@@ -4712,7 +4648,8 @@ SELECT
         </div>
       </section>
       <!-- =========================== PRODUCTO =========================== -->
-      <section class="section-split" id="producto">
+      <section class="section-split" id="producto" style="background: var(--color-bg-alt)">
+        
         <div class="container">
           <div class="split-media reveal">
             <div class="media-frame">
@@ -5021,7 +4958,7 @@ SELECT
                 /><!-- Imagen pendiente: reemplazar con foto real de control de calidad -->
                 <span class="trace-col-icon" aria-hidden="true">
                   <img
-                    src="assets/img/ICONOS OYO-28 (1).png"
+                    src="assets/img/ICONOS OYO-28.png"
                     alt=""
                     loading="lazy"
                   />
@@ -5048,7 +4985,7 @@ SELECT
                 /><!-- Imagen pendiente: reemplazar con foto real de exportación / contenedor -->
                 <span class="trace-col-icon" aria-hidden="true">
                   <img
-                    src="assets/img/ICONOS OYO-32.png"
+                    src="assets/img/ICONOS OYO-27.png"
                     alt=""
                     loading="lazy"
                   />
@@ -5126,7 +5063,7 @@ SELECT
             <span class="eyebrow">Certified Origin Index — O&amp;O</span>
             <h2>What We Find When We Verify, Farm by Farm</h2>
             <p>
-              A proprietary 60-point field standard, applied in person by our
+              A proprietary 65-point field standard, applied in person by our
               own team — not self-declared, not third-party. These are the real
               figures from our ongoing survey in the Yaquivá Indigenous Reserve,
               Inzá Tierradentro, Cauca.
@@ -5258,108 +5195,138 @@ SELECT
       </section>
 
       <!-- =========================== MODAL: Get the Full Report =========================== -->
-      <div id="reportModal" class="oo-report-modal">
-        <div class="oo-report-modal-box">
-          <button
-            type="button"
-            class="oo-report-modal-close"
-            aria-label="Close"
-            onclick="
-              document.getElementById('reportModal').style.display = 'none'
-            "
-          >
-            &times;
-          </button>
+<div id="reportModal" class="oo-report-modal">
+  <div class="oo-report-modal-box">
+    <button
+      type="button"
+      class="oo-report-modal-close"
+      aria-label="Close"
+      onclick="document.getElementById('reportModal').style.display = 'none'"
+    >
+      &times;
+    </button>
 
-          <span class="eyebrow">Certified Origin Index — O&amp;O</span>
-          <h3 class="oo-report-modal-title">Request the Full Report</h3>
-          <p class="oo-report-modal-text">
-            Leave your details and our team will send you the complete
-            farm-by-farm Certified Origin data — scores, tiers, and methodology.
-          </p>
+    <span class="eyebrow" data-i18n="report.eyebrow"
+      >Certified Origin Index — O&amp;O</span
+    >
+    <h3 class="oo-report-modal-title" data-i18n="report.title">
+      Request the Full Report
+    </h3>
+    <p class="oo-report-modal-text" data-i18n="report.text">
+      Leave your details and our team will send you the complete
+      farm-by-farm Certified Origin data — scores, tiers, and methodology.
+    </p>
 
-          <form id="reportForm" class="oo-report-form">
-            <label class="oo-report-field">
-              <span>Full name</span>
-              <input type="text" name="fullname" required autocomplete="name" />
-            </label>
+    <form
+      id="reportForm"
+      class="oo-report-form"
+      action="https://formsubmit.co/organics.harmonyfarms@gmail.com"
+      method="POST"
+      novalidate
+    >
+      <!-- NOTA: misma dirección verificada en FormSubmit.co que usa el
+           formulario de contacto principal. Si quieres recibir estos
+           reportes en export@fincaslaorquideayeloso.com, esa dirección
+           debe verificarse primero en FormSubmit.co y luego actualizar
+           este "action" — de lo contrario el formulario dejará de
+           funcionar. -->
+      <input type="hidden" name="_captcha" value="false" />
+      <input type="hidden" name="_template" value="table" />
+      <input
+        type="hidden"
+        name="_subject"
+        value="New Full Report request — La Orquídea y el Oso"
+      />
+      <input type="hidden" name="_next" value="" />
 
-            <label class="oo-report-field">
-              <span>Email</span>
-              <input type="email" name="email" required autocomplete="email" />
-            </label>
+      <label class="oo-report-field">
+        <span data-i18n="report.name">Full name</span>
+        <input type="text" name="fullname" required autocomplete="name" />
+      </label>
 
-            <label class="oo-report-field">
-              <span>Country</span>
-              <input
-                type="text"
-                name="country"
-                list="countryList"
-                required
-                autocomplete="country-name"
-                placeholder="Start typing..."
-              />
-              <datalist id="countryList">
-                <option value="Colombia"></option>
-                <option value="United States"></option>
-                <option value="Canada"></option>
-                <option value="Mexico"></option>
-                <option value="Argentina"></option>
-                <option value="Chile"></option>
-                <option value="Peru"></option>
-                <option value="Ecuador"></option>
-                <option value="Bolivia"></option>
-                <option value="Venezuela"></option>
-                <option value="Brazil"></option>
-                <option value="Paraguay"></option>
-                <option value="Uruguay"></option>
-                <option value="Costa Rica"></option>
-                <option value="Panama"></option>
-                <option value="Guatemala"></option>
-                <option value="Honduras"></option>
-                <option value="El Salvador"></option>
-                <option value="Nicaragua"></option>
-                <option value="Dominican Republic"></option>
-                <option value="Cuba"></option>
-                <option value="Puerto Rico"></option>
-                <option value="Spain"></option>
-                <option value="Portugal"></option>
-                <option value="France"></option>
-                <option value="Germany"></option>
-                <option value="Italy"></option>
-                <option value="United Kingdom"></option>
-                <option value="Ireland"></option>
-                <option value="Netherlands"></option>
-                <option value="Belgium"></option>
-                <option value="Switzerland"></option>
-                <option value="Austria"></option>
-                <option value="Sweden"></option>
-                <option value="Norway"></option>
-                <option value="Denmark"></option>
-                <option value="Finland"></option>
-                <option value="Poland"></option>
-                <option value="Greece"></option>
-                <option value="Turkey"></option>
-                <option value="Japan"></option>
-                <option value="South Korea"></option>
-                <option value="China"></option>
-                <option value="Australia"></option>
-                <option value="New Zealand"></option>
-                <option value="South Africa"></option>
-                <option value="United Arab Emirates"></option>
-                <option value="Saudi Arabia"></option>
-                <option value="India"></option>
-                <option value="Singapore"></option>
-                <!-- Agrega aquí el resto de países que necesites -->
-              </datalist>
-            </label>
+      <label class="oo-report-field">
+        <span data-i18n="report.email">Email</span>
+        <input type="email" name="email" required autocomplete="email" />
+      </label>
 
-            <button type="submit" class="btn oo-report-submit">
-              Send Report
-            </button>
-          </form>
-        </div>
-      </div>
+      <label class="oo-report-field">
+        <span data-i18n="report.country">Country</span>
+        <input
+          type="text"
+          name="country"
+          list="countryListReport"
+          required
+          autocomplete="country-name"
+          data-i18n-placeholder="report.country_placeholder"
+          placeholder="Start typing..."
+        />
+        <datalist id="countryListReport">
+          <option value="Colombia"></option>
+          <option value="United States"></option>
+          <option value="Canada"></option>
+          <option value="Mexico"></option>
+          <option value="Argentina"></option>
+          <option value="Chile"></option>
+          <option value="Peru"></option>
+          <option value="Ecuador"></option>
+          <option value="Bolivia"></option>
+          <option value="Venezuela"></option>
+          <option value="Brazil"></option>
+          <option value="Paraguay"></option>
+          <option value="Uruguay"></option>
+          <option value="Costa Rica"></option>
+          <option value="Panama"></option>
+          <option value="Guatemala"></option>
+          <option value="Honduras"></option>
+          <option value="El Salvador"></option>
+          <option value="Nicaragua"></option>
+          <option value="Dominican Republic"></option>
+          <option value="Cuba"></option>
+          <option value="Puerto Rico"></option>
+          <option value="Spain"></option>
+          <option value="Portugal"></option>
+          <option value="France"></option>
+          <option value="Germany"></option>
+          <option value="Italy"></option>
+          <option value="United Kingdom"></option>
+          <option value="Ireland"></option>
+          <option value="Netherlands"></option>
+          <option value="Belgium"></option>
+          <option value="Switzerland"></option>
+          <option value="Austria"></option>
+          <option value="Sweden"></option>
+          <option value="Norway"></option>
+          <option value="Denmark"></option>
+          <option value="Finland"></option>
+          <option value="Poland"></option>
+          <option value="Greece"></option>
+          <option value="Turkey"></option>
+          <option value="Japan"></option>
+          <option value="South Korea"></option>
+          <option value="China"></option>
+          <option value="Australia"></option>
+          <option value="New Zealand"></option>
+          <option value="South Africa"></option>
+          <option value="United Arab Emirates"></option>
+          <option value="Saudi Arabia"></option>
+          <option value="India"></option>
+          <option value="Singapore"></option>
+        </datalist>
+      </label>
+
+      <button type="submit" class="btn oo-report-submit" id="reportSubmitBtn">
+        <span data-i18n="report.submit">Send Report</span>
+      </button>
+
+      <div
+        class="form-status"
+        id="reportFormStatus"
+        role="status"
+        aria-live="polite"
+      ></div>
+    </form>
+  </div>
+</div>
 
       <!-- =========================== ESTILOS Y JS NUEVOS =========================== -->
       <style>
@@ -5498,23 +5465,65 @@ SELECT
         })();
 
         // ===== Modal: cerrar al hacer clic fuera =====
-        document
-          .getElementById("reportModal")
-          .addEventListener("click", function (e) {
-            if (e.target === this) this.style.display = "none";
-          });
+document
+  .getElementById("reportModal")
+  .addEventListener("click", function (e) {
+    if (e.target === this) this.style.display = "none";
+  });
 
-        // ===== Envío del formulario =====
-        document
-          .getElementById("reportForm")
-          .addEventListener("submit", function (e) {
-            e.preventDefault();
-            alert(
-              "Thank you! We'll send the full report to your email shortly.",
-            );
-            this.reset();
-            document.getElementById("reportModal").style.display = "none";
-          });
+// ===== Envío real del formulario a FormSubmit, con textos traducidos =====
+document
+  .getElementById("reportForm")
+  .addEventListener("submit", async function (e) {
+    e.preventDefault();
+
+    const form = this;
+    const status = document.getElementById("reportFormStatus");
+    const submitBtn = document.getElementById("reportSubmitBtn");
+
+    status.className = "form-status";
+    status.textContent = "";
+
+    const dict = window.__ooCurrentDict;
+    const sendingText = dict?.report?.sending || "Sending...";
+    const successText =
+      dict?.report?.success ||
+      "Thank you! We'll send the full report to your email shortly.";
+    const errorText =
+      dict?.report?.error || "There was an error submitting the form.";
+
+    const originalHtml = submitBtn.innerHTML;
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = `<span>${sendingText}</span>`;
+
+    try {
+      const response = await fetch(form.action, {
+        method: "POST",
+        body: new FormData(form),
+        headers: { Accept: "application/json" },
+      });
+
+      if (response.ok) {
+        status.textContent = successText;
+        status.classList.add("is-success");
+        form.reset();
+        setTimeout(() => {
+          document.getElementById("reportModal").style.display = "none";
+          status.textContent = "";
+          status.className = "form-status";
+        }, 2200);
+      } else {
+        status.textContent = errorText;
+        status.classList.add("is-error");
+      }
+    } catch (err) {
+      status.textContent = errorText;
+      status.classList.add("is-error");
+    }
+
+    submitBtn.disabled = false;
+    submitBtn.innerHTML = originalHtml;
+  });
       </script>
 
       <!-- =========================== CONTACTO =========================== -->
@@ -5762,7 +5771,7 @@ SELECT
                   <span class="ci-caption contact-btn-caption"
                     >Get your samples and technical sheet.</span
                   >
-                  <button type="submit" class="btn btn-primary" id="submitBtn">
+                  <button type="submit" class="btn btn-gold btn-pulse" id="submitBtn">
                     <span data-i18n="contact.form.submit">
                       Get Samples & Technical Sheet
                     </span>
@@ -5814,113 +5823,120 @@ SELECT
     </main>
 
     <!-- =========================== MISSION MODAL =========================== -->
-    <div
-      class="mission-modal-overlay"
-      id="missionModal"
-      role="dialog"
-      aria-modal="true"
-      aria-labelledby="missionModalTitle"
-      hidden
+<div
+  class="mission-modal-overlay"
+  id="missionModal"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="missionModalTitle"
+  hidden
+>
+  <div class="mission-modal">
+    <button
+      type="button"
+      class="mission-modal-close"
+      id="missionModalClose"
+      aria-label="Close"
     >
-      <div class="mission-modal">
-        <button
-          type="button"
-          class="mission-modal-close"
-          id="missionModalClose"
-          aria-label="Close"
-        >
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+        <path
+          d="M6 6l12 12M18 6L6 18"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+        />
+      </svg>
+    </button>
+
+    <span class="eyebrow mission-modal-eyebrow" data-i18n="mission.eyebrow">
+      SOUTH AFRICA TRADE MISSION 2026
+    </span>
+
+    <h2 id="missionModalTitle" data-i18n="mission.title">
+      South Africa Trade Mission 2026
+    </h2>
+
+    <p data-i18n="mission.text1">
+      Colombia and South Africa currently trade very little specialty coffee
+      directly. Most volumes travel through European or North American
+      intermediaries before reaching African roasters — adding cost, time
+      and distance between the farm and the cup.
+    </p>
+
+    <p data-i18n="mission.text2">
+      La Orquídea y el Oso is joining the South Africa Trade Mission 2026 to
+      open a direct route to explore and connect authenticity: specialty,
+      organic coffee from Inzá, Tierradentro, presented directly to
+      specialty buyers, distributors and roasters in South Africa and West
+      Africa.
+    </p>
+
+    <ul class="mission-modal-list">
+      <li>
+        <span class="leaf-icon">
+          <svg viewBox="0 0 24 24" fill="none">
             <path
-              d="M6 6l12 12M18 6L6 18"
+              d="M5 13l4 4L19 7"
               stroke="currentColor"
-              stroke-width="2"
+              stroke-width="2.4"
               stroke-linecap="round"
+              stroke-linejoin="round"
             />
           </svg>
-        </button>
-
-        <span class="eyebrow mission-modal-eyebrow">
-          SOUTH AFRICA TRADE MISSION 2026
         </span>
+        <span data-i18n="mission.bullet1">
+          A direct commercial bridge between Colombian growers and African
+          buyers — no unnecessary intermediaries.
+        </span>
+      </li>
 
-        <h2 id="missionModalTitle">South Africa Trade Mission 2026</h2>
+      <li>
+        <span class="leaf-icon">
+          <svg viewBox="0 0 24 24" fill="none">
+            <path
+              d="M5 13l4 4L19 7"
+              stroke="currentColor"
+              stroke-width="2.4"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </span>
+        <span data-i18n="mission.bullet2">
+          Samples, technical sheets and export-ready lots presented in
+          person.
+        </span>
+      </li>
 
-        <p>
-          Colombia and South Africa currently trade very little specialty coffee
-          directly. Most volumes travel through European or North American
-          intermediaries before reaching African roasters — adding cost, time
-          and distance between the farm and the cup.
-        </p>
+      <li>
+        <span class="leaf-icon">
+          <svg viewBox="0 0 24 24" fill="none">
+            <path
+              d="M5 13l4 4L19 7"
+              stroke="currentColor"
+              stroke-width="2.4"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </span>
+        <span data-i18n="mission.bullet3">
+          A long-term relationship with African roasters, not a one-off
+          shipment.
+        </span>
+      </li>
+    </ul>
 
-        <p>
-          La Orquídea y el Oso is joining the South Africa Trade Mission 2026 to
-          open a direct route to explore and connect authenticity: specialty,
-          organic coffee from Inzá, Tierradentro, presented directly to
-          specialty buyers, distributors and roasters in South Africa and West
-          Africa.
-        </p>
-
-        <ul class="mission-modal-list">
-          <li>
-            <span class="leaf-icon">
-              <svg viewBox="0 0 24 24" fill="none">
-                <path
-                  d="M5 13l4 4L19 7"
-                  stroke="currentColor"
-                  stroke-width="2.4"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </svg>
-            </span>
-            <span>
-              A direct commercial bridge between Colombian growers and African
-              buyers — no unnecessary intermediaries.
-            </span>
-          </li>
-
-          <li>
-            <span class="leaf-icon">
-              <svg viewBox="0 0 24 24" fill="none">
-                <path
-                  d="M5 13l4 4L19 7"
-                  stroke="currentColor"
-                  stroke-width="2.4"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </svg>
-            </span>
-            <span>
-              Samples, technical sheets and export-ready lots presented in
-              person.
-            </span>
-          </li>
-
-          <li>
-            <span class="leaf-icon">
-              <svg viewBox="0 0 24 24" fill="none">
-                <path
-                  d="M5 13l4 4L19 7"
-                  stroke="currentColor"
-                  stroke-width="2.4"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </svg>
-            </span>
-            <span>
-              A long-term relationship with African roasters, not a one-off
-              shipment.
-            </span>
-          </li>
-        </ul>
-
-        <a href="#contacto" class="btn btn-primary" id="missionModalCta">
-          Talk to our team
-        </a>
-      </div>
-    </div>
+    <a 
+      href="#contacto"
+      class="btn btn-primary"
+      id="missionModalCta"
+      data-i18n="mission.cta"
+    >
+      Talk to our team
+    </a>
+  </div>
+</div>
 
     <!-- =========================== FOOTER =========================== -->
     <footer class="site-footer">
@@ -6451,7 +6467,7 @@ SELECT
             document.body.style.overflow = "";
             window.setTimeout(() => {
               missionModal.hidden = true;
-              if (lastFocused) lastFocused.focus();
+              <!-- if (lastFocused) lastFocused.focus(); -->
             }, 350);
           }
 

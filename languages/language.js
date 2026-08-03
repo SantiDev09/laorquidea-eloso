@@ -177,6 +177,36 @@
         text: "Every container we export brings together coffee from dozens of producers in Inzá, Tierradentro — no blends that hide who grew each lot. Here's the journey from tree to export document.",
         note: "The lot-lookup tool is currently in development. Ask for a demo during the trade mission.",
       },
+
+      mission: {
+        eyebrow: "SOUTH AFRICA TRADE MISSION 2026",
+        title: "South Africa Trade Mission 2026",
+        text1:
+          "Colombia and South Africa currently trade very little specialty coffee directly. Most volumes travel through European or North American intermediaries before reaching African roasters — adding cost, time and distance between the farm and the cup.",
+        text2:
+          "La Orquídea y el Oso is joining the South Africa Trade Mission 2026 to open a direct route to explore and connect authenticity: specialty, organic coffee from Inzá, Tierradentro, presented directly to specialty buyers, distributors and roasters in South Africa and West Africa.",
+        bullet1:
+          "A direct commercial bridge between Colombian growers and African buyers — no unnecessary intermediaries.",
+        bullet2:
+          "Samples, technical sheets and export-ready lots presented in person.",
+        bullet3:
+          "A long-term relationship with African roasters, not a one-off shipment.",
+        cta: "Talk to our team",
+      },
+      report: {
+        eyebrow: "Certified Origin Index — O&amp;O",
+        title: "Request the Full Report",
+        text: "Leave your details and our team will send you the complete farm-by-farm Certified Origin data — scores, tiers, and methodology.",
+        name: "Full name",
+        email: "Email",
+        country: "Country",
+        country_placeholder: "Start typing...",
+        submit: "Send Report",
+        sending: "Sending...",
+        success: "Thank you! We'll send the full report to your email shortly.",
+        error: "There was an error submitting the form.",
+      },
+
       contact: {
         eyebrow: "Contact",
         title: "Let's Talk About Your Next Import",
@@ -361,6 +391,36 @@
         text: "Cada contenedor que exportamos reúne café de decenas de productores de Inzá, Tierradentro — sin mezclas que oculten quién cultivó cada lote. Así es el recorrido desde el árbol hasta el documento de exportación.",
         note: "La herramienta de consulta por lote está en desarrollo. Solicite una demostración durante la misión comercial.",
       },
+
+      mission: {
+        eyebrow: "MISIÓN COMERCIAL SUDÁFRICA 2026",
+        title: "Misión Comercial Sudáfrica 2026",
+        text1:
+          "Actualmente, Colombia y Sudáfrica comercian muy poco café de especialidad de forma directa. La mayoría de los volúmenes viaja a través de intermediarios europeos o norteamericanos antes de llegar a los tostadores africanos, lo que añade costo, tiempo y distancia entre la finca y la taza.",
+        text2:
+          "La Orquídea y el Oso se une a la Misión Comercial Sudáfrica 2026 para abrir una ruta directa que explore y conecte la autenticidad: café orgánico de especialidad de Inzá, Tierradentro, presentado directamente a compradores, distribuidores y tostadores de especialidad en Sudáfrica y África Occidental.",
+        bullet1:
+          "Un puente comercial directo entre los productores colombianos y los compradores africanos, sin intermediarios innecesarios.",
+        bullet2:
+          "Muestras, fichas técnicas y lotes listos para exportar, presentados en persona.",
+        bullet3:
+          "Una relación a largo plazo con los tostadores africanos, no un envío puntual.",
+        cta: "Hable con nuestro equipo",
+      },
+      report: {
+        eyebrow: "Índice de Origen Certificado — O&amp;O",
+        title: "Solicitar el informe completo",
+        text: "Déjenos sus datos y nuestro equipo le enviará la información completa del Origen Certificado, finca por finca: puntajes, niveles y metodología.",
+        name: "Nombre completo",
+        email: "Correo electrónico",
+        country: "País",
+        country_placeholder: "Empiece a escribir...",
+        submit: "Enviar informe",
+        sending: "Enviando...",
+        success: "¡Gracias! Le enviaremos el informe completo a su correo en breve.",
+        error: "Hubo un error al enviar el formulario.",
+      },
+
       contact: {
         eyebrow: "Contacto",
         title: "Conversemos sobre su próxima importación",
@@ -549,6 +609,35 @@
         title: "De la forêt à la tasse — cinq étapes, toutes documentées",
         text: "Chaque conteneur que nous exportons rassemble le café de dizaines de producteurs d'Inzá, Tierradentro, sans mélanges qui effacent l'origine. Chaque lot est suivi depuis l'arbre jusqu'au document d'exportation.",
         note: "Un outil de consultation des lots est actuellement en développement. Demandez une démonstration à notre équipe pendant la Mission Commerciale.",
+      },
+
+      mission: {
+        eyebrow: "MISSION COMMERCIALE AFRIQUE DU SUD 2026",
+        title: "Mission Commerciale Afrique du Sud 2026",
+        text1:
+          "Actuellement, la Colombie et l'Afrique du Sud échangent très peu de café de spécialité de manière directe. La majorité des volumes transite par des intermédiaires européens ou nord-américains avant d'atteindre les torréfacteurs africains, ce qui ajoute coût, temps et distance entre la ferme et la tasse.",
+        text2:
+          "La Orquídea y el Oso rejoint la Mission Commerciale Afrique du Sud 2026 pour ouvrir une voie directe permettant d'explorer et de connecter l'authenticité : un café biologique de spécialité venu d'Inzá, Tierradentro, présenté directement aux acheteurs, distributeurs et torréfacteurs spécialisés en Afrique du Sud et en Afrique de l'Ouest.",
+        bullet1:
+          "Un pont commercial direct entre les producteurs colombiens et les acheteurs africains, sans intermédiaires inutiles.",
+        bullet2:
+          "Échantillons, fiches techniques et lots prêts à l'exportation présentés en personne.",
+        bullet3:
+          "Une relation à long terme avec les torréfacteurs africains, et non un envoi ponctuel.",
+        cta: "Parlez à notre équipe",
+      },
+      report: {
+        eyebrow: "Indice d'Origine Certifiée — O&amp;O",
+        title: "Demander le rapport complet",
+        text: "Laissez-nous vos coordonnées et notre équipe vous enverra les données complètes de l'Origine Certifiée, ferme par ferme : scores, niveaux et méthodologie.",
+        name: "Nom complet",
+        email: "E-mail",
+        country: "Pays",
+        country_placeholder: "Commencez à taper...",
+        submit: "Envoyer le rapport",
+        sending: "Envoi en cours...",
+        success: "Merci ! Nous vous enverrons le rapport complet par e-mail sous peu.",
+        error: "Une erreur s'est produite lors de l'envoi du formulaire.",
       },
 
       contact: {
