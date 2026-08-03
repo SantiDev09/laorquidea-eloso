@@ -225,7 +225,7 @@
         title:
           "Café que puede rastrear hasta el productor. No solo hasta el país.",
         subtitle:
-          "Cultivamos, procesamos y exportamos café de especialidad directamente desde Inzá, Tierradentro, sin intermediarios ni una etiqueta genérica de «café colombiano». Cada lote está vinculado a la familia que lo produjo, identificada por nombre y lote.",
+          "Cultivamos, procesamos y exportamos café de especialidad directamente desde Inzá, Tierradentro, sin intermediarios ni una etiqueta genérica de origen. Cada lote está vinculado a la familia que lo produjo, identificada por nombre y lote.",
         inline_link: "Ver el modelo de comercio directo →",
         cta_primary: "Ver los lotes trazables",
         cta_secondary: "Nuestra misión en África",
@@ -410,7 +410,7 @@
         title:
           "Un café dont vous pouvez retracer l'origine jusqu'au producteur. Pas seulement jusqu'au pays.",
         subtitle:
-          "Nous cultivons, transformons et exportons directement notre café de spécialité depuis Inzá, Tierradentro — sans intermédiaires ni simple étiquette « Café colombien ». Chaque lot est lié à la famille qui l'a produit, avec son nom et son numéro de lot.",
+          "Nous cultivons, transformons et exportons directement notre café de spécialité depuis Inzá, Tierradentro, sans intermédiaires ni simple étiquette d'origine. Chaque lot est lié à la famille qui l'a produit, avec son nom et son numéro de lot.",
         inline_link: "Voir le modèle de commerce direct →",
         cta_primary: "Voir les lots traçables",
         cta_secondary: "Notre mission en Afrique",
@@ -424,7 +424,6 @@
         feature4_title: "Durable",
         feature4_text: "Agriculture régénérative",
       },
-
       stats: {
         eyebrow: "Impact vérifié",
         title:
