@@ -140,17 +140,10 @@
         box-sizing: border-box;
       }
 
-     html {
-  scroll-behavior: smooth;
-  overflow-x: hidden; /* NUEVO: red de seguridad para evitar scroll horizontal si algún elemento fixed se desborda */
-}
-.nav-inner {
-  min-width: 0; /* NUEVO: permite que el contenedor flex se encoja sin forzar overflow */
-}
-
-.nav-inner > * {
-  min-width: 0; /* NUEVO: mismo motivo, aplicado a cada hijo directo (menu-toggle, route-badge, brand, header-actions) */
-}
+      html {
+        scroll-behavior: smooth;
+        overflow-x: hidden; /* NUEVO: red de seguridad para evitar scroll horizontal si algún elemento fixed se desborda */
+      }
 
       /* Avoid a flash of untranslated content while language.js applies the
        detected language on first paint. Removed automatically by the script. */
