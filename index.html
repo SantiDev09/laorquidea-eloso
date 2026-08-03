@@ -118,7 +118,7 @@
         --color-forest-dark: #0c2e20;
         --color-cherry: #be4b33;
         --color-terracotta: #e8bfb0;
-        --color-gold: #e0b048; 
+        --color-gold: #e0b048;
         --color-gold-light: #ecc978;
         --color-orchid: #be4b33;
         --color-line: rgba(17, 60, 43, 0.14);
@@ -140,9 +140,17 @@
         box-sizing: border-box;
       }
 
-      html {
-        scroll-behavior: smooth;
-      }
+     html {
+  scroll-behavior: smooth;
+  overflow-x: hidden; /* NUEVO: red de seguridad para evitar scroll horizontal si algún elemento fixed se desborda */
+}
+.nav-inner {
+  min-width: 0; /* NUEVO: permite que el contenedor flex se encoja sin forzar overflow */
+}
+
+.nav-inner > * {
+  min-width: 0; /* NUEVO: mismo motivo, aplicado a cada hijo directo (menu-toggle, route-badge, brand, header-actions) */
+}
 
       /* Avoid a flash of untranslated content while language.js applies the
        detected language on first paint. Removed automatically by the script. */
@@ -397,6 +405,19 @@
         color: var(--color-gold);
       }
 
+      @media (max-width: 560px) {
+        /* Logo un poco más chico solo en móvil, para no invadir el resto del header */
+        .brand img.brand-logo {
+          height: clamp(34px, 9vw, 42px);
+        }
+
+        /* Oculta el texto "Africa" en pantallas angostas — deja "CO →" solamente,
+     así el badge queda compacto y no compite por espacio con el logo centrado */
+        .route-badge span:last-child {
+          display: none;
+        }
+      }
+
       /* Colombia -> Africa trade-route badge */
       .route-badge {
         display: inline-flex;
@@ -590,15 +611,15 @@
 
       /* Ahora sí es un desplegable real (igual que el del header), solo que
    con tema oscuro para verse bien dentro del panel del mega menú */
-.mega-menu-lang .lang-switch {
-  position: absolute;
-  top: calc(100% + 8px);
-  left: 0;
-  right: auto;
-  background: rgba(12, 46, 32, 0.98);
-  border-color: rgba(255, 255, 255, 0.16);
-  box-shadow: 0 14px 34px -18px rgba(0, 0, 0, 0.5);
-}
+      .mega-menu-lang .lang-switch {
+        position: absolute;
+        top: calc(100% + 8px);
+        left: 0;
+        right: auto;
+        background: rgba(12, 46, 32, 0.98);
+        border-color: rgba(255, 255, 255, 0.16);
+        box-shadow: 0 14px 34px -18px rgba(0, 0, 0, 0.5);
+      }
 
       .mega-menu-lang .lang-switch button {
         color: #fefdf3;
@@ -2058,17 +2079,17 @@
 
       /* Contenedor del carrusel de Producto: un poco menos alto que el resto
    de .media-frame del sitio, sin afectar Origen ni Programa */
-#producto .media-frame {
-  max-width: 460px;
-  aspect-ratio: 4/4.3;
-}
+      #producto .media-frame {
+        max-width: 460px;
+        aspect-ratio: 4/4.3;
+      }
 
-@media (max-width: 560px) {
-  #producto .media-frame {
-    max-width: 100%;
-    aspect-ratio: 5/4.3;
-  }
-}
+      @media (max-width: 560px) {
+        #producto .media-frame {
+          max-width: 100%;
+          aspect-ratio: 5/4.3;
+        }
+      }
 
       /* Etiqueta sobre la imagen */
       #producto .media-frame-tag {
@@ -2149,13 +2170,12 @@
       }
 
       .origin-image-frame {
-    width: 100%;
-    max-width: 580px;   /* antes 480px */
-    aspect-ratio: 5/4;  /* más ancho */
-    overflow: hidden;
-    border-radius: var(--radius-lg);
-}
-      
+        width: 100%;
+        max-width: 580px; /* antes 480px */
+        aspect-ratio: 5/4; /* más ancho */
+        overflow: hidden;
+        border-radius: var(--radius-lg);
+      }
 
       .origin-image-frame img {
         position: absolute;
@@ -2167,13 +2187,13 @@
       }
 
       .origin-image-frame video {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-}
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
 
       /* ---- Breakpoints intermedios: tablets grandes / laptops pequeñas ---- */
       @media (max-width: 1200px) {
@@ -2187,50 +2207,42 @@
           aspect-ratio: 4/3;
           max-height: none;
         }
-
         .origin-bottom {
           grid-template-columns: 1fr;
           gap: 36px;
         }
-
         .origin-image {
           order: -1;
         }
-
         .origin-image-frame {
-          max-width: 380px;
-          aspect-ratio: 4/5;
+          max-width: 100%;
+          aspect-ratio: 16/9; /* antes 4/5 (vertical) — ahora se mantiene ancho */
         }
       }
 
-      /* ---- Tablets medianas / pantallas medianas (el rango que se te veía mal) ---- */
       @media (max-width: 768px) {
         .origin-image-frame {
-          max-width: 340px;
+          max-width: 100%; /* antes 340px */
         }
       }
 
-      /* ---- Móviles ---- */
       @media (max-width: 560px) {
         .origin-section {
           padding: 60px 0;
         }
-
         .origin-layout {
           gap: 36px;
         }
-
         .origin-image-frame {
           max-width: 100%;
           width: 100%;
-          aspect-ratio: 1/1;
+          aspect-ratio: 16/9; /* antes 1/1 (cuadrado) */
         }
       }
 
-      /* ---- Móviles muy pequeños ---- */
       @media (max-width: 380px) {
         .origin-image-frame {
-          aspect-ratio: 4/5;
+          aspect-ratio: 16/9; /* antes 4/5 (vertical) */
         }
       }
 
@@ -3930,17 +3942,17 @@ SELECT
       }
 
       .mega-menu-brand {
-  display: block;
-  text-align: center;
-  width: 100%;
-  margin-top: -10px;
-  margin-bottom: 28px;
-  text-decoration: none; /* NUEVO: quita el subrayado por defecto del <a> */
-}
+        display: block;
+        text-align: center;
+        width: 100%;
+        margin-top: -10px;
+        margin-bottom: 28px;
+        text-decoration: none; /* NUEVO: quita el subrayado por defecto del <a> */
+      }
 
-.mega-menu-brand em {
-  font-style: normal; /* NUEVO: quita la cursiva solo aquí, sin tocar .brand-name em global */
-}
+      .mega-menu-brand em {
+        font-style: normal; /* NUEVO: quita la cursiva solo aquí, sin tocar .brand-name em global */
+      }
 
       .logo-menu {
         display: block;
@@ -4014,7 +4026,7 @@ SELECT
           <!-- <span class="flag">🇨🇴</span> -->
           <span>CO</span>
           <span class="route-arrow">→</span>
-          <span>Africa</span>
+          <span>AFR</span>
         </button>
 
         <a
@@ -4560,18 +4572,15 @@ SELECT
               </ul>
             </div>
             <div class="origin-image reveal reveal-delay-1">
-  <div class="media-frame origin-image-frame">
-    <video
-      autoplay
-      muted
-      loop
-      playsinline
-      preload="auto"
-    >
-      <source src="assets/videos/origenhorizontal.mp4" type="video/mp4" />
-    </video>
-  </div>
-</div>
+              <div class="media-frame origin-image-frame">
+                <video autoplay muted loop playsinline preload="auto">
+                  <source
+                    src="assets/videos/origenhorizontal.mp4"
+                    type="video/mp4"
+                  />
+                </video>
+              </div>
+            </div>
           </div>
 
           <!-- =========================== DIRECT TRADE (dentro de la misma sección) =========================== -->
@@ -4648,8 +4657,11 @@ SELECT
         </div>
       </section>
       <!-- =========================== PRODUCTO =========================== -->
-      <section class="section-split" id="producto" style="background: var(--color-bg-alt)">
-        
+      <section
+        class="section-split"
+        id="producto"
+        style="background: var(--color-bg-alt)"
+      >
         <div class="container">
           <div class="split-media reveal">
             <div class="media-frame">
@@ -5195,138 +5207,144 @@ SELECT
       </section>
 
       <!-- =========================== MODAL: Get the Full Report =========================== -->
-<div id="reportModal" class="oo-report-modal">
-  <div class="oo-report-modal-box">
-    <button
-      type="button"
-      class="oo-report-modal-close"
-      aria-label="Close"
-      onclick="document.getElementById('reportModal').style.display = 'none'"
-    >
-      &times;
-    </button>
+      <div id="reportModal" class="oo-report-modal">
+        <div class="oo-report-modal-box">
+          <button
+            type="button"
+            class="oo-report-modal-close"
+            aria-label="Close"
+            onclick="
+              document.getElementById('reportModal').style.display = 'none'
+            "
+          >
+            &times;
+          </button>
 
-    <span class="eyebrow" data-i18n="report.eyebrow"
-      >Certified Origin Index — O&amp;O</span
-    >
-    <h3 class="oo-report-modal-title" data-i18n="report.title">
-      Request the Full Report
-    </h3>
-    <p class="oo-report-modal-text" data-i18n="report.text">
-      Leave your details and our team will send you the complete
-      farm-by-farm Certified Origin data — scores, tiers, and methodology.
-    </p>
+          <span class="eyebrow" data-i18n="report.eyebrow"
+            >Certified Origin Index — O&amp;O</span
+          >
+          <h3 class="oo-report-modal-title" data-i18n="report.title">
+            Request the Full Report
+          </h3>
+          <p class="oo-report-modal-text" data-i18n="report.text">
+            Leave your details and our team will send you the complete
+            farm-by-farm Certified Origin data — scores, tiers, and methodology.
+          </p>
 
-    <form
-      id="reportForm"
-      class="oo-report-form"
-      action="https://formsubmit.co/organics.harmonyfarms@gmail.com"
-      method="POST"
-      novalidate
-    >
-      <!-- NOTA: misma dirección verificada en FormSubmit.co que usa el
+          <form
+            id="reportForm"
+            class="oo-report-form"
+            action="https://formsubmit.co/export@fincaslaorquideayeloso.com"
+            method="POST"
+            novalidate
+          >
+            <!-- NOTA: misma dirección verificada en FormSubmit.co que usa el
            formulario de contacto principal. Si quieres recibir estos
            reportes en export@fincaslaorquideayeloso.com, esa dirección
            debe verificarse primero en FormSubmit.co y luego actualizar
            este "action" — de lo contrario el formulario dejará de
            funcionar. -->
-      <input type="hidden" name="_captcha" value="false" />
-      <input type="hidden" name="_template" value="table" />
-      <input
-        type="hidden"
-        name="_subject"
-        value="New Full Report request — La Orquídea y el Oso"
-      />
-      <input type="hidden" name="_next" value="" />
+            <input type="hidden" name="_captcha" value="false" />
+            <input type="hidden" name="_template" value="table" />
+            <input
+              type="hidden"
+              name="_subject"
+              value="New Full Report request — La Orquídea y el Oso"
+            />
+            <input type="hidden" name="_next" value="" />
 
-      <label class="oo-report-field">
-        <span data-i18n="report.name">Full name</span>
-        <input type="text" name="fullname" required autocomplete="name" />
-      </label>
+            <label class="oo-report-field">
+              <span data-i18n="report.name">Full name</span>
+              <input type="text" name="fullname" required autocomplete="name" />
+            </label>
 
-      <label class="oo-report-field">
-        <span data-i18n="report.email">Email</span>
-        <input type="email" name="email" required autocomplete="email" />
-      </label>
+            <label class="oo-report-field">
+              <span data-i18n="report.email">Email</span>
+              <input type="email" name="email" required autocomplete="email" />
+            </label>
 
-      <label class="oo-report-field">
-        <span data-i18n="report.country">Country</span>
-        <input
-          type="text"
-          name="country"
-          list="countryListReport"
-          required
-          autocomplete="country-name"
-          data-i18n-placeholder="report.country_placeholder"
-          placeholder="Start typing..."
-        />
-        <datalist id="countryListReport">
-          <option value="Colombia"></option>
-          <option value="United States"></option>
-          <option value="Canada"></option>
-          <option value="Mexico"></option>
-          <option value="Argentina"></option>
-          <option value="Chile"></option>
-          <option value="Peru"></option>
-          <option value="Ecuador"></option>
-          <option value="Bolivia"></option>
-          <option value="Venezuela"></option>
-          <option value="Brazil"></option>
-          <option value="Paraguay"></option>
-          <option value="Uruguay"></option>
-          <option value="Costa Rica"></option>
-          <option value="Panama"></option>
-          <option value="Guatemala"></option>
-          <option value="Honduras"></option>
-          <option value="El Salvador"></option>
-          <option value="Nicaragua"></option>
-          <option value="Dominican Republic"></option>
-          <option value="Cuba"></option>
-          <option value="Puerto Rico"></option>
-          <option value="Spain"></option>
-          <option value="Portugal"></option>
-          <option value="France"></option>
-          <option value="Germany"></option>
-          <option value="Italy"></option>
-          <option value="United Kingdom"></option>
-          <option value="Ireland"></option>
-          <option value="Netherlands"></option>
-          <option value="Belgium"></option>
-          <option value="Switzerland"></option>
-          <option value="Austria"></option>
-          <option value="Sweden"></option>
-          <option value="Norway"></option>
-          <option value="Denmark"></option>
-          <option value="Finland"></option>
-          <option value="Poland"></option>
-          <option value="Greece"></option>
-          <option value="Turkey"></option>
-          <option value="Japan"></option>
-          <option value="South Korea"></option>
-          <option value="China"></option>
-          <option value="Australia"></option>
-          <option value="New Zealand"></option>
-          <option value="South Africa"></option>
-          <option value="United Arab Emirates"></option>
-          <option value="Saudi Arabia"></option>
-          <option value="India"></option>
-          <option value="Singapore"></option>
-        </datalist>
-      </label>
+            <label class="oo-report-field">
+              <span data-i18n="report.country">Country</span>
+              <input
+                type="text"
+                name="country"
+                list="countryListReport"
+                required
+                autocomplete="country-name"
+                data-i18n-placeholder="report.country_placeholder"
+                placeholder="Start typing..."
+              />
+              <datalist id="countryListReport">
+                <option value="Colombia"></option>
+                <option value="United States"></option>
+                <option value="Canada"></option>
+                <option value="Mexico"></option>
+                <option value="Argentina"></option>
+                <option value="Chile"></option>
+                <option value="Peru"></option>
+                <option value="Ecuador"></option>
+                <option value="Bolivia"></option>
+                <option value="Venezuela"></option>
+                <option value="Brazil"></option>
+                <option value="Paraguay"></option>
+                <option value="Uruguay"></option>
+                <option value="Costa Rica"></option>
+                <option value="Panama"></option>
+                <option value="Guatemala"></option>
+                <option value="Honduras"></option>
+                <option value="El Salvador"></option>
+                <option value="Nicaragua"></option>
+                <option value="Dominican Republic"></option>
+                <option value="Cuba"></option>
+                <option value="Puerto Rico"></option>
+                <option value="Spain"></option>
+                <option value="Portugal"></option>
+                <option value="France"></option>
+                <option value="Germany"></option>
+                <option value="Italy"></option>
+                <option value="United Kingdom"></option>
+                <option value="Ireland"></option>
+                <option value="Netherlands"></option>
+                <option value="Belgium"></option>
+                <option value="Switzerland"></option>
+                <option value="Austria"></option>
+                <option value="Sweden"></option>
+                <option value="Norway"></option>
+                <option value="Denmark"></option>
+                <option value="Finland"></option>
+                <option value="Poland"></option>
+                <option value="Greece"></option>
+                <option value="Turkey"></option>
+                <option value="Japan"></option>
+                <option value="South Korea"></option>
+                <option value="China"></option>
+                <option value="Australia"></option>
+                <option value="New Zealand"></option>
+                <option value="South Africa"></option>
+                <option value="United Arab Emirates"></option>
+                <option value="Saudi Arabia"></option>
+                <option value="India"></option>
+                <option value="Singapore"></option>
+              </datalist>
+            </label>
 
-      <button type="submit" class="btn oo-report-submit" id="reportSubmitBtn">
-        <span data-i18n="report.submit">Send Report</span>
-      </button>
+            <button
+              type="submit"
+              class="btn oo-report-submit"
+              id="reportSubmitBtn"
+            >
+              <span data-i18n="report.submit">Send Report</span>
+            </button>
 
-      <div
-        class="form-status"
-        id="reportFormStatus"
-        role="status"
-        aria-live="polite"
-      ></div>
-    </form>
-  </div>
-</div>
+            <div
+              class="form-status"
+              id="reportFormStatus"
+              role="status"
+              aria-live="polite"
+            ></div>
+          </form>
+        </div>
+      </div>
 
       <!-- =========================== ESTILOS Y JS NUEVOS =========================== -->
       <style>
@@ -5465,65 +5483,65 @@ SELECT
         })();
 
         // ===== Modal: cerrar al hacer clic fuera =====
-document
-  .getElementById("reportModal")
-  .addEventListener("click", function (e) {
-    if (e.target === this) this.style.display = "none";
-  });
+        document
+          .getElementById("reportModal")
+          .addEventListener("click", function (e) {
+            if (e.target === this) this.style.display = "none";
+          });
 
-// ===== Envío real del formulario a FormSubmit, con textos traducidos =====
-document
-  .getElementById("reportForm")
-  .addEventListener("submit", async function (e) {
-    e.preventDefault();
+        // ===== Envío real del formulario a FormSubmit, con textos traducidos =====
+        document
+          .getElementById("reportForm")
+          .addEventListener("submit", async function (e) {
+            e.preventDefault();
 
-    const form = this;
-    const status = document.getElementById("reportFormStatus");
-    const submitBtn = document.getElementById("reportSubmitBtn");
+            const form = this;
+            const status = document.getElementById("reportFormStatus");
+            const submitBtn = document.getElementById("reportSubmitBtn");
 
-    status.className = "form-status";
-    status.textContent = "";
+            status.className = "form-status";
+            status.textContent = "";
 
-    const dict = window.__ooCurrentDict;
-    const sendingText = dict?.report?.sending || "Sending...";
-    const successText =
-      dict?.report?.success ||
-      "Thank you! We'll send the full report to your email shortly.";
-    const errorText =
-      dict?.report?.error || "There was an error submitting the form.";
+            const dict = window.__ooCurrentDict;
+            const sendingText = dict?.report?.sending || "Sending...";
+            const successText =
+              dict?.report?.success ||
+              "Thank you! We'll send the full report to your email shortly.";
+            const errorText =
+              dict?.report?.error || "There was an error submitting the form.";
 
-    const originalHtml = submitBtn.innerHTML;
-    submitBtn.disabled = true;
-    submitBtn.innerHTML = `<span>${sendingText}</span>`;
+            const originalHtml = submitBtn.innerHTML;
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = `<span>${sendingText}</span>`;
 
-    try {
-      const response = await fetch(form.action, {
-        method: "POST",
-        body: new FormData(form),
-        headers: { Accept: "application/json" },
-      });
+            try {
+              const response = await fetch(form.action, {
+                method: "POST",
+                body: new FormData(form),
+                headers: { Accept: "application/json" },
+              });
 
-      if (response.ok) {
-        status.textContent = successText;
-        status.classList.add("is-success");
-        form.reset();
-        setTimeout(() => {
-          document.getElementById("reportModal").style.display = "none";
-          status.textContent = "";
-          status.className = "form-status";
-        }, 2200);
-      } else {
-        status.textContent = errorText;
-        status.classList.add("is-error");
-      }
-    } catch (err) {
-      status.textContent = errorText;
-      status.classList.add("is-error");
-    }
+              if (response.ok) {
+                status.textContent = successText;
+                status.classList.add("is-success");
+                form.reset();
+                setTimeout(() => {
+                  document.getElementById("reportModal").style.display = "none";
+                  status.textContent = "";
+                  status.className = "form-status";
+                }, 2200);
+              } else {
+                status.textContent = errorText;
+                status.classList.add("is-error");
+              }
+            } catch (err) {
+              status.textContent = errorText;
+              status.classList.add("is-error");
+            }
 
-    submitBtn.disabled = false;
-    submitBtn.innerHTML = originalHtml;
-  });
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = originalHtml;
+          });
       </script>
 
       <!-- =========================== CONTACTO =========================== -->
@@ -5771,7 +5789,11 @@ document
                   <span class="ci-caption contact-btn-caption"
                     >Get your samples and technical sheet.</span
                   >
-                  <button type="submit" class="btn btn-gold btn-pulse" id="submitBtn">
+                  <button
+                    type="submit"
+                    class="btn btn-gold btn-pulse"
+                    id="submitBtn"
+                  >
                     <span data-i18n="contact.form.submit">
                       Get Samples & Technical Sheet
                     </span>
@@ -5823,120 +5845,120 @@ document
     </main>
 
     <!-- =========================== MISSION MODAL =========================== -->
-<div
-  class="mission-modal-overlay"
-  id="missionModal"
-  role="dialog"
-  aria-modal="true"
-  aria-labelledby="missionModalTitle"
-  hidden
->
-  <div class="mission-modal">
-    <button
-      type="button"
-      class="mission-modal-close"
-      id="missionModalClose"
-      aria-label="Close"
+    <div
+      class="mission-modal-overlay"
+      id="missionModal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="missionModalTitle"
+      hidden
     >
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-        <path
-          d="M6 6l12 12M18 6L6 18"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-        />
-      </svg>
-    </button>
-
-    <span class="eyebrow mission-modal-eyebrow" data-i18n="mission.eyebrow">
-      SOUTH AFRICA TRADE MISSION 2026
-    </span>
-
-    <h2 id="missionModalTitle" data-i18n="mission.title">
-      South Africa Trade Mission 2026
-    </h2>
-
-    <p data-i18n="mission.text1">
-      Colombia and South Africa currently trade very little specialty coffee
-      directly. Most volumes travel through European or North American
-      intermediaries before reaching African roasters — adding cost, time
-      and distance between the farm and the cup.
-    </p>
-
-    <p data-i18n="mission.text2">
-      La Orquídea y el Oso is joining the South Africa Trade Mission 2026 to
-      open a direct route to explore and connect authenticity: specialty,
-      organic coffee from Inzá, Tierradentro, presented directly to
-      specialty buyers, distributors and roasters in South Africa and West
-      Africa.
-    </p>
-
-    <ul class="mission-modal-list">
-      <li>
-        <span class="leaf-icon">
-          <svg viewBox="0 0 24 24" fill="none">
+      <div class="mission-modal">
+        <button
+          type="button"
+          class="mission-modal-close"
+          id="missionModalClose"
+          aria-label="Close"
+        >
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
             <path
-              d="M5 13l4 4L19 7"
+              d="M6 6l12 12M18 6L6 18"
               stroke="currentColor"
-              stroke-width="2.4"
+              stroke-width="2"
               stroke-linecap="round"
-              stroke-linejoin="round"
             />
           </svg>
-        </span>
-        <span data-i18n="mission.bullet1">
-          A direct commercial bridge between Colombian growers and African
-          buyers — no unnecessary intermediaries.
-        </span>
-      </li>
+        </button>
 
-      <li>
-        <span class="leaf-icon">
-          <svg viewBox="0 0 24 24" fill="none">
-            <path
-              d="M5 13l4 4L19 7"
-              stroke="currentColor"
-              stroke-width="2.4"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-          </svg>
+        <span class="eyebrow mission-modal-eyebrow" data-i18n="mission.eyebrow">
+          SOUTH AFRICA TRADE MISSION 2026
         </span>
-        <span data-i18n="mission.bullet2">
-          Samples, technical sheets and export-ready lots presented in
-          person.
-        </span>
-      </li>
 
-      <li>
-        <span class="leaf-icon">
-          <svg viewBox="0 0 24 24" fill="none">
-            <path
-              d="M5 13l4 4L19 7"
-              stroke="currentColor"
-              stroke-width="2.4"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-          </svg>
-        </span>
-        <span data-i18n="mission.bullet3">
-          A long-term relationship with African roasters, not a one-off
-          shipment.
-        </span>
-      </li>
-    </ul>
+        <h2 id="missionModalTitle" data-i18n="mission.title">
+          South Africa Trade Mission 2026
+        </h2>
 
-    <a 
-      href="#contacto"
-      class="btn btn-primary"
-      id="missionModalCta"
-      data-i18n="mission.cta"
-    >
-      Talk to our team
-    </a>
-  </div>
-</div>
+        <p data-i18n="mission.text1">
+          Colombia and South Africa currently trade very little specialty coffee
+          directly. Most volumes travel through European or North American
+          intermediaries before reaching African roasters — adding cost, time
+          and distance between the farm and the cup.
+        </p>
+
+        <p data-i18n="mission.text2">
+          La Orquídea y el Oso is joining the South Africa Trade Mission 2026 to
+          open a direct route to explore and connect authenticity: specialty,
+          organic coffee from Inzá, Tierradentro, presented directly to
+          specialty buyers, distributors and roasters in South Africa and West
+          Africa.
+        </p>
+
+        <ul class="mission-modal-list">
+          <li>
+            <span class="leaf-icon">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M5 13l4 4L19 7"
+                  stroke="currentColor"
+                  stroke-width="2.4"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </span>
+            <span data-i18n="mission.bullet1">
+              A direct commercial bridge between Colombian growers and African
+              buyers — no unnecessary intermediaries.
+            </span>
+          </li>
+
+          <li>
+            <span class="leaf-icon">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M5 13l4 4L19 7"
+                  stroke="currentColor"
+                  stroke-width="2.4"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </span>
+            <span data-i18n="mission.bullet2">
+              Samples, technical sheets and export-ready lots presented in
+              person.
+            </span>
+          </li>
+
+          <li>
+            <span class="leaf-icon">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M5 13l4 4L19 7"
+                  stroke="currentColor"
+                  stroke-width="2.4"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </span>
+            <span data-i18n="mission.bullet3">
+              A long-term relationship with African roasters, not a one-off
+              shipment.
+            </span>
+          </li>
+        </ul>
+
+        <a
+          href="#contacto"
+          class="btn btn-primary"
+          id="missionModalCta"
+          data-i18n="mission.cta"
+        >
+          Talk to our team
+        </a>
+      </div>
+    </div>
 
     <!-- =========================== FOOTER =========================== -->
     <footer class="site-footer">
