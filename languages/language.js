@@ -47,13 +47,13 @@
       },
       hero: {
         badge: "South Africa Trade Mission 2026",
-        eyebrow: "Specialty Coffee — South Africa Trade Mission 2026",
-        title: "Coffee You Can Trace to the Farmer. Not Just the Country.",
+        eyebrow: "SPECIALTY COFFEE — SOUTH AFRICA TRADE MISSION 2026",
+        title: "A cup you'll remember. A one-of-a-kind, verifiable origin.",
         subtitle:
-          'We grow, process and export specialty coffee directly from Inzá, Tierradentro — no reseller, no unverified "Colombian" label. Every lot is tied to the family that grew it, by name and lot.',
+          'Colombia is synonymous with great coffee. Specialty demands more: terroir, verified, grown on small farms that carry their care and culture into the highest standards. We grow, process and export it ourselves from an origin like nowhere else on earth: Inzá, Tierradentro.',
         inline_link: "See the Direct-Trade Model →",
-        cta_primary: "See the Traceable Lots",
-        cta_secondary: "Our Mission to Africa",
+        cta_primary: "See available coffee",
+        cta_secondary: "See how we cut the chain",
         reviews_tab: "Reviews",
         feature1_title: "100% Organic",
         feature1_text: "Certified coffee",
@@ -79,85 +79,113 @@
       },
       product: {
         eyebrow: "Verified Origin, Specialty Cup, Direct Relations",
-        title: "Exportable Product",
-        text: "Every lot we export — single farm or 200-farm blend — ships with the report behind it: where it grew, how it was processed, and the cup profile behind the score. Sold and shipped directly by the families who grow it. No creative traders in between.",
+        title: "AUTHENTIC COFFEE, CUP AFTER CUP",
+        text: "Complex, sweet, balanced, consistent. Every lot passes through at least three quality filters and gets documented step by step: harvest, profile, score, farm and grower. Specialty takes care — it matters to our growers and to our buyers — and that's why our controls only got stricter over time. A lot carries our name only once it's earned it.",
         bullet1:
-          "Cup profile and cupping notes documented, single origin or farms blend.",
-        bullet2: "Full producer report included — even on multi-farm blends.",
-        bullet3: "Exported directly by the growers, not through a trader.",
+          "High quality standards",
+        bullet2: "Lot-by-lot traceability",
+        bullet3: "Full producer report included — even on multi-farm blends. ",
+        bullet4: "•	An active path toward sustainability in origin, together",
         downloads_label: "Get the Brochure",
         download_en: "Brochure EN",
         download_fr: "Brochure FR",
+        sell_sheet: "View sell sheet"
       },
       origin: {
-        eyebrow: "Origin",
-        title: 'Every Bag Traces to Inzá, Tierradentro — Not Just "Colombia"',
-        text: "In Inzá, Cauca, coffee grows inside a legally recognized Indigenous territory — the Yaquivá Reserve — alongside native forest and agroforestry systems. This isn't a claim we make in a brochure. It's a place you can find on a map, with families you can name.",
-        bullet1: "300+ partner farming families, each one identified.",
-        bullet2: "Agroforestry systems that conserve biodiversity.",
+        eyebrow: "ORIGIN",
+        title: 'AUTHENTIC TERROIR',
+        text: "Our coffee grows in Tierradentro, Cauca, inside the Yaquivá Indigenous Reserve, above 1,400 metres — home to the archaeological park UNESCO named a World Heritage Site in 1995. One container can carry the work of 300 families. 300 individual efforts we refuse to leave invisible.",
+        bullet1: "300+ named, GPS-verified producer families",
+        bullet2: "Agroforestry systems protecting biodiversity, páramo and water sources",
         bullet3:
-          "A tradition passed down between generations, not a supply contract.",
+          "A tradition passed down between generations, not just a supply contract",
+        bullet4:
+          "O&O Origin Hub: growers process alongside our own team — no industrial middleman",
+        bullet5:
+          "•	Every lot scored under our 65-point Certified Origin standard — ask to see it",
+
       },
       program: {
-        eyebrow: "Certified Origin Program",
-        title: "A Standard We Built, Not a Label We Bought",
-        text: "Third-party organic certification is expensive to maintain at smallholder volume — often too expensive to make sense. Instead, we score every lot ourselves through the O&O Index: origin and territory, sustainability practices, and verified quality.",
-        downloads_label: "Download O&O Index",
-        download_en: "O&O Index EN",
-        download_fr: "O&O Index FR",
-        video_note:
-          "Buyers who choose O&O back that progress directly. A platform to follow it lot by lot is coming.",
-      },
+  eyebrow: "CERTIFIED ORIGIN PROGRAM",
+  title: "We don't want your blind trust. We invite you to see for yourself.",
+  text: "A proprietary 65-point standard, applied farm by farm — not third-party certification, but proof of what we already do. Too many certifications became paperwork and fees that improved neither the coffee nor the origin. Ours works the other way: verification you can act on, not a certificate to frame.",
+  dimensions_title: "Three dimensions, evaluated in the field:",
+  dimensions: [
+    {
+      number: "01",
+      title: "Origin",
+      text: "GPS-verified location, altitude and variety — down to the exact farm and lot."
+    },
+    {
+      number: "02",
+      title: "Sustainability",
+      text: "Regulated shade cover, water source protection, and agronomic practices aligned with regenerative standards."
+    },
+    {
+      number: "03",
+      title: "Quality",
+      text: "Lab-verified SCA score sets the tier: Grower (82+), Select (84+), Reserve (86+). Sustainability can hold it back: can an excellent cup, without sustainability, really be called special?"
+    }
+  ],
+  downloads_label: "Download O&O Index",
+  download_en: "O&O Index EN",
+  download_fr: "O&O Index FR",
+},
       verification: {
-        eyebrow: "Certified Origin Index — O&O",
-        title: "What We Find When We Verify, Farm by Farm",
-        text: "A proprietary 60-point field standard, applied in person by our own team—not self-declared, not third-party. These are the real figures from our ongoing survey in the Yaquivá Indigenous Reserve, Inzá Tierradentro, Cauca.",
+  eyebrow: "CERTIFIED ORIGIN INDEX — O&O",
 
-        farms_value: "100+",
-        farms_label: "Farms visited",
+  title: "Here's what we found.",
 
-        score_value: "41/60",
-        score_label: "Average O&O Index score",
+  text: "Real figures from our ongoing field survey in the Yaquivá Reserve — applied in person by our own team, not self-declared.",
 
-        sectors_value: "6",
-        sectors_label: "Veredas / sectors covered",
+  farms_value: "100+",
+  farms_label: "Farms visited",
 
-        chart_title: "Score by evaluation block",
+  score_value: "41/65",
+  score_label: "O&O Index /65",
 
-        origin: "Origin & territory",
-        origin_score: "15/20",
+  sectors_value: "6",
+  sectors_label: "Sectors covered",
 
-        sustainability: "Sustainability & practices",
-        sustainability_score: "13/20",
+  chart_title: "Score by block",
 
-        quality: "Verifiable quality",
-        quality_score: "13/20",
+  origin: "Origin",
+  origin_score: "15/20",
 
-        grower_percent: "48%",
-        grower_label: "O&O Grower",
+  sustainability: "Sustainability",
+  sustainability_score: "13/20",
 
-        select_percent: "37%",
-        select_label: "O&O Select",
+  quality: "Quality",
+  quality_score: "13/20",
 
-        reserve_percent: "15%",
-        reserve_label: "O&O Reserve",
+  grower_percent: "48%",
+  grower_label: "Grower",
 
-        description:
-          "68% of evaluated farms keep regulated shade cover within the recommended agronomic range (20–35%), protecting the high-Andean forest while sustaining crop productivity. We don't ask you to take our word for it—we invite you to verify it yourself through a farm visit, a live video call with producers, or a farm-by-farm data review.",
+  select_percent: "37%",
+  select_label: "Select",
 
-        cta: "Request Full Report",
-      },
+  reserve_percent: "15%",
+  reserve_label: "Reserve",
+
+  description:
+    "68% of evaluated farms keep regulated shade cover within the recommended agronomic range (20–35%): protecting high-Andean forest without sacrificing yield.",
+
+  cta:
+    "Visit the origin, review the farm-by-farm data. You choose how to check it.",
+
+  button: "Get the full report",
+},
 
       directTrade: {
-        eyebrow: "Direct Trade, Verified",
-        title: "One Less Chain Between Farm and Roastery",
+        eyebrow: "DIRECT TRADE, VERIFIED",
+        title: "FOUR MARGINS DISAPPEAR. THE ORIGIN — THE TERROIR — APPEARS.",
 
-        chain_title: "Typical Colombian Coffee Chain",
+        chain_title: "The typical Colombian coffee chain",
         chain_text:
           "Grower → Local trader → Cooperative / Exporter → Importer → Roaster",
         chain_note: '4–5 margins. Origin usually stops at "Colombia."',
 
-        oo_title: "The O&O Chain",
+        oo_title: "The O&O chain",
         oo_text:
           "Named grower (GPS-tracked) → O&O Origin Hub (same team that exports) → Your roastery",
         oo_note: "One step. Full visibility, farm to export.",
@@ -166,15 +194,15 @@
         bullet2:
           "O&O Origin Hub: producers process alongside our own team—no centralized industrial intermediary.",
         bullet3:
-          "Every lot scored under our 60-point Certified Origin standard—ask to see it.",
+          "Every lot scored under our 65-point Certified Origin standard—ask to see it.",
 
         cta: "See how we verify this",
       },
       traceability: {
-        eyebrow: "Traceability",
+        eyebrow: "TRACEABILITY",
         badge: "Coming soon",
-        title: "From Forest to Your Cup — Five Stages, All Documented",
-        text: "Every container we export brings together coffee from dozens of producers in Inzá, Tierradentro — no blends that hide who grew each lot. Here's the journey from tree to export document.",
+        title: "FIVE STAGES. ALL DOCUMENTED.",
+        text: "Every container we export carries coffee from dozens of individual growers in Inzá, Tierradentro. Nothing blended away, nothing erasing who grew what. Here's how a lot travels, from tree to your hands:",
         note: "The lot-lookup tool is currently in development. Ask for a demo during the trade mission.",
       },
 
@@ -231,7 +259,7 @@
         },
       },
       footer: {
-        tagline: "Coffee that regenerates the forest and honors its origin.",
+        tagline: "Specialty coffee from Inzá Tierradentro, (Cauca) Colombia · Exported by those who grow it · Verifiable lot by lot.",
         links_title: "Links",
         contact_title: "Direct contact",
         redirect_note:
@@ -284,30 +312,36 @@
       product: {
         eyebrow:
           "Origen verificado · Café de especialidad · Relaciones directas",
-        title: "Producto Exportable",
-        text: "Cada lote que exportamos —ya sea de una sola finca o una mezcla de más de 200 productores— viaja acompañado de un informe con su origen, proceso y perfil de taza. Es comercializado y exportado directamente por las familias productoras, sin intermediarios comerciales innecesarios.",
-        bullet1: "Perfil de taza y notas de catación documentadas.",
+        title: "Café auténtico, taza tras taza.Producto Exportable",
+        text: "Compleja, dulce, balanceada, consistente. Cada lote pasa al menos tres filtros de calidad y queda documentado paso a paso: cosecha, perfil, puntaje, finca y productor. La especialidad requiere cuidado, es importante para nuestros productores y clientes, y por eso nuestros controles se volvieron más estrictos con el tiempo — un lote especial lleva nuestro nombre solo cuando se lo gana.",
+        bullet1: "Altos estándares de calidad",
         bullet2:
-          "Reporte completo del productor, incluso en mezclas de varias fincas.",
-        bullet3: "Exportado directamente por los productores.",
+          "Trazabilidad lote por lote",
+        bullet3: "Reporte completo del productor, incluso en mezclas de varias fincas",
+        bullet3: "Ruta activa hacia la sostenibilidad en origen, juntos",
         downloads_label: "Descargar Brochure",
-        download_en: "Brochure (Inglés)",
-        download_fr: "Brochure (Francés)",
+        download_en: "Brochure EN",
+        download_fr: "Brochure FR", 
+        sell_sheet: "Ver ficha técnica",
       },
       origin: {
-        eyebrow: "Origen",
+        eyebrow: "ORIGEN",
         title:
-          "Cada saco puede rastrearse hasta Inzá, Tierradentro. No solo hasta «Colombia».",
-        text: "En Inzá, Cauca, el café se cultiva dentro del Resguardo Indígena Yaquivá, rodeado de bosque nativo y sistemas agroforestales. No es una historia de marketing; es un territorio real, con familias identificables y un origen verificable.",
-        bullet1: "300+ familias productoras asociadas, cada una identificada.",
-        bullet2: "Sistemas agroforestales que conservan la biodiversidad.",
+          "TERRITORIO AUTENTICO",
+        text: "Nuestro café crece en Tierradentro, Cauca, dentro del Resguardo Indígena de Yaquivá, por encima de los 1.400 metros — sede del parque arqueológico que la UNESCO declaró Patrimonio de la Humanidad en 1995. Un contenedor puede llevar el esfuerzo de 300 familias. 300 esfuerzos que nos negamos a dejar invisibles.",
+        bullet1: "300+ familias productoras, identificadas y georreferenciadas",
+        bullet2: "Sistemas agroforestales que protegen biodiversidad, páramo y fuentes hídricas",
         bullet3:
-          "Una tradición transmitida entre generaciones, no un simple contrato de suministro.",
+          "Una tradición transmitida entre generaciones, no solo un contrato de suministro",
+        bullet4:
+          "O&O Origin Hub: los productores procesan junto a nuestro equipo — sin intermediario industrial",
+        bullet5:
+          "Todos los lotes son calificados bajo nuestro estándar de certificación de origen O&O ",
       },
       program: {
-        eyebrow: "Programa de Origen Certificado",
-        title: "Un estándar que construimos, no una etiqueta que compramos",
-        text: "Mantener una certificación orgánica internacional resulta costoso para pequeños productores. En lugar de depender de una etiqueta externa, evaluamos cada lote mediante el Índice O&O: origen y territorio, prácticas sostenibles y calidad verificada. Así impulsamos una mejora continua en cada finca.",
+        eyebrow: "CERTIFIEDO ORIGEN INDEX — O&O",
+        title: "No queremos que nos crea a ciegas. Lo invitamos a comprobarlo usted mismo.",
+        text: "Un estándar propio de 65 puntos, aplicado finca por finca — no es un sello de tercero, es la prueba de lo que ya hacemos. Muchas certificaciones se volvieron trámites y costos que no mejoran ni el café ni el origen. La nuestra funciona al revés: verificación que se puede comprobar, no un certificado para enmarcar.",
         downloads_label: "Descargar Índice O&O",
         download_en: "Índice O&O (Inglés)",
         download_fr: "Índice O&O (Francés)",
@@ -315,80 +349,76 @@
           "Los compradores que eligen O&O respaldan ese progreso. Próximamente estará disponible una plataforma para seguir cada lote.",
       },
       verification: {
-        eyebrow: "Índice de Origen Certificado — O&O",
-        title: "Lo que encontramos cuando verificamos finca por finca",
-        text: "Un estándar propio de evaluación en campo de 60 puntos, aplicado personalmente por nuestro equipo; no es una autoevaluación ni una certificación de terceros. Estas son las cifras reales de nuestro levantamiento continuo en el Resguardo Indígena Yaquivá, Inzá Tierradentro, Cauca.",
+  eyebrow: "ÍNDICE CERTIFIED ORIGIN — O&O",
 
-        farms_value: "100+",
-        farms_label: "Fincas visitadas",
+  title: "Esto es lo que encontramos.",
 
-        score_value: "41/60",
-        score_label: "Puntaje promedio del Índice O&O",
+  text: "Cifras reales de nuestro levantamiento en curso en el Resguardo de Yaquivá — aplicadas en persona por nuestro propio equipo, no autodeclaradas.",
 
-        sectors_value: "6",
-        sectors_label: "Veredas / sectores cubiertos",
+  farms_value: "100+",
+  farms_label: "Fincas visitadas",
 
-        chart_title: "Puntaje por bloque de evaluación",
+  score_value: "41/65",
+  score_label: "Índice O&O /65",
 
-        origin: "Origen y territorio",
-        origin_score: "15/20",
+  sectors_value: "6",
+  sectors_label: "Veredas cubiertas",
 
-        sustainability: "Sostenibilidad y prácticas",
-        sustainability_score: "13/20",
+  chart_title: "Desglose por bloque",
 
-        quality: "Calidad verificable",
-        quality_score: "13/20",
+  origin: "Origen",
+  origin_score: "15/20",
 
-        grower_percent: "48%",
-        grower_label: "O&O Grower",
+  sustainability: "Sostenibilidad",
+  sustainability_score: "13/20",
 
-        select_percent: "37%",
-        select_label: "O&O Select",
+  quality: "Calidad",
+  quality_score: "13/20",
 
-        reserve_percent: "15%",
-        reserve_label: "O&O Reserve",
+  grower_percent: "48%",
+  grower_label: "Grower",
 
-        description:
-          "El 68% de las fincas evaluadas mantiene una cobertura de sombra regulada dentro del rango agronómico recomendado (20–35%), protegiendo el bosque altoandino mientras conserva la productividad del cultivo. No le pedimos que crea en nuestra palabra; lo invitamos a comprobarlo mediante una visita a las fincas, una videollamada con los productores o una revisión detallada de los datos finca por finca.",
+  select_percent: "37%",
+  select_label: "Select",
 
-        cta: "Solicitar informe completo",
-      },
+  reserve_percent: "15%",
+  reserve_label: "Reserve",
+
+  description:
+    "El X% de las fincas evaluadas mantiene sombra regulada dentro del rango agronómico recomendado (20–35%): protege el bosque altoandino sin sacrificar productividad.",
+
+  cta:
+    "Visite el origen, revise los datos finca por finca. Usted elige cómo comprobarlo.",
+
+  button: "Tener el informe completo",
+},
 
       directTrade: {
-        eyebrow: "Comercio Directo, Verificado",
+        eyebrow: "COMERCIO DIRECTO, VERIFICADO",
         title: "Un eslabón menos entre la finca y la tostadora",
-
         chain_title: "Cadena tradicional del café colombiano",
         chain_text:
           "Productor → Comprador local → Cooperativa / Exportador → Importador → Tostadora",
-
         chain_note:
-          "4–5 márgenes comerciales. Normalmente el origen termina en «Colombia».",
-
+          "5 márgenes comerciales. Normalmente el origen termina en «Colombia».",
         oo_title: "La cadena O&O",
-
         oo_text:
           "Productor identificado (georreferenciado por GPS) → Centro de Origen O&O (el mismo equipo que exporta) → Su tostadora",
-
         oo_note:
           "Un solo paso. Visibilidad completa desde la finca hasta la exportación.",
-
         bullet1:
           "Más de 300 familias productoras identificadas y verificadas por GPS, lote por lote.",
-
         bullet2:
           "Centro de Origen O&O: los productores procesan el café junto a nuestro equipo, sin intermediarios industriales centralizados.",
-
         bullet3:
           "Cada lote es evaluado bajo nuestro estándar de 60 puntos de Origen Certificado. Solicite conocerlo.",
-
         cta: "Vea cómo realizamos esta verificación",
       },
       traceability: {
-        eyebrow: "Trazabilidad",
+        eyebrow: "TRAZABILIDAD",
         badge: "Próximamente",
-        title: "Del bosque a la taza — cinco etapas, todas documentadas",
-        text: "Cada contenedor que exportamos reúne café de decenas de productores de Inzá, Tierradentro — sin mezclas que oculten quién cultivó cada lote. Así es el recorrido desde el árbol hasta el documento de exportación.",
+        title: "CINCO ETAPAS. TODAS DOCUMENTADAS",
+        text: "Cada contenedor que exportamos lleva café de decenas de productores de Inzá, Tierradentro. Sin borrar quién cultivó qué. Así viaja un lote, del árbol a tus manos:",
         note: "La herramienta de consulta por lote está en desarrollo. Solicite una demostración durante la misión comercial.",
       },
 
@@ -422,9 +452,9 @@
       },
 
       contact: {
-        eyebrow: "Contacto",
-        title: "Conversemos sobre su próxima importación",
-        text: "Complete el formulario y nuestro equipo comercial le enviará muestras, fichas técnicas y condiciones comerciales directamente.",
+        eyebrow: "CONTACTO",
+        title: "Pida la muestra. Ahí empieza todo.",
+        text: "Complete el formulario y nuestro equipo comercial le enviará muestras, fichas técnicas y condiciones comerciales — directamente, sin intermediarios. ",
         form: {
           name: "Nombre completo",
           error_required: "Por favor complete este campo.",
@@ -445,7 +475,7 @@
       },
       footer: {
         tagline:
-          "Café que regenera el bosque y conecta productores con compradores.",
+          "Cafés de especialidad de Inzá Tierradentro (Cauca) Colombia · Exportado por quienes lo cultivan · Verificable lote a lote",
         links_title: "Enlaces",
         contact_title: "Contacto directo",
         redirect_note:
