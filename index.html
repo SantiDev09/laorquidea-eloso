@@ -1902,6 +1902,7 @@
       font-size: 1.5rem;
       color: var(--color-gold);
       font-weight: 600;
+      white-space: nowrap;
     }
 
     .float-card .fc-text {
@@ -2391,19 +2392,17 @@
     }
 
     .origin-card {
-      background: #fefdf7;
+  background: #fefdf7;
+  padding: 28px 20px 20px; /* arriba | lados | abajo */
+  border-radius: 18px;
+  box-shadow: var(--shadow-soft);
+  transition:
+    transform 0.4s var(--ease),
+    box-shadow 0.4s var(--ease);
+  will-change: transform;
 
-      padding: 20px;
-
-      border-radius: 18px;
-
-      box-shadow: var(--shadow-soft);
-
-      transition:
-        transform 0.4s var(--ease),
-        box-shadow 0.4s var(--ease);
-      will-change: transform;
-    }
+  min-height: 180px;
+}
 
     .origin-card:hover {
       transform: translateY(-6px) scale(1.015);
@@ -4181,6 +4180,11 @@ SELECT
       filter: brightness(0) saturate(100%) invert(96%) sepia(13%) saturate(269%) hue-rotate(334deg) brightness(104%) contrast(96%);
     }
 
+    h2 {
+      font-size: clamp(2.6rem, 4vw, 3.4rem);
+      line-height: 1.15;
+    }
+
     /* ==========================================================================
    BUTTON PULSE (mismo tipo de animación que el botón de WhatsApp)
    Clase genérica y reutilizable: usa currentColor, así que cada botón
@@ -4340,18 +4344,10 @@ SELECT
 
       <div class="hero-overlay"></div>
 
-      <a href="#inicio" class="hero-reviews-tab" id="heroReviewsBtn" aria-label="Reviews — Back to Home">
-        <svg viewBox="0 0 24 24" fill="none" width="12" height="12">
-          <path d="M12 3l2.6 5.9 6.4.6-4.8 4.3 1.4 6.3L12 16.9 6.4 20.1l1.4-6.3-4.8-4.3 6.4-.6L12 3z"
-            fill="currentColor" />
-        </svg>
-        <span data-i18n="hero.reviews_tab">Reviews</span>
-      </a>
-
       <div class="hero-inner container">
         <div class="hero-content reveal is-visible">
           <span class="hero-script" data-i18n="hero.eyebrow">
-            SPECIALTY COFFEE — SOUTH AFRICA TRADE MISSION 2026
+            Specialty coffee — Africa trade mission 2026
           </span>
 
           <h1 data-i18n="hero.title">
@@ -4441,9 +4437,9 @@ SELECT
     <!-- =========================== STATS =========================== -->
     <section class="stats">
       <div class="container">
-        <p class="stats-title" data-i18n="stats.title">
+        <h2 class="stats-title" data-i18n="stats.title">
           What Direct Trade to South Africa, Ghana and Senegal Looks Like
-        </p>
+        </h2>
         <div class="stats-grid">
           <div class="stat-card reveal">
             <span class="stat-icon" aria-hidden="true"><img src="assets/img/ICONOS OYO-01.png" alt=""
@@ -4473,7 +4469,7 @@ SELECT
               <span class="count-up" data-target="48.75" data-decimals="2">0</span><span class="stat-suffix"
                 data-i18n="stats.deforestation_suffix">%</span>
             </div>
-            <p class="stat-label" data-i18n="stats.deforestation">
+            <p class="stat-label" data-i18n="stats.foods">
               Farms verified zero-deforestation
             </p>
             <span class="stat-subnote" data-i18n="stats.deforestation_note">verification ongoing</span>
@@ -4484,7 +4480,7 @@ SELECT
             <div class="stat-number">
               <span class="count-up" data-target="990">0</span>
             </div>
-            <p class="stat-label" data-i18n="stats.sacks">
+            <p class="stat-label" data-i18n="stats.organic">
               BAGS EXPORTED DIRECTLY IN 2025
             </p>
           </div>
@@ -4504,9 +4500,10 @@ SELECT
             <p data-i18n="origin.text" style="margin-bottom: 10px">
               Our coffee grows in Tierradentro, Cauca, inside the Yaquivá
               Indigenous Reserve, above 1,400 metres — home to the
-              archaeological park UNESCO named a World Heritage Site in 1995.
-              One container can carry the work of 300 families. 300 individual
-              efforts we refuse to leave invisible.
+              archaeological park UNESCO named
+              <span style="color: #e0b048; font-weight: 700;">a World Heritage Site</span>
+              in 1995. One container can carry the work of 300 families.
+              300 individual efforts we refuse to leave invisible.
             </p>
 
             <ul class="feature-list">
@@ -4534,7 +4531,7 @@ SELECT
                 <span class="leaf-icon"><svg viewBox="0 0 24 24" fill="none">
                     <path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"
                       stroke-linejoin="round" />
-                  </svg></span><span data-i18n="origin.bullet3">O&O Origin Hub: growers process alongside our own team —
+                  </svg></span><span data-i18n="origin.bullet4">O&O Origin Hub: growers process alongside our own team —
                   no
                   industrial middleman</span>
               </li>
@@ -4542,7 +4539,7 @@ SELECT
                 <span class="leaf-icon"><svg viewBox="0 0 24 24" fill="none">
                     <path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"
                       stroke-linejoin="round" />
-                  </svg></span><span data-i18n="origin.bullet3">Every lot scored under our 65-point Certified Origin
+                  </svg></span><span data-i18n="origin.bullet5">Every lot scored under our 65-point Certified Origin
                   standard — ask to see it</span>
               </li>
             </ul>
@@ -4655,7 +4652,9 @@ SELECT
                descargas) permanece completamente estático: no rota, no
                cambia y no se oculta durante el recorrido del carrusel. -->
         <div class="split-content reveal reveal-delay-1">
-          <span class="eyebrow" data-i18n="product.eyebrow">Authentic Coffee, Cup After Cup.</span>
+          <span class="eyebrow" data-i18n="product.eyebrow">
+            <h2>Authentic Coffee, Cup After Cup.</h2>
+          </span>
           <h2 data-i18n="product.title">
             Specialty green coffee, traceable and export-ready
           </h2>
@@ -4691,7 +4690,7 @@ SELECT
               <span class="leaf-icon"><svg viewBox="0 0 24 24" fill="none">
                   <path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"
                     stroke-linejoin="round" />
-                </svg></span><span data-i18n="product.bullet3">An active path toward sustainability in origin,
+                </svg></span><span data-i18n="product.bullet4">An active path toward sustainability in origin,
                 together</span>
             </li>
           </ul>
