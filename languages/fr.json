@@ -48,6 +48,20 @@
     "bullet2": "Des systèmes agroforestiers qui préservent la biodiversité.",
     "bullet3": "Une tradition transmise de génération en génération."
   },
+  "directTrade": {
+    "eyebrow": "Commerce direct, vérifié",
+    "title": "Quatre marges disparaissent. L'origine — le terroir — apparaît.",
+    "chain_title": "Chaîne traditionnelle du café colombien",
+    "chain_text": "Producteur → Acheteur local → Coopérative / Exportateur → Importateur → Torréfacteur",
+    "chain_note": "4 à 5 marges commerciales. L'origine s'arrête généralement à « Colombie ».",
+    "oo_title": "La chaîne O&O",
+    "oo_text": "Producteur identifié (géolocalisé par GPS) → Centre d'Origine O&O (la même équipe qui exporte) → Votre torréfaction",
+    "oo_note": "Une seule étape. Une visibilité complète, de la ferme à l'exportation.",
+    "bullet1": "Plus de 300 familles de producteurs identifiées et vérifiées par GPS.",
+    "bullet2": "Le Centre d'Origine O&O transforme et exporte le café avec les familles productrices, sans intermédiaires commerciaux inutiles.",
+    "bullet3": "Chaque lot est évalué selon notre standard d'Origine Certifiée.",
+    "cta": "Découvrez comment nous vérifions ce processus"
+  },
   "program": {
     "eyebrow": "Programme d'Origine Certifiée",
     "title": "Une norme que nous avons créée, pas un label que nous avons acheté",

@@ -40,6 +40,21 @@
     "bullet3": "Una tradición transmitida de generación en generación."
   },
 
+  "directTrade": {
+    "eyebrow": "Comercio directo, verificado",
+    "title": "Cuatro márgenes desaparecen. El origen — el terroir — aparece.",
+    "chain_title": "Cadena tradicional del café colombiano",
+    "chain_text": "Productor → Comprador local → Cooperativa / Exportador → Importador → Tostadora",
+    "chain_note": "4–5 márgenes comerciales. Normalmente el origen termina en «Colombia».",
+    "oo_title": "La cadena O&O",
+    "oo_text": "Productor identificado (georreferenciado por GPS) → Centro de Origen O&O (el mismo equipo que exporta) → Su tostadora",
+    "oo_note": "Un solo paso. Visibilidad completa desde la finca hasta la exportación.",
+    "bullet1": "Más de 300 familias productoras identificadas y verificadas por GPS.",
+    "bullet2": "El Centro de Origen O&O procesa y exporta el café junto a las familias productoras, sin intermediarios comerciales innecesarios.",
+    "bullet3": "Cada lote es evaluado bajo nuestro estándar de Origen Certificado.",
+    "cta": "Vea cómo verificamos este proceso"
+  },
+
   "program": {
     "eyebrow": "Programa de Origen Certificado",
     "title": "Un estándar que construimos, no una certificación que compramos",
@@ -51,42 +66,56 @@
   },
 
   "verification": {
-    "eyebrow": "Índice de Origen Certificado — O&O",
-    "title": "Lo que encontramos cuando verificamos finca por finca",
-    "text": "Un estándar propio de evaluación de 60 puntos, aplicado presencialmente por nuestro equipo. No es una autoevaluación ni una certificación de terceros. Estos son los resultados reales obtenidos en nuestro estudio continuo dentro del Resguardo Indígena Yaquivá, Inzá Tierradentro, Cauca.",
+    "eyebrow": "Programa de Origen Certificado",
 
-    "farms_value": "100+",
+    "title": "No queremos que confíe ciegamente en nosotros. Lo invitamos a comprobarlo por usted mismo.",
+
+    "text": "Un estándar propio de 65 puntos, aplicado finca por finca por nuestro equipo. No es una certificación de terceros, sino una forma de demostrar lo que ya hacemos. Muchas certificaciones terminaron convirtiéndose en trámites y costos que no mejoran ni el café ni el origen. Nuestro enfoque funciona al contrario: verificación útil para tomar decisiones, no un certificado para enmarcar.",
+
+    "dimensions_title": "Tres dimensiones evaluadas en campo",
+
+    "origin": "Origen",
+    "origin_description": "Ubicación verificada por GPS, altitud y variedad, hasta la finca y el lote exactos.",
+
+    "sustainability": "Sostenibilidad",
+    "sustainability_description": "Cobertura de sombra regulada, protección de fuentes hídricas y prácticas agronómicas alineadas con estándares regenerativos.",
+
+    "quality": "Calidad",
+    "quality_description": "La puntuación SCA verificada en laboratorio define la categoría: Grower (82+), Select (84+) y Reserve (86+). La sostenibilidad también influye: ¿puede una excelente taza, sin sostenibilidad, llamarse realmente especial?",
+
+    "results_title": "Esto es lo que encontramos.",
+
+    "results_text": "Cifras reales de nuestro levantamiento continuo en el Resguardo Indígena Yaquivá, aplicadas presencialmente por nuestro propio equipo, no autodeclaradas.",
+
+    "farms_value": "160+",
     "farms_label": "Fincas visitadas",
 
-    "score_value": "41/60",
-    "score_label": "Puntaje promedio del Índice O&O",
+    "score_value": "49.5/65",
+    "score_label": "Índice O&O",
 
-    "sectors_value": "6",
-    "sectors_label": "Veredas / sectores evaluados",
+    "sectors_value": "24",
+    "sectors_label": "Sectores cubiertos",
 
-    "chart_title": "Puntaje por bloque de evaluación",
+    "chart_title": "Puntaje por bloque",
 
-    "origin": "Origen y territorio",
     "origin_score": "15/20",
 
-    "sustainability": "Sostenibilidad y prácticas",
     "sustainability_score": "13/20",
 
-    "quality": "Calidad verificable",
     "quality_score": "13/20",
 
-    "grower_percent": "48%",
+    "grower_percent": "7.1%",
     "grower_label": "O&O Grower",
 
-    "select_percent": "37%",
+    "select_percent": "83%",
     "select_label": "O&O Select",
 
-    "reserve_percent": "15%",
+    "reserve_percent": "9.8%",
     "reserve_label": "O&O Reserve",
 
-    "description": "El 68% de las fincas evaluadas mantiene una cobertura de sombra regulada dentro del rango agronómico recomendado (20–35%), protegiendo el bosque altoandino mientras conserva la productividad del cultivo. No le pedimos que confíe únicamente en nuestra palabra: lo invitamos a comprobarlo mediante una visita a las fincas, una videollamada con los productores o una revisión detallada finca por finca.",
+    "description": "Visite el origen o revise los datos finca por finca. Usted elige cómo comprobarlo.",
 
-    "cta": "Solicitar informe completo"
+    "cta": "Obtener el informe completo"
   },
 
   "traceability": {
