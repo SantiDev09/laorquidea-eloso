@@ -66,8 +66,7 @@
       },
       stats: {
         eyebrow: "Verified Impact",
-        title:
-          "What Direct Trade to South Africa, Ghana and Senegal Looks Like",
+        title: "What Direct Trade to Africa, Ghana and Senegal Looks Like",
         families: "Partner farming families",
         farms_suffix: "ha",
         farms: "Under agroforestry / shade-grown coffee",
@@ -136,7 +135,7 @@
 
         title: "Here's what we found.",
 
-        text: "Real figures from our ongoing field survey in the Yaquivá Reserve — applied in person by our own team, not self-declared.",
+        text: "Verified results from our ongoing field survey in the Yaquivá Reserve — collected on-site by our own team, never self-reported.",
 
         farms_value: "100+",
         farms_label: "Farms visited",
@@ -145,9 +144,9 @@
         score_label: "O&O Index /65",
 
         sectors_value: "6",
-        sectors_label: "Sectors covered",
+        sectors_label: "VILLAGES COVERED IN INZA",
 
-        chart_title: "Score by block",
+        chart_title: "FARMS IN THE O&O NETWORK",
 
         origin: "Origin",
         origin_score: "15/20",
@@ -167,9 +166,12 @@
         reserve_percent: "15%",
         reserve_label: "Reserve",
 
+        highlight_percent: "68%",
+
         description:
-  '<span style="font-family: var(--font-display); font-size: 2.3rem; font-weight: 700; color: var(--color-gold);">68%</span> <span style="font-family: var(--font-display); font-weight: 700; color: var(--color-forest);">of evaluated farms keep regulated shade cover within the recommended agronomic range (20–35%): protecting high-Andean forest without sacrificing yield.</span>',
-        cta: "Visit the origin, review the farm-by-farm data. You choose how to check it.",
+          "of evaluated farms maintain regulated shade cover within the recommended agronomic range (20–35%), helping protect the high-Andean forest while sustaining coffee productivity.",
+
+        cta: "Visit the origin, explore the farm-by-farm data, and verify every result yourself.",
 
         button: "Get the full report",
       },
@@ -201,16 +203,39 @@
         badge: "Coming soon",
         title: "Five Stages. All Documented.",
         text: "Every container we export carries coffee from dozens of individual growers in Inzá, Tierradentro. Nothing blended away, nothing erasing who grew what. Here's how a lot travels, from tree to your hands:",
+
+        stage1title: "Growers",
+        stage1text:
+          "Real families, each one named — scored and tracked through the O&O Index from the very first visit.",
+
+        stage2_title: "Harvest & Processing",
+        stage2_text:
+          "Ripe cherries hand-picked, one by one, by lot, variety and microclimate — then processed with care at the producer's own farm, or alongside our team at the O&O Origin Hub.",
+
+        stage3_title: "Laboratory",
+        stage3_text:
+          "Cupping controls and builds every lot — the same process that improves the farm behind it, harvest after harvest.",
+
+        stage4_title: "Preparation",
+        stage4_text:
+          "Milled, sorted and double-packed with a coded report per lot — ready to travel, ready to trace.",
+
+        stage5_title: "Export",
+        stage5_text:
+          "Documented, lot-traceable shipment — ready for buyers in Africa and West Africa.",
+
         note: "The lot-lookup tool is currently in development. Ask for a demo during the trade mission.",
+        quote:
+          "Specialty coffee is only truly special if it protects its origin.",
       },
 
       mission: {
         eyebrow: "AFRICA TRADE MISSION 2026",
         title: "Africa Trade Mission 2026",
         text1:
-          "Colombia and South Africa currently trade very little specialty coffee directly. Most volumes travel through intermediaries before reaching African roasters — adding cost, time and distance between the farm and the cup.",
+          "Colombia and Africa currently trade very little specialty coffee directly. Most volumes travel through intermediaries before reaching African roasters — adding cost, time and distance between the farm and the cup.",
         text2:
-          "La Orquídea y el Oso is joining the Africa Trade Mission 2026 to open a direct route to explore and connect authenticity: specialty, organic coffee from Inzá, Tierradentro, presented directly to specialty buyers, distributors and roasters in South Africa and West Africa.",
+          "La Orquídea y el Oso is joining the Africa Trade Mission 2026 to open a direct route to explore and connect authenticity: specialty, organic coffee from Inzá, Tierradentro, presented directly to specialty buyers, distributors and roasters in Africa and West Africa.",
         bullet1:
           "A direct commercial bridge between Colombian growers and African buyers — no unnecessary intermediaries.",
         bullet2:
@@ -262,7 +287,7 @@
         links_title: "Links",
         contact_title: "Direct contact",
         redirect_note:
-          "This site is the landing page for the South Africa Trade Mission 2026 by fincaslaorquideayeloso.com",
+          "This site is the landing page for the Africa Trade Mission 2026 by fincaslaorquideayeloso.com",
         rights: "All rights reserved.",
       },
     },
@@ -277,17 +302,16 @@
         cta: "Solicitar información",
       },
       hero: {
-        badge: "Misión Comercial Africa 2026",
-        eyebrow: "Café de Especialidad — Misión Comercial Sudáfrica 2026",
-        title:
-          "Café que puede rastrear hasta el productor. No solo hasta el país.",
+        badge: "Misión Comercial África 2026",
+        eyebrow: "Café de especialidad — Misión Comercial África 2026",
+        title: "Una taza que recordarás. Un origen único y verificable.",
         subtitle:
-          "Cultivamos, procesamos y exportamos café de especialidad directamente desde Inzá, Tierradentro, sin intermediarios ni una etiqueta genérica de origen. Cada lote está vinculado a la familia que lo produjo, identificada por nombre y lote.",
+          "Colombia es sinónimo de un gran café. El café de especialidad exige más: un terroir único, trazabilidad verificada y café cultivado en pequeñas fincas que reflejan el cuidado y la cultura de quienes lo producen, cumpliendo con los más altos estándares de calidad. Nosotros mismos lo cultivamos, procesamos y exportamos desde un origen como ningún otro en el mundo: Inzá, Tierradentro.",
         inline_link: "Ver el modelo de comercio directo →",
-        cta_primary: "Ver los lotes trazables",
-        cta_secondary: "Misión Comercial a África",
+        cta_primary: "Ver cafés disponibles",
+        cta_secondary: "Misión Comercial África",
         reviews_tab: "Reseñas",
-        feature1_title: "100% Orgánico",
+        feature1_title: "100 % Orgánico",
         feature1_text: "Café certificado",
         feature2_title: "Pequeños productores",
         feature2_text: "Comercio directo",
@@ -309,18 +333,21 @@
         organic: "Sacos exportados directamente en 2025",
       },
       product: {
-  eyebrow: "Origen verificado · Café de especialidad · Relaciones directas",
-  title: "Café auténtico, taza tras taza",
-  text: "Complejo, dulce, equilibrado y consistente. Cada lote pasa por al menos tres filtros de calidad y queda documentado paso a paso: cosecha, perfil, puntuación, finca y productor. El café de especialidad exige cuidado; es importante tanto para nuestros productores como para nuestros compradores. Por eso, nuestros controles se han vuelto cada vez más rigurosos. Un lote solo lleva nuestro nombre cuando realmente se lo ha ganado.",
-  bullet1: "Altos estándares de calidad",
-  bullet2: "Trazabilidad lote por lote",
-  bullet3: "Informe completo del productor, incluso para mezclas de múltiples fincas.",
-  bullet4: "Un compromiso activo con la sostenibilidad en origen, construido juntos.",
-  downloads_label: "Descargar brochure",
-  download_en: "Brochure EN",
-  download_fr: "Brochure FR",
-  sell_sheet: "Ver ficha comercial",
-},
+        eyebrow:
+          "Origen verificado · Café de especialidad · Relaciones directas",
+        title: "Café auténtico, taza tras taza",
+        text: "Complejo, dulce, equilibrado y consistente. Cada lote pasa por al menos tres filtros de calidad y queda documentado paso a paso: cosecha, perfil, puntuación, finca y productor. El café de especialidad exige cuidado; es importante tanto para nuestros productores como para nuestros compradores. Por eso, nuestros controles se han vuelto cada vez más rigurosos. Un lote solo lleva nuestro nombre cuando realmente se lo ha ganado.",
+        bullet1: "Altos estándares de calidad",
+        bullet2: "Trazabilidad lote por lote",
+        bullet3:
+          "Informe completo del productor, incluso para mezclas de múltiples fincas.",
+        bullet4:
+          "Un compromiso activo con la sostenibilidad en origen, construido juntos.",
+        downloads_label: "Descargar brochure",
+        download_en: "Brochure EN",
+        download_fr: "Brochure FR",
+        sell_sheet: "Ver ficha comercial",
+      },
       origin: {
         eyebrow: "ORIGEN",
         title: "Territorio Autentico",
@@ -341,66 +368,55 @@
           "No queremos que nos crea a ciegas. Lo invitamos a comprobarlo usted mismo.",
         text: "Un estándar propio de 65 puntos, aplicado finca por finca — no es un sello de tercero, es la prueba de lo que ya hacemos. Muchas certificaciones se volvieron trámites y costos que no mejoran ni el café ni el origen. La nuestra funciona al revés: verificación que se puede comprobar, no un certificado para enmarcar.",
         downloads_label: "Descargar Índice O&O",
+        // Español
+        dimensions_title: "Tres dimensiones, evaluadas en campo:",
         download_en: "Índice O&O (Inglés)",
         download_fr: "Índice O&O (Francés)",
         video_note:
           "Los compradores que eligen O&O respaldan ese progreso. Próximamente estará disponible una plataforma para seguir cada lote.",
       },
       verification: {
-        eyebrow: "Programa de Origen Certificado",
+        eyebrow: "ÍNDICE DE ORIGEN CERTIFICADO — O&O",
 
-        title:
-          "No queremos que confíe ciegamente en nosotros. Lo invitamos a comprobarlo por usted mismo.",
+        title: "Esto fue lo que encontramos.",
 
-        text: "Un estándar propio de 65 puntos, aplicado finca por finca. No es una certificación de terceros, sino una forma de demostrar lo que ya hacemos. Muchas certificaciones terminaron convirtiéndose en trámites y costos que no mejoran ni el café ni el origen. Nuestro enfoque funciona al contrario: verificación útil para tomar decisiones, no un certificado para enmarcar.",
+        text: "Resultados verificados de nuestro estudio de campo en curso en la Reserva Yaquivá, recopilados directamente por nuestro equipo y nunca autodeclarados.",
 
-        dimensions_title: "Tres dimensiones evaluadas en campo:",
-
-        origin: "Origen",
-        origin_description:
-          "Ubicación verificada por GPS, altitud y variedad, hasta la finca y el lote exactos.",
-
-        sustainability: "Sostenibilidad",
-        sustainability_description:
-          "Cobertura de sombra regulada, protección de fuentes hídricas y prácticas agronómicas alineadas con estándares regenerativos.",
-
-        quality: "Calidad",
-        quality_description:
-          "La puntuación SCA verificada en laboratorio define la categoría: Grower (82+), Select (84+) y Reserve (86+). La sostenibilidad también influye: ¿puede una excelente taza, sin sostenibilidad, llamarse realmente especial?",
-
-        results_title: "Esto es lo que encontramos.",
-
-        results_text:
-          "Cifras reales de nuestro levantamiento continuo en el Resguardo Indígena Yaquivá, aplicadas presencialmente por nuestro propio equipo, no autodeclaradas.",
-
-        farms_value: "160+",
+        farms_value: "100+",
         farms_label: "Fincas visitadas",
 
-        score_value: "49.5/65",
-        score_label: "Índice O&O",
+        score_value: "41/65",
+        score_label: "Índice O&O /65",
 
-        sectors_value: "24",
+        sectors_value: "6",
         sectors_label: "Sectores evaluados",
 
         chart_title: "Puntaje por bloque",
 
+        origin: "Origen",
         origin_score: "15/20",
+
+        sustainability: "Sostenibilidad",
         sustainability_score: "13/20",
+
+        quality: "Calidad",
         quality_score: "13/20",
 
-        grower_percent: "7.1%",
-        grower_label: "O&O Grower",
+        grower_percent: "48%",
+        grower_label: "Grower",
 
-        select_percent: "83%",
-        select_label: "O&O Select",
+        select_percent: "37%",
+        select_label: "Select",
 
-        reserve_percent: "9.8%",
-        reserve_label: "O&O Reserve",
+        reserve_percent: "15%",
+        reserve_label: "Reserve",
+
+        highlight_percent: "68%",
 
         description:
-  '<span style="font-family: var(--font-display); font-size: 2.3rem; font-weight: 700; color: var(--color-gold);">68%</span> <span style="font-family: var(--font-display); font-weight: 700; color: var(--color-forest);">de las fincas evaluadas mantienen una cobertura de sombra regulada dentro del rango agronómico recomendado (20–35%): protegiendo el bosque altoandino sin sacrificar el rendimiento.</span>',
+          "de las fincas evaluadas mantienen una cobertura de sombra regulada dentro del rango agronómico recomendado (20–35%), contribuyendo a proteger el bosque altoandino sin comprometer la productividad del café.",
 
-        cta: "Visite el origen o revise los datos finca por finca. Usted elige cómo comprobarlo.",
+        cta: "Visita el origen, explora los datos finca por finca y verifica cada resultado por ti mismo.",
 
         button: "Obtener el informe completo",
       },
@@ -430,18 +446,41 @@
       traceability: {
         eyebrow: "TRAZABILIDAD",
         badge: "Próximamente",
-        title: "CINCO ETAPAS. TODAS DOCUMENTADAS",
-        text: "Cada contenedor que exportamos lleva café de decenas de productores de Inzá, Tierradentro. Sin borrar quién cultivó qué. Así viaja un lote, del árbol a tus manos:",
-        note: "La herramienta de consulta por lote está en desarrollo. Solicite una demostración durante la misión comercial.",
+        title: "Cinco etapas. Todas documentadas.",
+        text: "Cada contenedor que exportamos lleva café de decenas de productores de Inzá, Tierradentro. Nada se mezcla para ocultar su origen, nada borra quién cultivó cada lote. Así es como un lote viaja desde el árbol hasta sus manos:",
+
+        stage1title: "Productores",
+        stage1text:
+          "Familias reales, cada una identificada por su nombre, evaluadas y monitoreadas mediante el Índice O&O desde la primera visita.",
+
+        stage2_title: "Cosecha y procesamiento",
+        stage2_text:
+          "Cerezas maduras recolectadas a mano, una por una, por lote, variedad y microclima; luego procesadas cuidadosamente en la finca del productor o junto a nuestro equipo en el Centro de Origen O&O.",
+
+        stage3_title: "Laboratorio",
+        stage3_text:
+          "El análisis sensorial y el control de calidad construyen cada lote, mejorando la finca que lo produce cosecha tras cosecha.",
+
+        stage4_title: "Preparación",
+        stage4_text:
+          "Trillado, clasificación y doble empaque con un informe codificado por lote, listo para viajar y ser trazado.",
+
+        stage5_title: "Exportación",
+        stage5_text:
+          "Envío documentado y con trazabilidad por lote, listo para compradores en África y África Occidental.",
+
+        note: "La herramienta de consulta por lote se encuentra actualmente en desarrollo. Solicite una demostración durante la misión comercial.",
+        quote:
+          "El café de especialidad solo es verdaderamente especial si protege su origen.",
       },
 
       mission: {
         eyebrow: "MISIÓN COMERCIAL ÁFRICA 2026",
-        title: "Misión Comercial áfrica 2026",
+        title: "Misión Comercial África 2026",
         text1:
-          "Actualmente, Colombia y Sudáfrica comercian muy poco café de especialidad de forma directa. La mayor parte del volumen pasa por intermediarios antes de llegar a los tostadores africanos, lo que incrementa los costos, prolonga los tiempos y amplía la distancia entre la finca y la taza.",
+          "Actualmente, Colombia y África comercian muy poco café de especialidad de forma directa. La mayor parte del volumen pasa por intermediarios antes de llegar a los tostadores africanos, lo que incrementa los costos, prolonga los tiempos y amplía la distancia entre la finca y la taza.",
         text2:
-          "La Orquídea y el Oso se une a la Misión Comercial Sudáfrica 2026 para abrir una ruta directa que explore y conecte la autenticidad: café orgánico de especialidad de Inzá, Tierradentro, presentado directamente a compradores, distribuidores y tostadores de especialidad en Sudáfrica y África Occidental.",
+          "La Orquídea y el Oso se une a la Misión Comercial África 2026 para abrir una ruta directa que explore y conecte la autenticidad: café orgánico de especialidad de Inzá, Tierradentro, presentado directamente a compradores, distribuidores y tostadores de especialidad en Sudáfrica y África Occidental.",
         bullet1:
           "Un puente comercial directo entre los productores colombianos y los compradores africanos, sin intermediarios innecesarios.",
         bullet2:
@@ -509,24 +548,24 @@
       },
 
       hero: {
-        badge: "MISSION COMMERCIALE AFRIQUE DU SUD 2026",
-        eyebrow: "Café de spécialité — Mission Commerciale Afrique du Sud 2026",
+        badge: "Mission commerciale Afrique 2026",
+        eyebrow: "Café de spécialité — Mission commerciale Afrique 2026",
         title:
-          "Un café dont vous pouvez retracer l'origine jusqu'au producteur. Pas seulement jusqu'au pays.",
+          "Une tasse dont vous vous souviendrez. Une origine unique et vérifiable.",
         subtitle:
-          "Nous cultivons, transformons et exportons directement notre café de spécialité depuis Inzá, Tierradentro, sans intermédiaires ni simple étiquette d'origine. Chaque lot est lié à la famille qui l'a produit, avec son nom et son numéro de lot.",
+          "La Colombie est synonyme d'un excellent café. Le café de spécialité exige davantage : un terroir unique, une traçabilité vérifiée et un café cultivé dans de petites exploitations où le savoir-faire et la culture de leurs producteurs répondent aux plus hauts standards de qualité. Nous le cultivons, le transformons et l'exportons nous-mêmes depuis une origine unique au monde : Inzá, Tierradentro.",
         inline_link: "Voir le modèle de commerce direct →",
-        cta_primary: "Voir les lots traçables",
-        cta_secondary: "Mission commerciale en Afrique",
+        cta_primary: "Voir les cafés disponibles",
+        cta_secondary: "Mission commerciale Afrique",
         reviews_tab: "Avis",
-        feature1_title: "100% biologique",
+        feature1_title: "100 % biologique",
         feature1_text: "Café certifié",
         feature2_title: "Petits producteurs",
         feature2_text: "Commerce direct",
         feature3_title: "Café de spécialité",
         feature3_text: "Tasse de haute qualité",
         feature4_title: "Durable",
-        feature4_text: "Agriculture régénérative",
+        feature4_text: "Agriculture régénératrice",
       },
       stats: {
         eyebrow: "Impact vérifié",
@@ -543,23 +582,23 @@
       },
 
       product: {
-  eyebrow: "Origine vérifiée · Café de spécialité · Relations directes",
-  title: "Produit exportable",
-  text: "Chaque lot que nous exportons — qu'il provienne d'une seule ferme ou d'un assemblage de plus de 200 producteurs — est accompagné d'un rapport indiquant son origine, son procédé de transformation et son profil sensoriel. Il est vendu et exporté directement par les familles productrices, sans intermédiaires commerciaux inutiles.",
-  bullet1:
-    "Profil sensoriel et notes de dégustation documentés, origine unique ou assemblage de fermes.",
-  bullet2:
-    "Rapport complet du producteur, même pour les assemblages multi-fermes.",
-  bullet3:
-    "Exporté directement par les producteurs, sans négociant intermédiaire.",
-  bullet4:
-    "Chaque lot est accompagné d'un rapport complet sur le producteur.",
-  bullet5:
-    "Un engagement concret en faveur de la durabilité à l'origine, ensemble.",
-  downloads_label: "Télécharger la brochure",
-  download_en: "Brochure EN",
-  download_fr: "Brochure FR",
-},
+        eyebrow: "Origine vérifiée · Café de spécialité · Relations directes",
+        title: "Produit exportable",
+        text: "Chaque lot que nous exportons — qu'il provienne d'une seule ferme ou d'un assemblage de plus de 200 producteurs — est accompagné d'un rapport indiquant son origine, son procédé de transformation et son profil sensoriel. Il est vendu et exporté directement par les familles productrices, sans intermédiaires commerciaux inutiles.",
+        bullet1:
+          "Profil sensoriel et notes de dégustation documentés, origine unique ou assemblage de fermes.",
+        bullet2:
+          "Rapport complet du producteur, même pour les assemblages multi-fermes.",
+        bullet3:
+          "Exporté directement par les producteurs, sans négociant intermédiaire.",
+        bullet4:
+          "Chaque lot est accompagné d'un rapport complet sur le producteur.",
+        bullet5:
+          "Un engagement concret en faveur de la durabilité à l'origine, ensemble.",
+        downloads_label: "Télécharger la brochure",
+        download_en: "Brochure EN",
+        download_fr: "Brochure FR",
+      },
 
       origin: {
         eyebrow: "Origine",
@@ -578,6 +617,8 @@
           "Une norme que nous avons créée, pas un label que nous avons acheté",
         text: "Maintenir une certification biologique internationale est souvent trop coûteux pour les petits producteurs. C'est pourquoi nous avons développé l'Indice O&O, qui évalue l'origine, les pratiques durables et la qualité vérifiée de chaque lot afin d'améliorer continuellement chaque exploitation.",
         downloads_label: "Télécharger l'Indice O&O",
+        // Français
+        dimensions_title: "Trois dimensions, évaluées sur le terrain :",
         download_en: "Indice O&O EN",
         download_fr: "Indice O&O FR",
         video_note:
@@ -585,43 +626,57 @@
       },
 
       verification: {
-        eyebrow: "Indice d'Origine Certifiée — O&O",
-        title:
-          "Ce que nous découvrons lors de nos vérifications, ferme par ferme",
-        text: "Une méthode d'évaluation exclusive sur 60 points, réalisée directement sur le terrain par notre équipe. Il ne s'agit ni d'une auto-déclaration ni d'une certification tierce. Voici les résultats réels de notre enquête menée dans la Réserve Indigène Yaquivá, Inzá Tierradentro, Cauca.",
+        eyebrow: "INDICE D'ORIGINE CERTIFIÉE — O&O",
+
+        title: "Voici ce que nous avons constaté.",
+
+        text: "Résultats vérifiés de notre étude de terrain en cours dans la réserve de Yaquivá, recueillis directement par notre équipe et jamais autodéclarés.",
 
         farms_value: "100+",
-        farms_label: "Fermes visitées",
+        farms_label: "Exploitations visitées",
 
-        score_value: "41/60",
-        score_label: "Score moyen de l'indice O&O",
+        score_value: "41/65",
+        score_label: "Indice O&O /65",
 
         sectors_value: "6",
-        sectors_label: "Villages / secteurs couverts",
+        sectors_label: "Secteurs évalués",
 
-        chart_title: "Résultat par bloc d'évaluation",
+        chart_title: "Score par bloc",
 
-        origin: "Origine et territoire",
+        origin: "Origine",
         origin_score: "15/20",
 
-        sustainability: "Durabilité et pratiques",
+        sustainability: "Durabilité",
         sustainability_score: "13/20",
 
-        quality: "Qualité vérifiable",
+        quality: "Qualité",
         quality_score: "13/20",
 
         grower_percent: "48%",
-        grower_label: "O&O Grower",
+        grower_label: "Grower",
 
         select_percent: "37%",
-        select_label: "O&O Select",
+        select_label: "Select",
 
         reserve_percent: "15%",
-        reserve_label: "O&O Reserve",
+        reserve_label: "Reserve",
+
+        highlight_percent: "68 %",
 
         description:
-          "68 % des exploitations évaluées conservent une couverture d'ombrage réglementée dans la plage agronomique recommandée (20 à 35 %), protégeant ainsi la forêt andine tout en maintenant la productivité des cultures. Nous ne vous demandons pas de nous croire sur parole : nous vous invitons à le vérifier vous-même lors d'une visite des fermes, d'un appel vidéo avec les producteurs ou d'une analyse détaillée des données ferme par ferme.",
-        cta: "Demander le rapport complet",
+          "des exploitations évaluées maintiennent une couverture d’ombrage réglementée dans la plage agronomique recommandée (20–35 %), contribuant à protéger la forêt andine de haute altitude tout en préservant la productivité du café.",
+
+        cta: "Visitez l’origine, explorez les données exploitation par exploitation et vérifiez chaque résultat par vous-même.",
+
+        button: "Obtenir le rapport complet",
+      },
+
+      shade: {
+        highlight: {
+          percent: "68 %",
+          description:
+            "68 % des exploitations évaluées maintiennent une couverture d’ombrage réglementée dans la plage agronomique recommandée (20–35 %) : protégeant la forêt andine de haute altitude sans compromettre le rendement.",
+        },
       },
 
       directTrade: {
@@ -652,20 +707,43 @@
       },
 
       traceability: {
-        eyebrow: "Traçabilité",
+        eyebrow: "TRAÇABILITÉ",
         badge: "Bientôt disponible",
-        title: "De la forêt à la tasse — cinq étapes, toutes documentées",
-        text: "Chaque conteneur que nous exportons rassemble le café de dizaines de producteurs d'Inzá, Tierradentro, sans mélanges qui effacent l'origine. Chaque lot est suivi depuis l'arbre jusqu'au document d'exportation.",
-        note: "Un outil de consultation des lots est actuellement en développement. Demandez une démonstration à notre équipe pendant la Mission Commerciale.",
+        title: "Cinq étapes. Toutes documentées.",
+        text: "Chaque conteneur que nous exportons contient le café de dizaines de producteurs d'Inzá, Tierradentro. Rien n'est mélangé pour masquer son origine, rien n'efface l'identité de ceux qui ont cultivé chaque lot. Voici le parcours d'un lot, de l'arbre jusqu'à vos mains :",
+
+        stage1title: "Producteurs",
+        stage1text:
+          "De vraies familles, chacune identifiée par son nom, évaluée et suivie grâce à l'Indice O&O dès la toute première visite.",
+
+        stage2_title: "Récolte et transformation",
+        stage2_text:
+          "Des cerises mûres cueillies à la main, une par une, selon le lot, la variété et le microclimat, puis transformées avec soin dans l'exploitation du producteur ou avec notre équipe au Centre d'Origine O&O.",
+
+        stage3_title: "Laboratoire",
+        stage3_text:
+          "Les contrôles de dégustation et de qualité façonnent chaque lot tout en améliorant l'exploitation qui le produit, récolte après récolte.",
+
+        stage4_title: "Préparation",
+        stage4_text:
+          "Décorticage, tri et double emballage avec un rapport codifié pour chaque lot, prêt à voyager et à être tracé.",
+
+        stage5_title: "Exportation",
+        stage5_text:
+          "Expédition documentée avec traçabilité par lot, prête pour les acheteurs en Afrique et en Afrique de l'Ouest.",
+
+        note: "L'outil de consultation des lots est actuellement en cours de développement. Demandez une démonstration pendant la mission commerciale.",
+        quote:
+          "Le café de spécialité n'est véritablement spécial que s'il protège son origine.",
       },
 
       mission: {
-        eyebrow: "MISSION COMMERCIALE AFRIQUE DU 2026",
-        title: "Mission Commerciale Afrique du 2026",
+        eyebrow: "MISSION COMMERCIALE AFRIQUE 2026",
+        title: "Mission Commerciale Afrique 2026",
         text1:
-          "Aujourd'hui, la Colombie et l'Afrique du Sud échangent très peu de café de spécialité en direct. La majeure partie des volumes passe par des intermédiaires avant d'arriver chez les torréfacteurs africains, ce qui augmente les coûts, les délais et la distance entre la ferme et la tasse.",
+          "Aujourd'hui, la Colombie et l'Afrique échangent très peu de café de spécialité en direct. La majeure partie des volumes passe par des intermédiaires avant d'arriver chez les torréfacteurs africains, ce qui augmente les coûts, les délais et la distance entre la ferme et la tasse.",
         text2:
-          "La Orquídea y el Oso rejoint la Mission Commerciale Afrique du Sud 2026 pour ouvrir une voie directe permettant d'explorer et de connecter l'authenticité : un café biologique de spécialité venu d'Inzá, Tierradentro, présenté directement aux acheteurs, distributeurs et torréfacteurs spécialisés en Afrique du Sud et en Afrique de l'Ouest.",
+          "La Orquídea y el Oso rejoint la Mission Commerciale Afrique 2026 pour ouvrir une voie directe permettant d'explorer et de connecter l'authenticité : un café biologique de spécialité venu d'Inzá, Tierradentro, présenté directement aux acheteurs, distributeurs et torréfacteurs spécialisés en Afrique du Sud et en Afrique de l'Ouest.",
         bullet1:
           "Un pont commercial direct entre les producteurs colombiens et les acheteurs africains, sans intermédiaires inutiles.",
         bullet2:
