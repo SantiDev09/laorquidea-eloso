@@ -93,7 +93,7 @@
         eyebrow: "ORIGIN",
         title: "Authentic Terroir",
         text: 'Our coffee grows in Tierradentro, Cauca, inside the Yaquivá Indigenous Reserve, above 1,400 metres — home to the archaeological park UNESCO named <span style="color: var(--color-gold); font-weight: 700;">a World Heritage Site</span> in 1995. One container can carry the work of 300 families. 300 individual efforts we refuse to leave invisible.',
-        bullet1: "300+ named, GPS-verified producer families",
+        bullet1: "GPS-verified producer families",
         bullet2:
           "Agroforestry systems protecting biodiversity, páramo and water sources",
         bullet3:
@@ -101,7 +101,7 @@
         bullet4:
           "O&O Origin Hub: growers process alongside our own team — no industrial middleman",
         bullet5:
-          "Every lot scored under our 65-point Certified Origin standard — ask to see it",
+          "Every lot scored under our 65-point Certified Origin standard",
       },
       program: {
         eyebrow: "CERTIFIED ORIGIN PROGRAM",
@@ -352,7 +352,7 @@
         eyebrow: "ORIGEN",
         title: "Territorio Autentico",
         text: 'Nuestro café crece en Tierradentro, Cauca, dentro del Resguardo Indígena de Yaquivá, por encima de los 1.400 metros — sede del parque arqueológico que la UNESCO declaró <span style="color: var(--color-gold); font-weight: 700;">Patrimonio de la Humanidad</span> en 1995. Un contenedor puede llevar el esfuerzo de 300 familias. 300 esfuerzos que nos negamos a dejar invisibles.',
-        bullet1: "300+ familias productoras, identificadas y georreferenciadas",
+        bullet1: "familias productoras, identificadas y georreferenciadas",
         bullet2:
           "Sistemas agroforestales que protegen biodiversidad, páramo y fuentes hídricas",
         bullet3:
@@ -605,7 +605,7 @@
         title:
           "Chaque sac est traçable jusqu'à Inzá, Tierradentro — et pas seulement jusqu'à « Colombie ».",
         text: 'À Inzá, Cauca, le café est cultivé dans le territoire indigène légalement reconnu de la Réserve Yaquivá, à plus de 1 400 mètres d’altitude, où se trouve le parc archéologique que l’UNESCO a inscrit au <span style="color: var(--color-gold); font-weight: 700;">Patrimoine mondial</span> en 1995. Un conteneur peut transporter le travail de 300 familles. Trois cents efforts individuels que nous refusons de laisser dans l’ombre.',
-        bullet1: "300+ familles productrices partenaires, chacune identifiée.",
+        bullet1: "familles productrices partenaires, chacune identifiée.",
         bullet2: "Systèmes agroforestiers qui préservent la biodiversité.",
         bullet3:
           "Une tradition transmise de génération en génération, et non un simple contrat d'approvisionnement.",
